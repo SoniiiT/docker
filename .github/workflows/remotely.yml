@@ -1,0 +1,36 @@
+name: Remotely Secrets Management
+
+on:
+  workflow_dispatch:
+
+env:
+  SERVER_USER: soniiit
+  SERVER_HOST: 192.168.178.45  # LXC Container
+  SERVICE_NAME: remotely
+
+jobs:
+  update-remotely-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Remotely Secrets
+        run: |
+          echo "Updating secrets for Remotely"
+          
+          # Erstelle .env Datei mit den Secrets
+          if [ -f "docker-lxc-remotely/${{ env.SERVICE_NAME }}/.env.template" ]; then
+            # Ersetze alle Platzhalter mit den entsprechenden Secrets
+            sed -e "s|__POSTGRES_PASSWORD__|${{ secrets.REMOTELY_POSTGRES_PASSWORD }}|g" \
+                docker-lxc-remotely/${{ env.SERVICE_NAME }}/.env.template > \
+                docker-lxc-remotely/${{ env.SERVICE_NAME }}/.env
+            
+            # Kopiere die .env Datei auf den Server
+            scp -o StrictHostKeyChecking=no docker-lxc-remotely/${{ env.SERVICE_NAME }}/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/${{ env.SERVICE_NAME }}/.env
+            
+            echo "Secrets updated successfully"
+          else
+            echo "No .env.template found for Remotely"
+            exit 1
+          fi 
