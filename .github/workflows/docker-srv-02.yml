@@ -1,0 +1,118 @@
+name: Docker Server 02 Workflow
+
+on:
+  push:
+    paths:
+      - 'docker-srv-02/**'
+  pull_request:
+    paths:
+      - 'docker-srv-02/**'
+
+env:
+  SERVER_USER: soniiit
+  SERVER_HOST: 192.168.178.0
+
+jobs:
+  detect:
+    runs-on: self-hosted
+    outputs:
+      action: ${{ steps.detect.outputs.action }}
+      service: ${{ steps.detect.outputs.service }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Detect Changes
+        id: detect
+        run: |
+          # Prüfe auf Änderungen in den Docker Compose Dateien
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-02/.*/docker-compose.yml')
+          DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-02/.*/docker-compose.yml')
+          
+          if [ -n "$DELETED_FILES" ]; then
+            SERVICE_NAME=$(echo $DELETED_FILES | cut -d'/' -f2)
+            echo "action=delete" >> $GITHUB_OUTPUT
+            echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+          elif [ -n "$CHANGED_FILES" ]; then
+            SERVICE_NAME=$(echo $CHANGED_FILES | cut -d'/' -f2)
+            if ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -f /home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml ]"; then
+              echo "action=update" >> $GITHUB_OUTPUT
+            else
+              echo "action=new" >> $GITHUB_OUTPUT
+            fi
+            echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+          else
+            echo "action=none" >> $GITHUB_OUTPUT
+            echo "service=" >> $GITHUB_OUTPUT
+          fi
+
+  new:
+    needs: detect
+    if: needs.detect.outputs.action == 'new'
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy New Service
+        run: |
+          SERVICE_NAME=${{ needs.detect.outputs.service }}
+          echo "Deploying new service: $SERVICE_NAME"
+          
+          # Erstelle Remote-Verzeichnis
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /home/soniiit/docker-runner/$SERVICE_NAME"
+          
+          # Kopiere Docker Compose Datei
+          scp -i ${{ secrets.SSH_KEY }} docker-srv-02/$SERVICE_NAME/docker-compose.yml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml
+          
+          # Starte den Service
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+
+  update:
+    needs: detect
+    if: needs.detect.outputs.action == 'update'
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Service
+        run: |
+          SERVICE_NAME=${{ needs.detect.outputs.service }}
+          echo "Updating service: $SERVICE_NAME"
+          
+          # Stoppe den Service
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          # Kopiere neue Docker Compose Datei
+          scp -i ${{ secrets.SSH_KEY }} docker-srv-02/$SERVICE_NAME/docker-compose.yml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml
+          
+          # Starte den Service neu
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+
+  delete:
+    needs: detect
+    if: needs.detect.outputs.action == 'delete'
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Delete Service
+        run: |
+          SERVICE_NAME=${{ needs.detect.outputs.service }}
+          echo "Deleting service: $SERVICE_NAME"
+          
+          # Stoppe und lösche den Service
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          ssh -i ${{ secrets.SSH_KEY }} ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "rm -rf /home/soniiit/docker-runner/$SERVICE_NAME"
+
+  no_changes:
+    needs: detect
+    if: needs.detect.outputs.action == 'none'
+    runs-on: self-hosted
+    steps:
+      - name: No Changes Detected
+        run: |
+          echo "No changes detected in Docker Compose files. No action required."
+          exit 1 
