@@ -11,7 +11,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp:/tmp
-      - ./data/:/app/data
+      - /mnt/docker-compose/kestra/data/:/app/data
     command: server local
     restart: unless-stopped
     environment:
