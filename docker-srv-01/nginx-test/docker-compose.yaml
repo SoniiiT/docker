@@ -1,7 +1,0 @@
-services:
-  web:
-    image: nginx:1.28
-    container_name: nginx-web
-    restart: unless-stopped
-    ports:
-      - 80:80
