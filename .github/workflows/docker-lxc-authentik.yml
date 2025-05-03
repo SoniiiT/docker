@@ -81,16 +81,15 @@ jobs:
           # Erstelle Remote-Verzeichnis
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /root/docker-runner/$SERVICE_NAME"
           
-          # Kopiere Docker Compose Datei
-          scp -o StrictHostKeyChecking=no lxc-authentik/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
+          # Kopiere den kompletten Service-Ordner
+          scp -o StrictHostKeyChecking=no -r lxc-authentik/$SERVICE_NAME/* ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/
           
           # Setze Systemvariablen
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export PG_PASS=${{ secrets.AUTHENTIK_PG_PASS }}' >> /root/docker-runner/$SERVICE_NAME/.env && echo 'export AUTHENTIK_SECRET_KEY=${{ secrets.AUTHENTIK_SECRET_KEY }}' >> /root/docker-runner/$SERVICE_NAME/.env"
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.env"
           
           # Starte den Service
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && source /root/docker-runner/$SERVICE_NAME/.env && docker compose up -d"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && source .env && docker compose up -d"
 
   update:
     needs: detect
@@ -110,16 +109,15 @@ jobs:
           # Stoppe den Service
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose down"
           
-          # Kopiere neue Docker Compose Datei
-          scp -o StrictHostKeyChecking=no lxc-authentik/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
+          # Kopiere den kompletten Service-Ordner
+          scp -o StrictHostKeyChecking=no -r lxc-authentik/$SERVICE_NAME/* ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/
           
           # Setze Systemvariablen
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export PG_PASS=${{ secrets.AUTHENTIK_PG_PASS }}' >> /root/docker-runner/$SERVICE_NAME/.env && echo 'export AUTHENTIK_SECRET_KEY=${{ secrets.AUTHENTIK_SECRET_KEY }}' >> /root/docker-runner/$SERVICE_NAME/.env"
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.env"
           
           # Starte den Service neu
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && source /root/docker-runner/$SERVICE_NAME/.env && docker compose up -d"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && source .env && docker compose up -d"
 
   delete:
     needs: detect
