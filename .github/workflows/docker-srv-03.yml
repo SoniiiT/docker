@@ -64,8 +64,8 @@ jobs:
           SERVICE_NAME=${{ needs.detect.outputs.service }}
           echo "Deploying new service: $SERVICE_NAME"
           
-          # Erstelle temporäre SSH-Key Datei
-          echo "${{ secrets.SSH_KEY }}" > /tmp/ssh_key
+          # Erstelle temporäre SSH-Key Datei mit korrekter Formatierung
+          echo -e "-----BEGIN OPENSSH PRIVATE KEY-----\n${{ secrets.SSH_KEY }}\n-----END OPENSSH PRIVATE KEY-----" > /tmp/ssh_key
           chmod 600 /tmp/ssh_key
           
           # Erstelle Remote-Verzeichnis
