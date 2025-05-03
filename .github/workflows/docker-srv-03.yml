@@ -27,10 +27,10 @@ jobs:
         run: |
           # Prüfe auf Änderungen in den Docker Compose Dateien
           if [ -n "$(git rev-list --count HEAD)" ] && [ "$(git rev-list --count HEAD)" -gt 1 ]; then
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
-            DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.\(yml\|yaml\)')
+            DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.\(yml\|yaml\)')
           else
-            CHANGED_FILES=$(find docker-srv-03 -name "docker-compose.yml")
+            CHANGED_FILES=$(find docker-srv-03 -name "docker-compose.yml" -o -name "docker-compose.yaml")
             DELETED_FILES=""
           fi
           
