@@ -27,29 +27,41 @@ jobs:
         run: |
           # Prüfe auf Änderungen in den Docker Compose Dateien
           if [ -n "$(git rev-list --count HEAD)" ] && [ "$(git rev-list --count HEAD)" -gt 1 ]; then
-            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-01/.*/docker-compose.\(yml\|yaml\)' || true)
+            # Suche nach gelöschten Dateien
             DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-01/.*/docker-compose.\(yml\|yaml\)' || true)
+            if [ -n "$DELETED_FILES" ]; then
+              SERVICE_NAME=$(echo $DELETED_FILES | cut -d'/' -f2)
+              echo "action=delete" >> $GITHUB_OUTPUT
+              echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+            
+            # Suche nach geänderten oder neuen Dateien
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-01/.*/docker-compose.\(yml\|yaml\)' || true)
+            if [ -n "$CHANGED_FILES" ]; then
+              SERVICE_NAME=$(echo $CHANGED_FILES | cut -d'/' -f2)
+              if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -f /home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml ]"; then
+                echo "action=update" >> $GITHUB_OUTPUT
+              else
+                echo "action=new" >> $GITHUB_OUTPUT
+              fi
+              echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+              exit 0
+            fi
           else
+            # Initialer Check
             CHANGED_FILES=$(find docker-srv-01 -name "docker-compose.yml" -o -name "docker-compose.yaml" 2>/dev/null || true)
-            DELETED_FILES=""
+            if [ -n "$CHANGED_FILES" ]; then
+              SERVICE_NAME=$(echo $CHANGED_FILES | cut -d'/' -f2)
+              echo "action=new" >> $GITHUB_OUTPUT
+              echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+              exit 0
+            fi
           fi
           
-          if [ -n "$DELETED_FILES" ]; then
-            SERVICE_NAME=$(echo $DELETED_FILES | cut -d'/' -f2)
-            echo "action=delete" >> $GITHUB_OUTPUT
-            echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
-          elif [ -n "$CHANGED_FILES" ]; then
-            SERVICE_NAME=$(echo $CHANGED_FILES | cut -d'/' -f2)
-            if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -f /home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml ]"; then
-              echo "action=update" >> $GITHUB_OUTPUT
-            else
-              echo "action=new" >> $GITHUB_OUTPUT
-            fi
-            echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
-          else
-            echo "action=none" >> $GITHUB_OUTPUT
-            echo "service=" >> $GITHUB_OUTPUT
-          fi
+          # Keine Änderungen gefunden
+          echo "action=none" >> $GITHUB_OUTPUT
+          echo "service=" >> $GITHUB_OUTPUT
 
   new:
     needs: detect
