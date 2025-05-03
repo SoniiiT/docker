@@ -26,8 +26,13 @@ jobs:
         id: detect
         run: |
           # Prüfe auf Änderungen in den Docker Compose Dateien
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
-          DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
+          if [ -n "$(git rev-list --count HEAD)" ] && [ "$(git rev-list --count HEAD)" -gt 1 ]; then
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
+            DELETED_FILES=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.yml')
+          else
+            CHANGED_FILES=$(find docker-srv-03 -name "docker-compose.yml")
+            DELETED_FILES=""
+          fi
           
           if [ -n "$DELETED_FILES" ]; then
             SERVICE_NAME=$(echo $DELETED_FILES | cut -d'/' -f2)
