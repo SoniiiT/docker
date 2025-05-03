@@ -64,21 +64,14 @@ jobs:
           SERVICE_NAME=${{ needs.detect.outputs.service }}
           echo "Deploying new service: $SERVICE_NAME"
           
-          # Erstelle temporäre SSH-Key Datei mit korrekter Formatierung
-          echo -e "-----BEGIN OPENSSH PRIVATE KEY-----\n${{ secrets.SSH_KEY }}\n-----END OPENSSH PRIVATE KEY-----" > /tmp/ssh_key
-          chmod 600 /tmp/ssh_key
-          
           # Erstelle Remote-Verzeichnis
-          ssh -o StrictHostKeyChecking=no -i /tmp/ssh_key ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /home/soniiit/docker-runner/$SERVICE_NAME"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /home/soniiit/docker-runner/$SERVICE_NAME"
           
           # Kopiere Docker Compose Datei
-          scp -o StrictHostKeyChecking=no -i /tmp/ssh_key docker-srv-02/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yaml
+          scp -o StrictHostKeyChecking=no docker-srv-02/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yaml
           
           # Starte den Service
-          ssh -o StrictHostKeyChecking=no -i /tmp/ssh_key ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
-          
-          # Lösche temporäre SSH-Key Datei
-          rm -f /tmp/ssh_key
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
 
   update:
     needs: detect
