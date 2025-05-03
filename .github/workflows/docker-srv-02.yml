@@ -10,7 +10,7 @@ on:
 
 env:
   SERVER_USER: soniiit
-  SERVER_HOST: 192.168.178.0
+  SERVER_HOST: 192.168.178.31
 
 jobs:
   detect:
