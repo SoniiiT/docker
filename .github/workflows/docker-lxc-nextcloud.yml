@@ -84,6 +84,11 @@ jobs:
           # Kopiere Docker Compose Datei
           scp -o StrictHostKeyChecking=no lxc-nextcloud/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
           
+          # Setze Systemvariablen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export MYSQL_ROOT_PASSWORD=${{ secrets.NEXTCLOUD_MYSQL_ROOT_PASSWORD }}' >> /root/.bashrc"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export MYSQL_PASSWORD=${{ secrets.NEXTCLOUD_MYSQL_PASSWORD }}' >> /root/.bashrc"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
+          
           # Starte den Service
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"
 
@@ -107,6 +112,11 @@ jobs:
           
           # Kopiere neue Docker Compose Datei
           scp -o StrictHostKeyChecking=no lxc-nextcloud/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
+          
+          # Setze Systemvariablen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export MYSQL_ROOT_PASSWORD=${{ secrets.NEXTCLOUD_MYSQL_ROOT_PASSWORD }}' >> /root/.bashrc"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export MYSQL_PASSWORD=${{ secrets.NEXTCLOUD_MYSQL_PASSWORD }}' >> /root/.bashrc"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
           
           # Starte den Service neu
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"
