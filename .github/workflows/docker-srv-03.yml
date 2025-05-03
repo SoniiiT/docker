@@ -42,7 +42,7 @@ jobs:
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep 'docker-srv-03/.*/docker-compose.\(yml\|yaml\)' || true)
             if [ -n "$CHANGED_FILES" ]; then
               SERVICE_NAME=$(echo $CHANGED_FILES | cut -d'/' -f2)
-              if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -f /home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yml ]"; then
+              if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -d /home/soniiit/docker-runner/$SERVICE_NAME ]"; then
                 echo "action=update" >> $GITHUB_OUTPUT
               else
                 echo "action=new" >> $GITHUB_OUTPUT
