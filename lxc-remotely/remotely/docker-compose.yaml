@@ -8,7 +8,7 @@ networks:
           gateway: 172.28.0.1
 services:
   remotely:
-    image: immybot/remotely:latest
+    image: immybot/remotely:1037
     container_name: remotely
     volumes:
       - /var/www/remotely:/app/AppData
