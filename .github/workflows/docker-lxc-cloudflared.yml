@@ -99,10 +99,11 @@ jobs:
           # Kopiere Docker Compose Datei
           scp -o StrictHostKeyChecking=no lxc-cloudflared/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
           
-          # Setze Systemvariablen
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export TUNNEL_TOKEN=${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}' >> /root/.bashrc"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
+          # Füge die Secrets hinzu
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo -e 'TUNNEL_TOKEN=${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}' >> /root/docker-runner/$SERVICE_NAME/.env"
           
+          # Setze die korrekten Berechtigungen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"          
           # Starte den Service
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"
 
@@ -127,9 +128,15 @@ jobs:
           # Kopiere neue Docker Compose Datei
           scp -o StrictHostKeyChecking=no lxc-cloudflared/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
           
-          # Setze Systemvariablen
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export TUNNEL_TOKEN=${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}' >> /root/.bashrc"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
+          # Lösche die alte .env Datei
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "rm -f /root/docker-runner/$SERVICE_NAME/.env"
+
+
+          # Füge die Secrets hinzu
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo -e 'TUNNEL_TOKEN=${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}' >> /root/docker-runner/$SERVICE_NAME/.env"
+          
+          # Setze die korrekten Berechtigungen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"          
           
           # Starte den Service neu
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"

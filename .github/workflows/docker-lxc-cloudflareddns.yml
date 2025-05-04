@@ -134,9 +134,19 @@ jobs:
           # Kopiere neue Docker Compose Datei
           scp -o StrictHostKeyChecking=no lxc-cloudflareddns/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
           
-          # Setze Systemvariablen
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export CF_API_TOKEN=${{ secrets.CLOUDFLARED_DNS_API_TOKEN }}' >> /root/.bashrc"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
+          # Lösche die alte .env Datei
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "rm -f /root/docker-runner/$SERVICE_NAME/.env"
+
+          # Kopiere die .env Datei separat
+          if [ -f "lxc-cloudflareddns/$SERVICE_NAME/.env" ]; then
+            scp -o StrictHostKeyChecking=no lxc-cloudflareddns/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/
+          fi
+          
+          # Füge die Secrets hinzu
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo -e '\nCF_API_TOKEN=${{ secrets.CLOUDFLARED_DNS_API_TOKEN }}' >> /root/docker-runner/$SERVICE_NAME/.env"
+          
+          # Setze die korrekten Berechtigungen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"
           
           # Starte den Service neu
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"
