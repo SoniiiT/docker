@@ -61,6 +61,21 @@ jobs:
             fi
           fi
           
+          # Prüfe auf gelöschte Verzeichnisse im aktuellen Commit
+          CURRENT_DIRS=$(find lxc-cloudflareddns -type d -mindepth 1 -maxdepth 1 2>/dev/null || true)
+          if [ -n "$CURRENT_DIRS" ]; then
+            for dir in $CURRENT_DIRS; do
+              SERVICE_NAME=$(basename $dir)
+              if ! [ -f "$dir/docker-compose.yml" ] && ! [ -f "$dir/docker-compose.yaml" ]; then
+                if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -d /root/docker-runner/$SERVICE_NAME ]"; then
+                  echo "action=delete" >> $GITHUB_OUTPUT
+                  echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+                  exit 0
+                fi
+              fi
+            done
+          fi
+          
           # Keine Änderungen gefunden
           echo "action=none" >> $GITHUB_OUTPUT
           echo "service=" >> $GITHUB_OUTPUT
@@ -81,12 +96,19 @@ jobs:
           # Erstelle Remote-Verzeichnis
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /root/docker-runner/$SERVICE_NAME"
           
-          # Kopiere Docker Compose Datei
-          scp -o StrictHostKeyChecking=no lxc-cloudflareddns/$SERVICE_NAME/docker-compose.yaml ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/docker-compose.yaml
+          # Kopiere den kompletten Service-Ordner
+          scp -o StrictHostKeyChecking=no -r lxc-cloudflareddns/$SERVICE_NAME/* ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/
           
-          # Setze Systemvariablen
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo 'export CF_API_TOKEN=${{ secrets.CLOUDFLARED_DNS_API_TOKEN }}' >> /root/.bashrc"
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "source /root/.bashrc"
+          # Kopiere die .env Datei separat
+          if [ -f "lxc-cloudflareddns/$SERVICE_NAME/.env" ]; then
+            scp -o StrictHostKeyChecking=no lxc-cloudflareddns/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/root/docker-runner/$SERVICE_NAME/
+          fi
+          
+          # Füge die Secrets hinzu
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "echo -e '\nCF_API_TOKEN=${{ secrets.CLOUDFLARED_DNS_API_TOKEN }}' >> /root/docker-runner/$SERVICE_NAME/.env"
+          
+          # Setze die korrekten Berechtigungen
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "chmod 600 /root/docker-runner/$SERVICE_NAME/.env"
           
           # Starte den Service
           ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /root/docker-runner/$SERVICE_NAME && docker compose up -d"
