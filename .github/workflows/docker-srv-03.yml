@@ -7,12 +7,40 @@ on:
   pull_request:
     paths:
       - 'docker-srv-03/**'
+  workflow_dispatch:  # Erlaube manuelles Ausführen
 
 env:
   SERVER_USER: soniiit
   SERVER_HOST: 192.168.178.32
 
 jobs:
+  initial-deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy All Services
+        run: |
+          echo "Deploying all services to Docker Server 03"
+          
+          # Finde alle Docker Compose Dateien
+          for SERVICE_DIR in docker-srv-03/*; do
+            if [ -d "$SERVICE_DIR" ] && [ -f "$SERVICE_DIR/docker-compose.yaml" ]; then
+              SERVICE_NAME=$(basename "$SERVICE_DIR")
+              echo "Deploying service: $SERVICE_NAME"
+              
+              # Erstelle Remote-Verzeichnis
+              ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "mkdir -p /home/soniiit/docker-runner/$SERVICE_NAME"
+              
+              # Kopiere Docker Compose Datei
+              scp -o StrictHostKeyChecking=no "$SERVICE_DIR/docker-compose.yaml" ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/docker-compose.yaml
+              
+              # Starte den Service
+              ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+            fi
+          done
+
   detect:
     runs-on: self-hosted
     outputs:
@@ -22,7 +50,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 2  # Erhöhe die fetch-depth, um die vorherige Version zu erhalten
+          fetch-depth: 2
 
       - name: Detect Changes
         id: detect
