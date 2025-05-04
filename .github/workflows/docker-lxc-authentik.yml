@@ -61,6 +61,17 @@ jobs:
             fi
           fi
           
+          # Prüfe auf gelöschte Verzeichnisse
+          DELETED_DIRS=$(git diff --name-only --diff-filter=D HEAD~1 HEAD | grep 'lxc-authentik/.*' || true)
+          if [ -n "$DELETED_DIRS" ]; then
+            SERVICE_NAME=$(echo $DELETED_DIRS | cut -d'/' -f2 | sort -u)
+            if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -d /root/docker-runner/$SERVICE_NAME ]"; then
+              echo "action=delete" >> $GITHUB_OUTPUT
+              echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+          fi
+          
           # Keine Änderungen gefunden
           echo "action=none" >> $GITHUB_OUTPUT
           echo "service=" >> $GITHUB_OUTPUT
