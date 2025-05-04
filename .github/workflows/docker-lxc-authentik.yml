@@ -72,6 +72,21 @@ jobs:
             fi
           fi
           
+          # Prüfe auf gelöschte Verzeichnisse im aktuellen Commit
+          CURRENT_DIRS=$(find lxc-authentik -type d -mindepth 1 -maxdepth 1 2>/dev/null || true)
+          if [ -n "$CURRENT_DIRS" ]; then
+            for dir in $CURRENT_DIRS; do
+              SERVICE_NAME=$(basename $dir)
+              if ! [ -f "$dir/docker-compose.yml" ] && ! [ -f "$dir/docker-compose.yaml" ]; then
+                if ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "[ -d /root/docker-runner/$SERVICE_NAME ]"; then
+                  echo "action=delete" >> $GITHUB_OUTPUT
+                  echo "service=$SERVICE_NAME" >> $GITHUB_OUTPUT
+                  exit 0
+                fi
+              fi
+            done
+          fi
+          
           # Keine Änderungen gefunden
           echo "action=none" >> $GITHUB_OUTPUT
           echo "service=" >> $GITHUB_OUTPUT
