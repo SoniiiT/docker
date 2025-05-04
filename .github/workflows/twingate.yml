@@ -1,0 +1,259 @@
+name: Twingate Secrets Management
+
+on:
+  workflow_dispatch:
+
+env:
+  SERVER_USER: soniiit
+  SERVER_HOST: 192.168.178.32  # Server 03
+
+jobs:
+  update-demo-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Demo Secrets
+        run: |
+          echo "Updating secrets for Twingate Demo Connector"
+          SERVICE_NAME=twingate-connector-net-demo
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.DEMO_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.DEMO_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-windows-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Windows Secrets
+        run: |
+          echo "Updating secrets for Twingate Windows Connector"
+          SERVICE_NAME=twingate-connector-net-windows
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.WINDOWS_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.WINDOWS_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-nas-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update NAS Secrets
+        run: |
+          echo "Updating secrets for Twingate NAS Connector"
+          SERVICE_NAME=twingate-connector-net-nas
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.NAS_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.NAS_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-lxc-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update LXC Secrets
+        run: |
+          echo "Updating secrets for Twingate LXC Connector"
+          SERVICE_NAME=twingate-connector-net-lxc
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.LXC_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.LXC_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-kubernetes-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Kubernetes Secrets
+        run: |
+          echo "Updating secrets for Twingate Kubernetes Connector"
+          SERVICE_NAME=twingate-connector-net-kubernetes
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.KUBERNETES_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.KUBERNETES_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-home-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Home Secrets
+        run: |
+          echo "Updating secrets for Twingate Home Connector"
+          SERVICE_NAME=twingate-connector-net-home
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.HOME_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.HOME_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-gitagents-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update GitAgents Secrets
+        run: |
+          echo "Updating secrets for Twingate GitAgents Connector"
+          SERVICE_NAME=twingate-connector-net-gitagents
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.GITAGENTS_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.GITAGENTS_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-docker-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Docker Secrets
+        run: |
+          echo "Updating secrets for Twingate Docker Connector"
+          SERVICE_NAME=twingate-connector-net-docker
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.DOCKER_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.DOCKER_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-development-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Development Secrets
+        run: |
+          echo "Updating secrets for Twingate Development Connector"
+          SERVICE_NAME=twingate-connector-net-development
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.DEVELOPMENT_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.DEVELOPMENT_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi
+
+  update-desktop-secrets:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Update Desktop Secrets
+        run: |
+          echo "Updating secrets for Twingate Desktop Connector"
+          SERVICE_NAME=twingate-connector-net-desktop
+          
+          # Stoppe den Container
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose down"
+          
+          if [ -f "docker-srv-03/$SERVICE_NAME/.env.template" ]; then
+            sed -e "s|__TWINGATE_ACCESS_TOKEN__|${{ secrets.DESKTOP_TWINGATE_ACCESS_TOKEN }}|g" \
+                -e "s|__TWINGATE_REFRESH_TOKEN__|${{ secrets.DESKTOP_TWINGATE_REFRESH_TOKEN }}|g" \
+                docker-srv-03/$SERVICE_NAME/.env.template > \
+                docker-srv-03/$SERVICE_NAME/.env
+            scp -o StrictHostKeyChecking=no docker-srv-03/$SERVICE_NAME/.env ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:/home/soniiit/docker-runner/$SERVICE_NAME/.env
+            
+            # Starte den Container neu
+            ssh ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }} "cd /home/soniiit/docker-runner/$SERVICE_NAME && docker compose up -d"
+          fi 
