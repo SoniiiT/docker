@@ -1,6 +1,6 @@
 services:
   twingate-connector:
-    image: twingate/connector:1.75
+    image: twingate/connector:1.78
     container_name: twingate-connector-net-home
     restart: unless-stopped
     pull_policy: always
