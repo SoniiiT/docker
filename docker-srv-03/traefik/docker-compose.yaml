@@ -1,0 +1,77 @@
+version: "3.9"
+
+networks:
+  proxy:
+    external: true   # einmalig: docker network create proxy
+
+services:
+  traefik:
+    image: traefik:v3.5.0
+    container_name: traefik
+    restart: unless-stopped
+    networks: [proxy]
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3023:3023"
+      - "3024:3024"
+      - "1514:1514"
+      - "1515:1515"
+    environment:
+      # Cloudflare DNS-01 (bevorzugt Token-Methode über LEGO):
+      # https://go-acme.github.io/lego/dns/cloudflare/
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN}
+      TZ: Europe/Berlin
+    command:
+      # Provider
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.file.directory=/etc/traefik/dynamic
+      - --providers.file.watch=true
+
+      # Entrypoints
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.sshproxy.address=:3023
+      - --entrypoints.tunnel.address=:3024
+      - --entrypoints.wazuhagent.address=:1514
+      - --entrypoints.wazuhenroll.address=:1515
+
+      # Dashboard
+      - --api.dashboard=true
+
+      # ===== ACME: Production (Cloudflare DNS-01) =====
+      - --certificatesresolvers.leprod.acme.email=${LETSENCRYPT_EMAIL}
+      - --certificatesresolvers.leprod.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.leprod.acme.dnschallenge=true
+      - --certificatesresolvers.leprod.acme.dnschallenge.provider=cloudflare
+      - --certificatesresolvers.leprod.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+
+      # ===== ACME: Staging (für Tests) =====
+      - --certificatesresolvers.lestage.acme.email=${LETSENCRYPT_EMAIL}
+      - --certificatesresolvers.lestage.acme.storage=/letsencrypt/acme-staging.json
+      - --certificatesresolvers.lestage.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesresolvers.lestage.acme.dnschallenge=true
+      - --certificatesresolvers.lestage.acme.dnschallenge.provider=cloudflare
+      - --certificatesresolvers.lestage.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+
+      # Logging
+      - --log.level=INFO
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./acme.json:/letsencrypt/acme.json
+      - ./acme-staging.json:/letsencrypt/acme-staging.json
+      - ./dynamic:/etc/traefik/dynamic
+
+    labels:
+      - traefik.enable=true
+
+      # Dashboard auf traefik.home.soniiit.net → nutzt dein internes CA-Zertifikat
+      - traefik.http.routers.api.rule=Host(`traefik.home.soniiit.net`)
+      - traefik.http.routers.api.entrypoints=websecure
+      - traefik.http.routers.api.tls.certresolver=leprod
+      - traefik.http.routers.api.service=api@internal
+      - traefik.http.routers.api.middlewares=basicauth@file,secureHeaders@file

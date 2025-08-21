@@ -1,0 +1,44 @@
+http:
+  routers:
+    wazuh:
+      rule: Host(`wazuh.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: wazuh-svc
+      middlewares: [secureHeaders@file]
+
+  services:
+    wazuh-svc:
+      loadBalancer:
+        servers:
+          - url: https://192.168.178.42
+        passHostHeader: true
+        serversTransport: wazuh-transport
+
+  serversTransports:
+    wazuh-transport:
+      insecureSkipVerify: true
+
+tcp:
+  routers:
+    wazuh-agents:
+      entryPoints: [wazuhagent]                 # :1514
+      rule: "HostSNI(`*`)"                 # raw TCP, keine TLS-Prüfung am Traefik
+      service: wazuh-agents-svc
+
+    wazuh-enroll:
+      entryPoints: [wazuhenroll]                # :1515
+      rule: "HostSNI(`*`)"
+      service: wazuh-enroll-svc
+
+  services:
+    wazuh-agents-svc:
+      loadBalancer:
+        servers:
+          - address: "192.168.178.42:1514" # Wazuh Manager
+
+    wazuh-enroll-svc:
+      loadBalancer:
+        servers:
+          - address: "192.168.178.42:1515" # Wazuh Manager (Enrollment)

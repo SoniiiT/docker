@@ -1,0 +1,37 @@
+version: v2
+
+teleport:
+  nodename: teleport
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  proxy_listener_mode: multiplex
+  cluster_name: teleport.soniiit.net
+
+ssh_service:
+  enabled: "no"
+
+proxy_service:
+  enabled: "yes"
+
+  # Hinter Traefik: Teleport-Web auf 3080 (HTTP), TLS macht Traefik
+  web_listen_addr: 0.0.0.0:3080
+  https_keypairs: []
+  acme: {}
+
+  # Öffentliche Adressen, unter denen Clients dich erreichen (via Traefik):
+  public_addr:
+    - teleport.soniiit.net:443   # Web / HTTPS (Traefik)
+    - teleport.soniiit.net:3023  # SSH proxy (via Traefik TCP)
+    - teleport.soniiit.net:3024  # reverse tunnel (via Traefik TCP)
+
+  # (optional explizit)
+  listen_addr: 0.0.0.0:3023
+  tunnel_listen_addr: 0.0.0.0:3024

@@ -1,0 +1,17 @@
+http:
+  routers:
+    prowlarr:
+      rule: Host(`prowlarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: prowlarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    prowlarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:9696
+        passHostHeader: true

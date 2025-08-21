@@ -1,0 +1,210 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Networking:
+  - Fritz!Box-Main:
+      href: http://192.168.178.1
+      icon: fritzbox.png
+      description: FRITZ!Box
+      siteMonitor: http://192.168.178.1
+      widget:
+        type: fritzbox
+        url: http://192.168.178.1
+  - Fritz!Box-Tony:
+      href: http://192.168.178.2
+      icon: fritzbox.png
+      description: FRITZ!Box Tony
+      siteMonitor: http://192.168.178.2
+      widget:
+        type: fritzbox
+        url: http://192.168.178.2
+  - Traefik:
+      href: https://traefik.home.soniiit.net/dashboard/
+      icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
+      description: Traefik
+      siteMonitor: https://traefik.home.soniiit.net
+      widget:
+        type: traefik
+        url: https://traefik.home.soniiit.net/
+        username: 
+        password: 
+
+- Infrastructure:
+  - Proxmox:
+      href: https://proxmox.home.soniiit.net/
+      icon: proxmox.png
+      description: PVE-SRV-01
+      siteMonitor: https://proxmox.home.soniiit.net/
+      widget:
+        type: proxmox
+        url: https://192.168.178.6:8006
+        username: 
+        password: 
+        node: pve-srv-01
+  - Proxmox Backup Server:
+      href: https://pbs.home.soniiit.net/
+      icon: proxmox.png
+      description: Proxmox Backup Server
+      siteMonitor: https://pbs.home.soniiit.net/
+      widget:
+        type: proxmoxbackupserver
+        url: https://192.168.178.5:8007
+        username: 
+        password: 
+        datastore: backupstore #optional; if ommitted, will display a combination of all datastores used / total
+
+- Management:
+  - Portainer:
+      href: https://portainer.home.soniiit.net/
+      icon: portainer.png
+      description: Portainer
+      siteMonitor: https://portainer.home.soniiit.net/
+      widget:
+        type: portainer
+        url: https://portainer.home.soniiit.net/
+        env: 1
+        kubernetes: true # optional, defaults to false
+        key: 
+  - TrueNAS:
+      href: https://truenas.home.soniiit.net/
+      icon: truenas.png
+      description: TrueNAS
+      siteMonitor: https://truenas.home.soniiit.net/ui/
+      widget:
+        type: truenas
+        url: https://truenas.home.soniiit.net/
+        key:  # not required if using username / password
+        enablePools: true # optional, defaults to false
+        nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+
+- Live Services:
+  - Pterodactyl:
+      href: https://panel.soniiit.net
+      icon: pterodactyl.png
+      description: Pterodactyl
+      siteMonitor: https://panel.soniiit.net
+      widget:
+        type: pterodactyl
+        url: https://panel.soniiit.net
+        key: 
+  - Authentik:
+      href: https://auth.soniiit.net
+      icon: authentik.png
+      description: Authentik
+      siteMonitor: https://auth.soniiit.net
+      widget:
+        type: authentik
+        url: https://auth.soniiit.net
+        key: 
+  - Nextcloud:
+      href: https://nextcloud.soniiit.net/
+      icon: nextcloud.png
+      description: Nextcloud
+      siteMonitor: https://nextcloud.soniiit.net/
+      widget:
+        type: nextcloud
+        url: https://nextcloud.soniiit.net/
+        username: 
+        password: 
+  - Paperless-NGX:
+      href: https://ngx.soniiit.net/
+      icon: paperless.png
+      description: Paperless-NGX
+      siteMonitor: https://ngx.soniiit.net/
+      widget:
+        type: paperlessngx
+        url: https://ngx.soniiit.net/
+        username: 
+        password: 
+
+- Kubernetes:
+  - ArgoCD:
+      href: https://argocd.home.soniiit.net/
+      icon: https://artifacthub.io/image/6ed3f654-53ab-4188-95a1-567e5d7218d6@3x
+      description: ArgoCD
+      siteMonitor: https://argocd.home.soniiit.net/
+  - Grafana:
+      href: https://grafana.home.soniiit.net
+      icon: grafana.png
+      description: Grafana
+      siteMonitor: https://grafana.home.soniiit.net
+  - Prometheus:
+      href: https://prometheus.home.soniiit.net
+      icon: prometheus.png
+      description: Prometheus
+      siteMonitor: https://prometheus.home.soniiit.net
+
+- Media Stack:
+  - Jellyfin:
+      href: https://jellyfin.home.soniiit.net
+      icon: jellyfin.png
+      description: Jellyfin
+      siteMonitor: https://jellyfin.home.soniiit.net
+      widget:
+        type: jellyfin
+        url: https://jellyfin.home.soniiit.net
+        key: 
+        enableBlocks: true # optional, defaults to false
+        enableNowPlaying: true # optional, defaults to true
+        enableUser: true # optional, defaults to false
+        enableMediaControl: false # optional, defaults to true
+        showEpisodeNumber: true # optional, defaults to false
+        expandOneStreamToTwoRows: false # optional, defaults to true
+  - Jellyseerr:
+      href: https://jellyseerr.home.soniiit.net
+      icon: jellyseerr.png
+      description: Jellyseerr
+      siteMonitor: https://jellyseerr.home.soniiit.net
+      widget:
+        type: jellyseerr
+        url: https://jellyseerr.home.soniiit.net
+        key: 
+  - Sonarr:
+      href: https://sonarr.home.soniiit.net
+      icon: sonarr.png
+      description: Sonarr
+      siteMonitor: https://sonarr.home.soniiit.net
+      widget:
+        type: sonarr
+        url: https://sonarr.home.soniiit.net
+        key: 
+        enableQueue: true # optional, defaults to false
+  - Radarr:
+      href: https://radarr.home.soniiit.net
+      icon: radarr.png
+      description: Radarr
+      siteMonitor: https://radarr.home.soniiit.net
+      widget:
+        type: radarr
+        url: https://radarr.home.soniiit.net
+        key: 
+        enableQueue: true # optional, defaults to false
+  - Prowlarr:
+      href: https://prowlarr.home.soniiit.net
+      icon: prowlarr.png
+      description: Prowlarr
+      siteMonitor: https://prowlarr.home.soniiit.net
+      widget:
+        type: prowlarr
+        url: https://prowlarr.home.soniiit.net
+        key: 
+  - qBittorrent:
+      href: http://192.168.178.98:8070
+      icon: qbittorrent.png
+      description: qBittorrent
+      siteMonitor: http://192.168.178.98:8070
+      widget:
+        type: qbittorrent
+        url: http://192.168.178.98:8070
+        username: 
+        password: 
+        enableLeechProgress: true # optional, defaults to false
+  - SABnzbd:
+      href: http://192.168.178.98:8060
+      icon: sabnzbd.png
+      description: SABnzbd
+      siteMonitor: http://192.168.178.98:8060
+      widget:
+        type: sabnzbd
+        url: http://192.168.178.98:8060
+        key: 

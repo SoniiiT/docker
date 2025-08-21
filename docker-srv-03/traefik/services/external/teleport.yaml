@@ -1,0 +1,49 @@
+http:
+  routers:
+    teleport:
+      rule: Host(`teleport.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: teleport-web
+      middlewares:
+        - teleportHeaders@file
+
+  services:
+    teleport-web:
+      loadBalancer:
+        servers:
+          - url: https://192.168.178.46:3080   # IP von Docker-SRV-02
+        passHostHeader: true
+        serversTransport: teleport-transport
+
+  serversTransports:
+    teleport-transport:
+      insecureSkipVerify: true
+
+tcp:
+  routers:
+    teleport-ssh:
+      entryPoints: [sshproxy]
+      rule: "HostSNI(`teleport.soniiit.net`)"
+      service: teleport-ssh-svc
+      tls:
+        passthrough: true
+
+    teleport-tunnel:
+      entryPoints: [tunnel]
+      rule: "HostSNI(`teleport.soniiit.net`)"
+      service: teleport-tunnel-svc
+      tls:
+        passthrough: true
+
+  services:
+    teleport-ssh-svc:
+      loadBalancer:
+        servers:
+          - address: "192.168.178.46:3023"   # IP von Docker-SRV-02
+
+    teleport-tunnel-svc:
+      loadBalancer:
+        servers:
+          - address: "192.168.178.46:3024"   # IP von Docker-SRV-02

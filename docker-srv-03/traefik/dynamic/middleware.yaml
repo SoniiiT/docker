@@ -1,0 +1,44 @@
+# traefik/dynamic/middlewares.yml
+http:
+  middlewares:
+    basicauth:
+      basicAuth:
+        users:
+          - "USER:PASS"
+    secureHeaders:
+      headers:
+        frameDeny: true
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: "no-referrer-when-downgrade"
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true
+
+    # Proxmox Virtual Enviroment Middleware
+    pveHeaders:
+      headers:
+        frameDeny: false
+        customFrameOptionsValue: "SAMEORIGIN"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+
+    # Proxmox Backup Server Middleware
+    pbsHeaders:
+      headers:
+        frameDeny: false
+        customFrameOptionsValue: "SAMEORIGIN"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+
+    # Teleport Service
+    teleportHeaders:
+      headers:
+        frameDeny: false
+        customFrameOptionsValue: "SAMEORIGIN"
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: "no-referrer-when-downgrade"
+        stsSeconds: 31536000
+        stsIncludeSubdomains: true
+        stsPreload: true

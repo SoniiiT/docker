@@ -1,0 +1,22 @@
+http:
+  routers:
+    pbs:
+      rule: Host(`pbs.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: pbs-svc
+      middlewares:
+        - pbsHeaders@file
+
+  services:
+    pbs-svc:
+      loadBalancer:
+        servers:
+          - url: https://192.168.178.5:8007
+        passHostHeader: true
+        serversTransport: pbs-transport
+
+  serversTransports:
+    pbs-transport:
+      insecureSkipVerify: true

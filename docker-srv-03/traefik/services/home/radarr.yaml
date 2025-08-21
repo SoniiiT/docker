@@ -1,0 +1,17 @@
+http:
+  routers:
+    radarr:
+      rule: Host(`radarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: radarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    radarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:7878
+        passHostHeader: true

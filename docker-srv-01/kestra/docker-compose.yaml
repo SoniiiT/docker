@@ -1,6 +1,6 @@
 services:
   kestra:
-    image: kestra/kestra:v0.22.5
+    image: kestra/kestra:v0.23.7
     pull_policy: always
     container_name: kestra
     stdin_open: true
@@ -11,8 +11,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp:/tmp
-      - /mnt/docker-compose/kestra/data/:/app/data
-    command: server local
+      - /mnt/docker/kestra/data/:/app/data
+    command: server local --no-tutorials
     restart: unless-stopped
     environment:
       - SECRET_SSH_KEY=${SECRET_SSH_KEY}

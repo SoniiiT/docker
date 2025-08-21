@@ -1,0 +1,17 @@
+http:
+  routers:
+    sonarr:
+      rule: Host(`sonarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: sonarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    sonarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:8989
+        passHostHeader: true

@@ -1,0 +1,17 @@
+http:
+  routers:
+    jellyfin:
+      rule: Host(`jellyfin.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: jellyfin-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    jellyfin-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:8096
+        passHostHeader: true

@@ -1,0 +1,18 @@
+version: "3.3"
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v1.4.3
+    container_name: homepage
+    environment:
+      - LOG_LEVEL=info
+      - HOMEPAGE_ALLOWED_HOSTS=*
+    ports:
+      - 3000:3000
+    dns:
+      - 192.168.178.3
+    volumes:
+      - /mnt/docker/homepage/config:/app/config # Make sure your local config directory exists
+      - /mnt/docker/homepage/images:/app/public/images # (optional) For custom background images
+      - /mnt/docker/homepage/icons:/app/public/icons # (optional) For custom icons
+      - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
+    restart: unless-stopped

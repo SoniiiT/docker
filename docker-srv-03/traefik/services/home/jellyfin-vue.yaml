@@ -1,0 +1,17 @@
+http:
+  routers:
+    jellyfin-vue:
+      rule: Host(`jellyfin-vue.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: jellyfin-vue-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    jellyfin-vue-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:8645
+        passHostHeader: true

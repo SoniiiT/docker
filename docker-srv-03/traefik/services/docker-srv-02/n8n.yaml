@@ -1,0 +1,17 @@
+http:
+  routers:
+    n8n:
+      rule: Host(`n8n.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: n8n-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    n8n-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.31:5678
+        passHostHeader: true
