@@ -1,0 +1,166 @@
+services:
+  twingate-connector-net-app:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-app
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_APP}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_APP}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-demo:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-demo
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_DEMO}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DEMO}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-desktop:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-desktop
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_DESKTOP}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DESKTOP}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-development:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-development
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_DEVELOPMENT}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DEVELOPMENT}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-docker:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-docker
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_DOCKER}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DOCKER}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-home:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-home
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_HOME}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_HOME}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-kubernetes:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-kubernetes
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_KUBERNETES}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_KUBERNETES}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-lxc:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-lxc
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_LXC}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_LXC}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-nas:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-nas
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_NAS}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_NAS}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-runners:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-runners
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_RUNNERS}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_RUNNERS}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
+  twingate-connector-net-windows:
+    image: twingate/connector:1.78.0
+    container_name: twingate-connector-net-windows
+    restart: unless-stopped
+    pull_policy: always
+    environment:
+      - TWINGATE_NETWORK=soniiit
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN_WINDOWS}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_WINDOWS}
+      - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
+      - TWINGATE_LABEL_DEPLOYED_BY=docker
+    sysctls:
+      - net.ipv4.ping_group_range=0 2147483647
+    dns:
+      - 192.168.178.3
