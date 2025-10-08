@@ -1,0 +1,22 @@
+http:
+  routers:
+    portainer:
+      rule: Host(`portainer.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: portainer-svc
+      middlewares:
+        - pveHeaders@file
+
+  services:
+    portainer-svc:
+      loadBalancer:
+        servers:
+          - url: https://192.168.178.30:9443
+        passHostHeader: true
+        serversTransport: portainer-transport
+
+  serversTransports:
+    portainer-transport:
+      insecureSkipVerify: true
