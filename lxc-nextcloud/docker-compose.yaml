@@ -8,7 +8,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_HOST=${MYSQL_HOST}
-    image: nextcloud:latest
+    image: nextcloud:31.0.5
     links:
       - db
     ports:

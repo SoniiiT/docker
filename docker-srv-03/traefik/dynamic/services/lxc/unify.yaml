@@ -1,22 +1,22 @@
 http:
   routers:
-    pbs:
-      rule: Host(`pbs.home.soniiit.net`)
+    unifi:
+      rule: Host(`unifi.home.soniiit.net`)
       entryPoints: [websecure]
       tls:
         certResolver: leprod
-      service: pbs-svc
+      service: unifi-svc
       middlewares:
-        - pbsHeaders@file
+        - pveHeaders@file
 
   services:
-    pbs-svc:
+    unifi-svc:
       loadBalancer:
         servers:
-          - url: https://192.168.178.5:8007
+          - url: https://192.168.178.51:8443
         passHostHeader: true
-        serversTransport: pbs-transport
+        serversTransport: unifi-transport
 
   serversTransports:
-    pbs-transport:
+    unifi-transport:
       insecureSkipVerify: true

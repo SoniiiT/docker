@@ -4,7 +4,7 @@ http:
     basicauth:
       basicAuth:
         users:
-          - "USER:PASS"
+          - "USER:PASSWORD_HASH"
     secureHeaders:
       headers:
         frameDeny: true

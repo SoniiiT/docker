@@ -5,6 +5,7 @@ services:
     environment:
       - BIND9_USER=root
       - TZ=Europe/Berlin
+      - BIND9_TSIG_SECRET=${BIND9_TSIG_SECRET}
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -12,4 +13,7 @@ services:
       - ./config:/etc/bind/
       - ./cache:/var/cache/bind
       - ./records:/var/lib/bind
+      - ./entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    command: ["/usr/sbin/named", "-g", "-u", "root"]
     restart: unless-stopped

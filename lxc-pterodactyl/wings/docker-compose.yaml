@@ -1,6 +1,6 @@
 services:
   wings:
-    image: ghcr.io/pterodactyl/wings:v1.6.1
+    image: ghcr.io/pterodactyl/wings:latest
     restart: always
     networks:
       - wings0

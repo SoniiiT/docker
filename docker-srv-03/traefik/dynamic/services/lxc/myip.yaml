@@ -1,0 +1,17 @@
+http:
+  routers:
+    myip:
+      rule: Host(`myip.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: myip-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    myip-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.50:18966
+        passHostHeader: true

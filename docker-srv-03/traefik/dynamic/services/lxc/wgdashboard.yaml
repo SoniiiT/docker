@@ -1,0 +1,17 @@
+http:
+  routers:
+    wgdashboard:
+      rule: Host(`wgdashboard.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: wgdashboard-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    wgdashboard-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.45:10086
+        passHostHeader: true

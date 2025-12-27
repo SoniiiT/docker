@@ -1,11 +1,6 @@
 <?php
 $CONFIG = array (
   'htaccess.RewriteBase' => '/',
-);
-root@lxc-nextcloud:~/nextcloud/config# cat config.php
-<?php
-$CONFIG = array (
-  'htaccess.RewriteBase' => '/',
   'memcache.local' => '\\OC\\Memcache\\APCu',
   'apps_paths' =>
   array (
@@ -28,14 +23,14 @@ $CONFIG = array (
   'secret' => 'amLvPXF9thNu9gxD5+kgEy8XGXgCHiqcRG5SXqA/VGDUoH61',
   'trusted_domains' =>
   array (
-    0 => 'docker-srv-02.home.soniiit.net:8080',
+    0 => 'lxc-nextcloud.home.soniiit.net:8080',
     1 => 'nextcloud.soniiit.net',
-    2 => '192.168.178.68:80',
+    2 => '192.168.178.47:80',
   ),
   'datadirectory' => '/var/www/html/data',
   'dbtype' => 'mysql',
-  'version' => '31.0.4.1',
-  'overwrite.cli.url' => 'http://docker-srv-02.home.soniiit.net:8080',
+  'version' => '31.0.5.1',
+  'overwrite.cli.url' => 'http://lxc-nextcloud.home.soniiit.net:8080',
   'dbname' => 'nextcloud',
   'dbhost' => 'db',
   'dbport' => '',

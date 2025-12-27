@@ -6,7 +6,7 @@ networks:
 
 services:
   traefik:
-    image: traefik:v3.5.0
+    image: traefik:v3.6.5
     container_name: traefik
     restart: unless-stopped
     networks: [proxy]
@@ -34,10 +34,6 @@ services:
       - --entrypoints.websecure.address=:443
       - --entrypoints.web.http.redirections.entryPoint.to=websecure
       - --entrypoints.web.http.redirections.entryPoint.scheme=https
-      - --entrypoints.sshproxy.address=:3023
-      - --entrypoints.tunnel.address=:3024
-      - --entrypoints.wazuhagent.address=:1514
-      - --entrypoints.wazuhenroll.address=:1515
 
       # Dashboard
       - --api.dashboard=true

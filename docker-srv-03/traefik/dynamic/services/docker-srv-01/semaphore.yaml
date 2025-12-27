@@ -1,17 +1,17 @@
 http:
   routers:
-    kestra:
-      rule: Host(`kestra.home.soniiit.net`)
+    semaphore:
+      rule: Host(`semaphore.home.soniiit.net`)
       entryPoints: [websecure]
       tls:
         certResolver: leprod
-      service: kestra-svc
+      service: semaphore-svc
       middlewares:
         - secureHeaders@file
 
   services:
-    kestra-svc:
+    semaphore-svc:
       loadBalancer:
         servers:
-          - url: http://192.168.178.30:1337
+          - url: http://192.168.178.30:3001
         passHostHeader: true

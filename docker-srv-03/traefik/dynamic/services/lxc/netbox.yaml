@@ -1,0 +1,17 @@
+http:
+  routers:
+    netbox:
+      rule: Host(`netbox.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: netbox-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    netbox-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.52:8000
+        passHostHeader: true

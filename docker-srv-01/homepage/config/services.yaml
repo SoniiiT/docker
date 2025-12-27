@@ -26,8 +26,8 @@
       widget:
         type: traefik
         url: https://traefik.home.soniiit.net/
-        username: 
-        password: 
+        username: USER
+        password: PASSWORD
 
 - Infrastructure:
   - Proxmox:
@@ -38,20 +38,9 @@
       widget:
         type: proxmox
         url: https://192.168.178.6:8006
-        username: 
-        password: 
+        username: USER
+        password: PASSWORD
         node: pve-srv-01
-  - Proxmox Backup Server:
-      href: https://pbs.home.soniiit.net/
-      icon: proxmox.png
-      description: Proxmox Backup Server
-      siteMonitor: https://pbs.home.soniiit.net/
-      widget:
-        type: proxmoxbackupserver
-        url: https://192.168.178.5:8007
-        username: 
-        password: 
-        datastore: backupstore #optional; if ommitted, will display a combination of all datastores used / total
 
 - Management:
   - Portainer:
@@ -63,8 +52,8 @@
         type: portainer
         url: https://portainer.home.soniiit.net/
         env: 1
-        kubernetes: true # optional, defaults to false
-        key: 
+        kubernetes: false # optional, defaults to false
+        key: key
   - TrueNAS:
       href: https://truenas.home.soniiit.net/
       icon: truenas.png
@@ -73,7 +62,7 @@
       widget:
         type: truenas
         url: https://truenas.home.soniiit.net/
-        key:  # not required if using username / password
+        key: APIKEY
         enablePools: true # optional, defaults to false
         nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
 
@@ -86,53 +75,7 @@
       widget:
         type: pterodactyl
         url: https://panel.soniiit.net
-        key: 
-  - Authentik:
-      href: https://auth.soniiit.net
-      icon: authentik.png
-      description: Authentik
-      siteMonitor: https://auth.soniiit.net
-      widget:
-        type: authentik
-        url: https://auth.soniiit.net
-        key: 
-  - Nextcloud:
-      href: https://nextcloud.soniiit.net/
-      icon: nextcloud.png
-      description: Nextcloud
-      siteMonitor: https://nextcloud.soniiit.net/
-      widget:
-        type: nextcloud
-        url: https://nextcloud.soniiit.net/
-        username: 
-        password: 
-  - Paperless-NGX:
-      href: https://ngx.soniiit.net/
-      icon: paperless.png
-      description: Paperless-NGX
-      siteMonitor: https://ngx.soniiit.net/
-      widget:
-        type: paperlessngx
-        url: https://ngx.soniiit.net/
-        username: 
-        password: 
-
-- Kubernetes:
-  - ArgoCD:
-      href: https://argocd.home.soniiit.net/
-      icon: https://artifacthub.io/image/6ed3f654-53ab-4188-95a1-567e5d7218d6@3x
-      description: ArgoCD
-      siteMonitor: https://argocd.home.soniiit.net/
-  - Grafana:
-      href: https://grafana.home.soniiit.net
-      icon: grafana.png
-      description: Grafana
-      siteMonitor: https://grafana.home.soniiit.net
-  - Prometheus:
-      href: https://prometheus.home.soniiit.net
-      icon: prometheus.png
-      description: Prometheus
-      siteMonitor: https://prometheus.home.soniiit.net
+        key: APIKEY
 
 - Media Stack:
   - Jellyfin:
@@ -143,7 +86,7 @@
       widget:
         type: jellyfin
         url: https://jellyfin.home.soniiit.net
-        key: 
+        key: APIKEY
         enableBlocks: true # optional, defaults to false
         enableNowPlaying: true # optional, defaults to true
         enableUser: true # optional, defaults to false
@@ -158,7 +101,7 @@
       widget:
         type: jellyseerr
         url: https://jellyseerr.home.soniiit.net
-        key: 
+        key: APIKEY
   - Sonarr:
       href: https://sonarr.home.soniiit.net
       icon: sonarr.png
@@ -167,7 +110,7 @@
       widget:
         type: sonarr
         url: https://sonarr.home.soniiit.net
-        key: 
+        key: APIKEY
         enableQueue: true # optional, defaults to false
   - Radarr:
       href: https://radarr.home.soniiit.net
@@ -177,7 +120,7 @@
       widget:
         type: radarr
         url: https://radarr.home.soniiit.net
-        key: 
+        key: APIKEY
         enableQueue: true # optional, defaults to false
   - Prowlarr:
       href: https://prowlarr.home.soniiit.net
@@ -187,7 +130,7 @@
       widget:
         type: prowlarr
         url: https://prowlarr.home.soniiit.net
-        key: 
+        key: APIKEY
   - qBittorrent:
       href: http://192.168.178.98:8070
       icon: qbittorrent.png
@@ -196,8 +139,8 @@
       widget:
         type: qbittorrent
         url: http://192.168.178.98:8070
-        username: 
-        password: 
+        username: USER
+        password: PASSWORD
         enableLeechProgress: true # optional, defaults to false
   - SABnzbd:
       href: http://192.168.178.98:8060
@@ -207,4 +150,4 @@
       widget:
         type: sabnzbd
         url: http://192.168.178.98:8060
-        key: 
+        key: APIKEY
