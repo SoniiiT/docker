@@ -114,6 +114,14 @@ Bevor wir die Automatisierung einschalten, teste einmal, ob alles klappt:
 ```
 *   Wenn keine Fehler kommen (und "No changes in Git" oder "Update completed" steht), ist alles perfekt.
 
+**Erzwingen des Starts:**
+Wenn du den Container starten möchtest, auch wenn keine Änderungen in Git vorliegen (z.B. nach einem Neustart oder manuellen Änderungen), kannst du das Flag `--start` verwenden:
+
+```bash
+/usr/local/bin/update_docker_stacks.sh --start
+```
+Dies führt `docker compose pull` und `docker compose up -d` aus, unabhängig vom Git-Status.
+
 ---
 
 ### Schritt 4: Cronjob einrichten (Automatisierung)
