@@ -22,6 +22,15 @@ STACKS=(
 # LOGIC
 # ==============================================================================
 
+# Check for --start flag
+FORCE_START=false
+for arg in "$@"; do
+    if [ "$arg" == "--start" ]; then
+        FORCE_START=true
+        break
+    fi
+done
+
 # 1. Load Secrets
 if [ -f "$SECRETS_FILE" ]; then
     source "$SECRETS_FILE"
@@ -60,10 +69,14 @@ for DIR in "${!STACKS[@]}"; do
         continue
     fi
 
-    if [[ "$GIT_OUTPUT" == *"Already up to date."* ]]; then
+    if [[ "$GIT_OUTPUT" == *"Already up to date."* ]] && [ "$FORCE_START" = false ]; then
         echo "[INFO] No changes in Git."
     else
-        echo "[INFO] Changes detected. Starting update..."
+        if [ "$FORCE_START" = true ]; then
+            echo "[INFO] --start flag detected. Forcing start..."
+        else
+            echo "[INFO] Changes detected. Starting update..."
+        fi
         
         docker compose pull
         
