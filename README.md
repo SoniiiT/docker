@@ -34,3 +34,12 @@ Docker kann auf verschiedenen Betriebssystemen installiert werden:
    ```bash
    docker run hello-world
    ```
+
+## Deployment Strategie
+
+Wir verwenden eine standardisierte Deployment-Strategie mit Git, Docker Compose und Doppler für Secrets Management.
+
+- **Anleitung:** [docs/deployment-guide.md](docs/deployment-guide.md)
+- **Skript:** [scripts/update_docker_stacks.sh](scripts/update_docker_stacks.sh)
+
+Diese Strategie ermöglicht automatische Updates der Container bei Änderungen im Git-Repository und sichere Verwaltung von Umgebungsvariablen.

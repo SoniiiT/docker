@@ -3,8 +3,8 @@ x-common:
     &db-environment
     # Do not remove the "&db-password" from the end of the line below, it is important
     # for Panel functionality.
-    MYSQL_PASSWORD: &db-password "MYSQLPASSWORD"
-    MYSQL_ROOT_PASSWORD: "MYSQLPASSWORD"
+    MYSQL_PASSWORD: &db-password "${PTERODACTYL_DB_PASSWORD}"
+    MYSQL_ROOT_PASSWORD: "${PTERODACTYL_DB_ROOT_PASSWORD}"
   panel:
     &panel-environment
     # This URL should be the URL that your reverse proxy routes to the panel server
@@ -42,8 +42,8 @@ services:
       - "/srv/pterodactyl/database:/var/lib/mysql"
     environment:
       <<: *db-environment
-      MYSQL_DATABASE: "panel"
-      MYSQL_USER: "pterodactyl"
+      MYSQL_DATABASE: "${PTERODACTYL_DB_NAME}"
+      MYSQL_USER: "${PTERODACTYL_DB_USER}"
   cache:
     image: redis:alpine
     restart: always

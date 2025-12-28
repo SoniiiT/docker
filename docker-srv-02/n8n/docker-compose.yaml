@@ -7,8 +7,8 @@ services:
     ports:
       - "5678:5678"
     environment:
-      - N8N_BASIC_AUTH_USER=USER
-      - N8N_BASIC_AUTH_PASSWORD=PASSWORD
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
       - N8N_HOST=localhost
       - N8N_PORT=5678
       - WEBHOOK_TUNNEL_URL=https://n8n.home.soniiit.net
