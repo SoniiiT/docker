@@ -1,4 +1,3 @@
-# Docker-Compose Datei für Semaphore mit MySQL
 services:
   mysql:
     restart: unless-stopped
