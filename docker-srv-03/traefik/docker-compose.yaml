@@ -20,7 +20,7 @@ services:
     environment:
       # Cloudflare DNS-01 (bevorzugt Token-Methode über LEGO):
       # https://go-acme.github.io/lego/dns/cloudflare/
-      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN}
+      CF_DNS_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
       TZ: Europe/Berlin
     command:
       # Provider

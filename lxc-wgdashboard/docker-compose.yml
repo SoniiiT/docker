@@ -16,7 +16,7 @@ services:
     security_opt:
       - no-new-privileges:true # Another protection to restrict superuser privileges
     environment:
-      - CF_API_TOKEN=${CF_API_TOKEN} # Your Cloudflare API token
+      - CF_API_TOKEN=${CLOUDFLARE_API_TOKEN} # Your Cloudflare API token
       - DOMAINS=${DOMAINS} # Your domains (separated by commas)
       - PROXIED=false # Tell Cloudflare to cache webpages and hide your IP
       - IP6_PROVIDER=local # Enable IPv6 (or use "local" if your network supports it)
