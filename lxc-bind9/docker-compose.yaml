@@ -3,7 +3,7 @@ services:
     image: ubuntu/bind9:latest
     container_name: bind9
     environment:
-      - BIND9_USER=root
+      # - BIND9_USER=root
       - TZ=Europe/Berlin
     ports:
       - "53:53/tcp"
