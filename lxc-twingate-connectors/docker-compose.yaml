@@ -10,8 +10,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_APP}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-demo:
@@ -25,8 +23,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DEMO}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-desktop:
@@ -40,8 +36,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DESKTOP}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-development:
@@ -55,8 +49,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DEVELOPMENT}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-docker:
@@ -70,8 +62,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_DOCKER}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-home:
@@ -85,8 +75,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_HOME}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-kubernetes:
@@ -100,8 +88,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_KUBERNETES}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-lxc:
@@ -115,8 +101,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_LXC}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-nas:
@@ -130,8 +114,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_NAS}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-runners:
@@ -145,8 +127,6 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_RUNNERS}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
   twingate-connector-net-windows:
@@ -160,7 +140,5 @@ services:
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN_WINDOWS}
       - TWINGATE_LABEL_HOSTNAME=${HOSTNAME}
       - TWINGATE_LABEL_DEPLOYED_BY=docker
-    sysctls:
-      - net.ipv4.ping_group_range=0 2147483647
     dns:
       - 192.168.178.3
