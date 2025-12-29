@@ -5,7 +5,6 @@ services:
     environment:
       - BIND9_USER=root
       - TZ=Europe/Berlin
-      - BIND9_TSIG_SECRET=${BIND9_TSIG_SECRET}
     ports:
       - "53:53/tcp"
       - "53:53/udp"
