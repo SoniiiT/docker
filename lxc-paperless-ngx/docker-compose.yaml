@@ -59,7 +59,6 @@ services:
       - media:/usr/src/paperless/media
       - ./export:/usr/src/paperless/export
       - /home/soniiit/docker-compose/paperless-ngx/paperless-ngx/consume:/usr/src/paperless/consume
-    env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
@@ -69,6 +68,13 @@ services:
       PAPERLESS_TIKA_ENABLED: 1
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+      PAPERLESS_URL: ${PAPERLESS_URL}
+      PAPERLESS_TIME_ZONE: ${PAPERLESS_TIME_ZONE}
+      PAPERLESS_OCR_LANGUAGE: ${PAPERLESS_OCR_LANGUAGE}
+      PAPERLESS_SECRET_KEY: ${PAPERLESS_SECRET_KEY}
+      PAPERLESS_OAUTH_CALLBACK_BASE_URL: ${PAPERLESS_OAUTH_CALLBACK_BASE_URL}
+      PAPERLESS_OUTLOOK_OAUTH_CLIENT_ID: ${PAPERLESS_OUTLOOK_OAUTH_CLIENT_ID}
+      PAPERLESS_OUTLOOK_OAUTH_CLIENT_SECRET: ${PAPERLESS_OUTLOOK_OAUTH_CLIENT_SECRET}
   gotenberg:
     image: docker.io/gotenberg/gotenberg:8.20
     restart: unless-stopped
