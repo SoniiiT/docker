@@ -14,6 +14,11 @@ auth_service:
   listen_addr: 0.0.0.0:3025
   proxy_listener_mode: multiplex
   cluster_name: teleport.soniiit.net
+  authentication:
+    type: local
+    second_factor: on
+    webauthn:
+      rp_id: teleport.soniiit.net
 
 ssh_service:
   enabled: "no"
