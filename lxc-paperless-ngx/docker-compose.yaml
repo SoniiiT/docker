@@ -55,10 +55,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - data:/usr/src/paperless/data
-      - media:/usr/src/paperless/media
-      - ./export:/usr/src/paperless/export
-      - /home/soniiit/docker-compose/paperless-ngx/paperless-ngx/consume:/usr/src/paperless/consume
+      - /mnt/docker/paperless-ngx/data:/usr/src/paperless/data
+      - /mnt/docker/paperless-ngx/media:/usr/src/paperless/media
+      - /mnt/docker/paperless-ngx/export:/usr/src/paperless/export
+      - /mnt/docker/paperless-ngx/consume:/usr/src/paperless/consume
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
@@ -88,7 +88,5 @@ services:
     image: docker.io/apache/tika:latest
     restart: unless-stopped
 volumes:
-  data:
-  media:
   pgdata:
   redisdata:
