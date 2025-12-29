@@ -2,7 +2,8 @@ version: "3.9"
 
 networks:
   proxy:
-    external: true   # einmalig: docker network create proxy
+    name: traefik_proxy
+    driver: bridge
 
 services:
   traefik:
