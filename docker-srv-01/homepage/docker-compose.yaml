@@ -6,13 +6,29 @@ services:
     environment:
       - LOG_LEVEL=info
       - HOMEPAGE_ALLOWED_HOSTS=*
+      # Secrets from Doppler
+      - HOMEPAGE_VAR_TRAEFIK_USER=${HOMEPAGE_VAR_TRAEFIK_USER}
+      - HOMEPAGE_VAR_TRAEFIK_PASSWORD=${HOMEPAGE_VAR_TRAEFIK_PASSWORD}
+      - HOMEPAGE_VAR_PROXMOX_USER=${HOMEPAGE_VAR_PROXMOX_USER}
+      - HOMEPAGE_VAR_PROXMOX_PASSWORD=${HOMEPAGE_VAR_PROXMOX_PASSWORD}
+      - HOMEPAGE_VAR_PORTAINER_KEY=${HOMEPAGE_VAR_PORTAINER_KEY}
+      - HOMEPAGE_VAR_TRUENAS_KEY=${HOMEPAGE_VAR_TRUENAS_KEY}
+      - HOMEPAGE_VAR_PTERODACTYL_KEY=${HOMEPAGE_VAR_PTERODACTYL_KEY}
+      - HOMEPAGE_VAR_JELLYFIN_KEY=${HOMEPAGE_VAR_JELLYFIN_KEY}
+      - HOMEPAGE_VAR_JELLYSEERR_KEY=${HOMEPAGE_VAR_JELLYSEERR_KEY}
+      - HOMEPAGE_VAR_SONARR_KEY=${HOMEPAGE_VAR_SONARR_KEY}
+      - HOMEPAGE_VAR_RADARR_KEY=${HOMEPAGE_VAR_RADARR_KEY}
+      - HOMEPAGE_VAR_PROWLARR_KEY=${HOMEPAGE_VAR_PROWLARR_KEY}
+      - HOMEPAGE_VAR_QBITTORRENT_USER=${HOMEPAGE_VAR_QBITTORRENT_USER}
+      - HOMEPAGE_VAR_QBITTORRENT_PASSWORD=${HOMEPAGE_VAR_QBITTORRENT_PASSWORD}
+      - HOMEPAGE_VAR_SABNZBD_KEY=${HOMEPAGE_VAR_SABNZBD_KEY}
     ports:
       - 3000:3000
     dns:
       - 192.168.178.3
     volumes:
-      - /mnt/docker/homepage/config:/app/config # Make sure your local config directory exists
-      - /mnt/docker/homepage/images:/app/public/images # (optional) For custom background images
-      - /mnt/docker/homepage/icons:/app/public/icons # (optional) For custom icons
+      - ./config:/app/config # Make sure your local config directory exists
+      - ./images:/app/public/images # (optional) For custom background images
+      - ./icons:/app/public/icons # (optional) For custom icons
       - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations
     restart: unless-stopped

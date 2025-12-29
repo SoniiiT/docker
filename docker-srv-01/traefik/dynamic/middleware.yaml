@@ -4,7 +4,7 @@ http:
     basicauth:
       basicAuth:
         users:
-          - "USER:PASSWORD_HASH"
+          - "{{ env \"BASIC_AUTH_USERS\" }}" #htpasswd -nbB USER PASSWORD
     secureHeaders:
       headers:
         frameDeny: true

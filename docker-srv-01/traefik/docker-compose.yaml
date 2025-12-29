@@ -21,6 +21,7 @@ services:
       # Cloudflare DNS-01 (bevorzugt Token-Methode über LEGO):
       # https://go-acme.github.io/lego/dns/cloudflare/
       CF_DNS_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+      BASIC_AUTH_USERS: ${BASIC_AUTH_USERS}
       TZ: Europe/Berlin
     command:
       # Provider

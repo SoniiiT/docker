@@ -26,8 +26,8 @@
       widget:
         type: traefik
         url: https://traefik.home.soniiit.net/
-        username: USER
-        password: PASSWORD
+        username: "{{HOMEPAGE_VAR_TRAEFIK_USER}}"
+        password: "{{HOMEPAGE_VAR_TRAEFIK_PASSWORD}}"
 
 - Infrastructure:
   - Proxmox:
@@ -38,8 +38,8 @@
       widget:
         type: proxmox
         url: https://192.168.178.6:8006
-        username: USER
-        password: PASSWORD
+        username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+        password: "{{HOMEPAGE_VAR_PROXMOX_PASSWORD}}"
         node: pve-srv-01
 
 - Management:
@@ -53,7 +53,7 @@
         url: https://portainer.home.soniiit.net/
         env: 1
         kubernetes: false # optional, defaults to false
-        key: key
+        key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
   - TrueNAS:
       href: https://truenas.home.soniiit.net/
       icon: truenas.png
@@ -62,7 +62,7 @@
       widget:
         type: truenas
         url: https://truenas.home.soniiit.net/
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_TRUENAS_KEY}}"
         enablePools: true # optional, defaults to false
         nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
 
@@ -75,7 +75,7 @@
       widget:
         type: pterodactyl
         url: https://panel.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_PTERODACTYL_KEY}}"
 
 - Media Stack:
   - Jellyfin:
@@ -86,7 +86,7 @@
       widget:
         type: jellyfin
         url: https://jellyfin.home.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_JELLYFIN_KEY}}"
         enableBlocks: true # optional, defaults to false
         enableNowPlaying: true # optional, defaults to true
         enableUser: true # optional, defaults to false
@@ -101,7 +101,7 @@
       widget:
         type: jellyseerr
         url: https://jellyseerr.home.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_JELLYSEERR_KEY}}"
   - Sonarr:
       href: https://sonarr.home.soniiit.net
       icon: sonarr.png
@@ -110,7 +110,7 @@
       widget:
         type: sonarr
         url: https://sonarr.home.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
         enableQueue: true # optional, defaults to false
   - Radarr:
       href: https://radarr.home.soniiit.net
@@ -120,7 +120,7 @@
       widget:
         type: radarr
         url: https://radarr.home.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
         enableQueue: true # optional, defaults to false
   - Prowlarr:
       href: https://prowlarr.home.soniiit.net
@@ -130,7 +130,7 @@
       widget:
         type: prowlarr
         url: https://prowlarr.home.soniiit.net
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_PROWLARR_KEY}}"
   - qBittorrent:
       href: http://192.168.178.98:8070
       icon: qbittorrent.png
@@ -139,8 +139,8 @@
       widget:
         type: qbittorrent
         url: http://192.168.178.98:8070
-        username: USER
-        password: PASSWORD
+        username: "{{HOMEPAGE_VAR_QBITTORRENT_USER}}"
+        password: "{{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}"
         enableLeechProgress: true # optional, defaults to false
   - SABnzbd:
       href: http://192.168.178.98:8060
@@ -150,4 +150,4 @@
       widget:
         type: sabnzbd
         url: http://192.168.178.98:8060
-        key: APIKEY
+        key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
