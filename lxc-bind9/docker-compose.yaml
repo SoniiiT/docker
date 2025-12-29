@@ -12,7 +12,6 @@ services:
       - ./config:/etc/bind/
       - ./cache:/var/cache/bind
       - ./records:/var/lib/bind
-      - ./entrypoint.sh:/entrypoint.sh:ro
     entrypoint: ["/bin/sh", "/entrypoint.sh"]
     command: ["/usr/sbin/named", "-g", "-u", "root"]
     restart: unless-stopped
