@@ -145,3 +145,50 @@ Damit der Server alle 15 Minuten prüft:
     ```
 
 ✅ **Fertig!** Dein Server aktualisiert sich jetzt vollautomatisch und sicher.
+
+---
+---
+
+# 🚀 Alternative: Einfaches Deployment (ohne Doppler)
+
+Wenn du **kein Doppler** verwendest und nur einfache `docker-compose.yml` Dateien ohne externe Secrets aktualisieren möchtest, nutze das vereinfachte Skript.
+
+### Schritt 1: Skript einrichten
+
+Das Skript liegt unter `scripts/update_docker_stacks_simple.sh`.
+
+1.  **Skript kopieren:**
+    ```bash
+    sudo cp scripts/update_docker_stacks_simple.sh /usr/local/bin/update_docker_stacks_simple.sh
+    ```
+
+2.  **Konfiguration anpassen:**
+    Bearbeite das Skript und trage deine Ordnerpfade in die Liste `STACKS` ein:
+    ```bash
+    sudo nano /usr/local/bin/update_docker_stacks_simple.sh
+    ```
+
+    ```bash
+    # List of Stacks: "Path to folder"
+    STACKS=(
+      "/opt/docker-stack/simple-service"
+      "/opt/docker/another-service"
+    )
+    ```
+
+3.  **Ausführbar machen:**
+    ```bash
+    sudo chmod +x /usr/local/bin/update_docker_stacks_simple.sh
+    ```
+
+### Schritt 2: Cronjob einrichten
+
+1.  **Crontab öffnen:**
+    ```bash
+    sudo crontab -e
+    ```
+
+2.  **Zeile am Ende einfügen:**
+    ```cron
+    */15 * * * * /usr/local/bin/update_docker_stacks_simple.sh >> /var/log/docker_stack_update_simple.log 2>&1
+    ```
