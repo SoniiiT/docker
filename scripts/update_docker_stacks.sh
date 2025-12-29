@@ -16,6 +16,9 @@ STACKS=(
   # BEISPIEL DOCKER SERVER (Zeilen einkommentieren & anpassen):
   # ["/opt/docker/paperless"]="DOPPLER_TOKEN_PAPERLESS"
   # ["/opt/docker/nginx"]="DOPPLER_TOKEN_NGINX"
+
+  # BEISPIEL OHNE DOPPLER (einfach leer lassen):
+  # ["/opt/docker/simple-service"]=""
 )
 
 # ==============================================================================
@@ -42,7 +45,7 @@ fi
 # 2. Iterate through all defined stacks
 for DIR in "${!STACKS[@]}"; do
     VAR_NAME="${STACKS[$DIR]}"
-    TOKEN="${!VAR_NAME}"
+    TOKEN=""
 
     echo "----------------------------------------------------------------"
     echo "Checking Stack: $DIR"
@@ -52,9 +55,14 @@ for DIR in "${!STACKS[@]}"; do
         continue
     fi
 
-    if [ -z "$TOKEN" ]; then
-        echo "[ERROR] Token variable '$VAR_NAME' is empty or not set. Skipping."
-        continue
+    # Only try to resolve token if a variable name is configured
+    if [ -n "$VAR_NAME" ]; then
+        TOKEN="${!VAR_NAME}"
+        
+        if [ -z "$TOKEN" ]; then
+            echo "[ERROR] Token variable '$VAR_NAME' is empty or not set. Skipping."
+            continue
+        fi
     fi
 
     cd "$DIR" || continue
@@ -80,9 +88,14 @@ for DIR in "${!STACKS[@]}"; do
         
         docker compose pull
         
-        # Run update with specific token
-        export DOPPLER_TOKEN="$TOKEN"
-        doppler run -- docker compose up -d --remove-orphans
+        if [ -n "$TOKEN" ]; then
+            # Run update with specific token
+            export DOPPLER_TOKEN="$TOKEN"
+            doppler run -- docker compose up -d --remove-orphans
+        else
+            # Run update without Doppler
+            docker compose up -d --remove-orphans
+        fi
         
         docker image prune -f
         echo "[SUCCESS] Update completed."
