@@ -57,8 +57,8 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/opt/docker/traefik
-ExecStart=/opt/docker/traefik/relink-watch.sh
+WorkingDirectory=/opt/docker-stack/traefik
+ExecStart=/opt/docker-stack/traefik/relink-watch.sh
 Restart=always
 RestartSec=3
 
