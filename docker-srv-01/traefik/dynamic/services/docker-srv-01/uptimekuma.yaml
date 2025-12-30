@@ -1,16 +1,16 @@
 http:
   routers:
-    semaphore:
-      rule: Host(`semaphore.home.soniiit.net`)
+    uptimekuma:
+      rule: Host(`uptimekuma.home.soniiit.net`)
       entryPoints: [websecure]
       tls:
         certResolver: leprod
-      service: semaphore-svc
+      service: uptimekuma-svc
       middlewares:
         - secureHeaders@file
 
   services:
-    semaphore-svc:
+    uptimekuma-svc:
       loadBalancer:
         servers:
           - url: http://192.168.178.30:3001
