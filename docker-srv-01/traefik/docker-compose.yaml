@@ -72,4 +72,4 @@ services:
       - traefik.http.routers.api.entrypoints=websecure
       - traefik.http.routers.api.tls.certresolver=leprod
       - traefik.http.routers.api.service=api@internal
-      - traefik.http.routers.api.middlewares=secureHeaders@file
+      - traefik.http.routers.api.middlewares=basicauth@file,secureHeaders@file
