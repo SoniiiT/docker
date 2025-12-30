@@ -138,7 +138,7 @@ Damit der Server alle 15 Minuten prüft:
 
 2.  **Zeile am Ende einfügen:**
     ```cron
-    */15 * * * * /usr/local/bin/update_docker_stacks.sh >> /var/log/docker_stack_update.log 2>&1
+    */1 * * * * /usr/local/bin/update_docker_stacks.sh >> /var/log/docker_stack_update.log 2>&1
     ```
 
 3.  **Logs prüfen (optional):**
