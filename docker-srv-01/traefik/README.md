@@ -80,3 +80,30 @@ sudo systemctl enable --now traefik-relink.service
 2. Das Skript erstellt Symlinks in `dynamic/` nach dem Schema `_svc__<pfad>__<dateiname>`.
    - Beispiel: `dynamic/services/home/jellyfin.yaml` -> `dynamic/_svc__home__jellyfin__yaml`
 3. Traefik liest nur den Ordner `dynamic/` (nicht rekursiv) und findet dort alle Konfigurationen über die Symlinks.
+
+## Troubleshooting
+
+### `acme.json` ist ein Ordner statt einer Datei?
+
+Wenn Docker startet und die Datei `acme.json` (oder `acme-staging.json`) noch nicht existiert, erstellt Docker stattdessen einen Ordner. Traefik kann dann keine Zertifikate speichern.
+
+**Lösung:**
+
+1. Container stoppen:
+   ```bash
+   docker compose down
+   ```
+2. Falsch erstellte Ordner löschen:
+   ```bash
+   rm -rf acme.json acme-staging.json
+   ```
+3. Leere Dateien erstellen und Berechtigungen setzen (wichtig: `chmod 600`):
+   ```bash
+   touch acme.json acme-staging.json
+   chmod 600 acme.json acme-staging.json
+   ```
+4. Container neu starten:
+   ```bash
+   docker compose up -d
+   ```
+
