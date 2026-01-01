@@ -14,7 +14,7 @@ services:
     image: immybot/remotely:latest
     container_name: remotely
     volumes:
-      - /home/soniiit/docker/remotely:/app/AppData
+      - ./appdata:/app/AppData
     restart: unless-stopped
     ports:
       - "5000:5000"
