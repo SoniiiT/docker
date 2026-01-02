@@ -11,7 +11,7 @@ services:
       - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
       - N8N_HOST=localhost
       - N8N_PORT=5678
-      - WEBHOOK_TUNNEL_URL=https://n8n.home.soniiit.net
+      - WEBHOOK_TUNNEL_URL=https://n8n.soniiit.net
       - N8N_SECURE_COOKIE=false
     volumes:
       - /mnt/docker/n8n_data:/home/node/.n8n
