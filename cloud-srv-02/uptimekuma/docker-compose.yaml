@@ -1,0 +1,27 @@
+# Simple docker-compose.yml
+# You can change your port or volume location
+
+version: '3.3'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2.0.2
+    container_name: uptime-kuma
+    volumes:
+      - ./uptime-kuma-data:/app/data
+    # ports:
+    #   - 3001:3001
+    restart: always
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptimekuma.rule=Host(`status.soniiit.net`)"
+      - "traefik.http.routers.uptimekuma.entrypoints=websecure"
+      - "traefik.http.routers.uptimekuma.tls.certresolver=leprod"
+      - "traefik.http.services.uptimekuma.loadbalancer.server.port=3001"
+
+networks:
+  proxy:
+    external: true
+    name: traefik_proxy
