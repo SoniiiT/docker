@@ -1,0 +1,17 @@
+http:
+  routers:
+    network:
+      rule: Host(`network.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: network-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    network-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.52:60072
+        passHostHeader: true
