@@ -1,0 +1,17 @@
+http:
+  routers:
+    dokploy:
+      rule: Host(`dokploy.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: dokploy-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    dokploy-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.60:3000
+        passHostHeader: true
