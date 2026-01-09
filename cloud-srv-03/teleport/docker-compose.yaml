@@ -20,7 +20,7 @@ services:
       - traefik.enable=true
       
       # Web UI & App Access (Wildcard)
-      - traefik.http.routers.teleport-web.rule=Host(`teleport.soniiit.net`) || HostRegexp(`{subdomain:[a-z0-9-]+}.teleport.soniiit.net`)
+      - traefik.http.routers.teleport-web.rule=Host(`teleport.soniiit.net`) || HostRegexp(`^.+\.teleport\.soniiit\.net$`)
       - traefik.http.routers.teleport-web.entrypoints=websecure
       - traefik.http.routers.teleport-web.tls.certresolver=leprod
       - traefik.http.routers.teleport-web.tls.domains[0].main=teleport.soniiit.net
