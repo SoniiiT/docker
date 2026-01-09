@@ -27,7 +27,8 @@ services:
       - traefik.http.routers.teleport-web.tls.domains[0].sans=*.teleport.soniiit.net
       - traefik.http.routers.teleport-web.service=teleport-web
       - traefik.http.services.teleport-web.loadbalancer.server.port=3080
-      - traefik.http.services.teleport-web.loadbalancer.server.scheme=http
+      - traefik.http.services.teleport-web.loadbalancer.server.scheme=https
+      - traefik.http.services.teleport-web.loadbalancer.serverstransport=insecureTransport@file
 
       # SSH Proxy (TCP 3023)
       - traefik.tcp.routers.teleport-ssh.rule=HostSNI(`*`)
