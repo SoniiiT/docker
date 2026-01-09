@@ -1,0 +1,42 @@
+version: "3.9"
+
+networks:
+  proxy:
+    external: true
+    name: traefik_proxy
+
+services:
+  teleport:
+    image: public.ecr.aws/gravitational/teleport-distroless:18.5.0
+    container_name: teleport
+    restart: unless-stopped
+    networks: [proxy]
+    volumes:
+      - ./config:/etc/teleport
+      - ./data:/var/lib/teleport
+    environment:
+      TZ: Europe/Berlin
+    labels:
+      - traefik.enable=true
+      
+      # Web UI & App Access (Wildcard)
+      - traefik.http.routers.teleport-web.rule=Host(`teleport.soniiit.net`) || HostRegexp(`{subdomain:[a-z0-9-]+}.teleport.soniiit.net`)
+      - traefik.http.routers.teleport-web.entrypoints=websecure
+      - traefik.http.routers.teleport-web.tls.certresolver=leprod
+      - traefik.http.routers.teleport-web.tls.domains[0].main=teleport.soniiit.net
+      - traefik.http.routers.teleport-web.tls.domains[0].sans=*.teleport.soniiit.net
+      - traefik.http.routers.teleport-web.service=teleport-web
+      - traefik.http.services.teleport-web.loadbalancer.server.port=3080
+      - traefik.http.services.teleport-web.loadbalancer.server.scheme=http
+
+      # SSH Proxy (TCP 3023)
+      - traefik.tcp.routers.teleport-ssh.rule=HostSNI(`*`)
+      - traefik.tcp.routers.teleport-ssh.entrypoints=ssh
+      - traefik.tcp.routers.teleport-ssh.service=teleport-ssh
+      - traefik.tcp.services.teleport-ssh.loadbalancer.server.port=3023
+      
+      # Reverse Tunnel (TCP 3024)
+      - traefik.tcp.routers.teleport-tunnel.rule=HostSNI(`*`)
+      - traefik.tcp.routers.teleport-tunnel.entrypoints=tunnel
+      - traefik.tcp.routers.teleport-tunnel.service=teleport-tunnel
+      - traefik.tcp.services.teleport-tunnel.loadbalancer.server.port=3024

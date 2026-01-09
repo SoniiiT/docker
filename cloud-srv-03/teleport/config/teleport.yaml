@@ -1,0 +1,51 @@
+version: v3
+teleport:
+  nodename: teleport
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  proxy_listener_mode: multiplex
+  cluster_name: teleport.soniiit.net
+  authentication:
+    type: local
+    second_factor: on
+    webauthn:
+      rp_id: teleport.soniiit.net
+
+ssh_service:
+  enabled: "no"
+
+proxy_service:
+  enabled: "yes"
+  # Traefik terminates TLS, so Teleport listens on HTTP (insecure mode essentially for the listener)
+  # But Teleport expects HTTPS usually.
+  # "web_listen_addr" can be HTTP if we trust the proxy.
+  web_listen_addr: 0.0.0.0:3080
+  
+  # Public address is what clients communicate with
+  public_addr:
+    - teleport.soniiit.net:443
+    - "*.teleport.soniiit.net:443"
+  
+  ssh_public_addr:
+    - teleport.soniiit.net:3023
+    
+  tunnel_public_addr:
+    - teleport.soniiit.net:3024
+
+  https_keypairs: []
+  acme: {}
+
+  listen_addr: 0.0.0.0:3023
+  tunnel_listen_addr: 0.0.0.0:3024
+
+app_service:
+  enabled: "no"
+  # This server is the proxy. Applications like Proxmox are likely connected via Reverse Tunnel from another agent.

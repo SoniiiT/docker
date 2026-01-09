@@ -1,0 +1,51 @@
+version: "3.9"
+
+networks:
+  proxy:
+    name: traefik_proxy
+    driver: bridge
+
+services:
+  traefik:
+    image: traefik:v3.6.5
+    container_name: traefik
+    restart: unless-stopped
+    networks: [proxy]
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3023:3023" # Teleport SSH
+      - "3024:3024" # Teleport Tunnel
+    environment:
+      CF_DNS_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
+      TZ: Europe/Berlin
+    command:
+      # Provider
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.file.directory=/etc/traefik/dynamic
+      - --providers.file.watch=true
+
+      # Entrypoints
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.ssh.address=:3023
+      - --entrypoints.tunnel.address=:3024
+
+      # Certificates (Cloudflare DNS-01)
+      - --certificatesresolvers.leprod.acme.email=${LETSENCRYPT_EMAIL}
+      - --certificatesresolvers.leprod.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.leprod.acme.dnschallenge=true
+      - --certificatesresolvers.leprod.acme.dnschallenge.provider=cloudflare
+      - --certificatesresolvers.leprod.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53
+
+      # Logging
+      - --log.level=INFO
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./acme.json:/letsencrypt/acme.json
+      - ./dynamic:/etc/traefik/dynamic
+
