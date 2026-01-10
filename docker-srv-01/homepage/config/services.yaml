@@ -25,7 +25,7 @@
       siteMonitor: https://traefik.home.soniiit.net
       widget:
         type: traefik
-        url: https://192.168.178.30/
+        url: https://traefik.home.soniiit.net/
         username: "{{HOMEPAGE_VAR_TRAEFIK_USER}}"
         password: "{{HOMEPAGE_VAR_TRAEFIK_PASSWORD}}"
 
@@ -51,20 +51,9 @@
       widget:
         type: portainer
         url: https://portainer.home.soniiit.net/
-        env: 1
+        env: 3
         kubernetes: false # optional, defaults to false
         key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
-  - TrueNAS:
-      href: https://truenas.home.soniiit.net/
-      icon: truenas.png
-      description: TrueNAS
-      siteMonitor: https://truenas.home.soniiit.net/ui/
-      widget:
-        type: truenas
-        url: https://truenas.home.soniiit.net/
-        key: "{{HOMEPAGE_VAR_TRUENAS_KEY}}"
-        enablePools: true # optional, defaults to false
-        nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
 
 - Live Services:
   - Pterodactyl:
