@@ -55,37 +55,6 @@
         kubernetes: false # optional, defaults to false
         key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
 
-- Exposed Services:
-  - Pterodactyl:
-      href: https://panel.soniiit.net
-      icon: pterodactyl.png
-      description: Pterodactyl
-      siteMonitor: https://panel.soniiit.net
-      widget:
-        type: pterodactyl
-        url: https://panel.soniiit.net
-        key: "{{HOMEPAGE_VAR_PTERODACTYL_KEY}}"
-  - Nextcloud:
-      href: https://nextcloud.soniiit.net
-      icon: nextcloud.png
-      description: Nextcloud
-      siteMonitor: https://nextcloud.soniiit.net
-  - Harbor:
-      href: https://harbor.soniiit.net
-      icon: harbor.png
-      description: Harbor Registry
-      siteMonitor: https://harbor.soniiit.net
-  - Hashicorp Vault:
-      href: https://vault.soniiit.net
-      icon: vault.png
-      description: Hashicorp Vault
-      siteMonitor: https://vault.soniiit.net
-  - Wazuh:
-      href: https://wazuh.soniiit.net
-      icon: wazuh.png
-      description: Wazuh
-      siteMonitor: https://wazuh.soniiit.net
-
 - Media Stack:
   - Jellyfin:
       href: https://jellyfin.home.soniiit.net
