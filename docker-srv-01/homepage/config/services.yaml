@@ -55,7 +55,7 @@
         kubernetes: false # optional, defaults to false
         key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
 
-- Live Services:
+- Exposed Services:
   - Pterodactyl:
       href: https://panel.soniiit.net
       icon: pterodactyl.png
@@ -65,6 +65,26 @@
         type: pterodactyl
         url: https://panel.soniiit.net
         key: "{{HOMEPAGE_VAR_PTERODACTYL_KEY}}"
+  - Nextcloud:
+      href: https://nextcloud.soniiit.net
+      icon: nextcloud.png
+      description: Nextcloud
+      siteMonitor: https://nextcloud.soniiit.net
+  - Harbor:
+      href: https://harbor.soniiit.net
+      icon: harbor.png
+      description: Harbor Registry
+      siteMonitor: https://harbor.soniiit.net
+  - Hashicorp Vault:
+      href: https://vault.soniiit.net
+      icon: vault.png
+      description: Hashicorp Vault
+      siteMonitor: https://vault.soniiit.net
+  - Wazuh:
+      href: https://wazuh.soniiit.net
+      icon: wazuh.png
+      description: Wazuh
+      siteMonitor: https://wazuh.soniiit.net
 
 - Media Stack:
   - Jellyfin:
@@ -140,3 +160,23 @@
         type: sabnzbd
         url: http://192.168.178.98:8060
         key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
+  - Kapowarr:
+      href: http://192.168.178.98:5656
+      icon: kapowarr.png
+      description: Kapowarr
+      siteMonitor: http://192.168.178.98:5656
+  - Komga:
+      href: http://192.168.178.98:25600
+      icon: komga.png
+      description: Komga
+      siteMonitor: http://192.168.178.98:25600
+      widget:
+        type: komga
+        url: http://192.168.178.98:25600
+        username: "{{HOMEPAGE_VAR_KOMGA_USER}}"
+        password: "{{HOMEPAGE_VAR_KOMGA_PASSWORD}}"
+  - Kaizoku:
+      href: http://192.168.178.98:3000
+      icon: kaizoku.png
+      description: Kaizoku
+      siteMonitor: http://192.168.178.98:3000

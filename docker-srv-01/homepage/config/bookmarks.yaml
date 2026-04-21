@@ -61,35 +61,17 @@
       href: https://artifacthub.io/
 
 - Internal Services:
-  - Kestra:
-    - icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZiiKzlN_hGZANoZdyV1wIlZkXZ6vjDCxsbQ&s
-      href: https://kestra.home.soniiit.net/
   - N8N:
     - icon: https://getumbrel.github.io/umbrel-apps-gallery/n8n/icon.svg
       href: http://n8n.home.soniiit.net/
-  - Netgear Switch:
-    - icon: https://play-lh.googleusercontent.com/493pncAt36_ivLlTBiwykKHZwYuNDiVvrEjRk0T1-B6NQCSAxNzWjcjsVzWvGhVcDcE
-      href: https://sw-01.home.soniiit.net/
   - Portainer:
     - icon: https://cdn.worldvectorlogo.com/logos/portainer.svg
       href: https://portainer.home.soniiit.net/
-  - Traefik:
-    - icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
-      href: https://traefik.home.soniiit.net/
 
 - Exposed Services:
-  - Harbor:
-    - icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSDU4gRsoV0YDaQJ5KtORVph3JBJI4huUrGA&s
-      href: https://reg.soniiit.net/
   - Home Assistant:
     - icon: https://upload.wikimedia.org/wikipedia/en/thumb/4/49/Home_Assistant_logo_%282023%29.svg/1200px-Home_Assistant_logo_%282023%29.svg.png
       href: https://homeassistant.soniiit.net/
-  - Hashicorp Vault:
-    - icon: https://effectual.ai/wp-content/uploads/HashiCorp_Vault.webp
-      href: https://vault.soniiit.net/
-  - Wazuh:
-    - icon: https://wazuh.com/uploads/2024/06/multi-site-implementation-logo.webp
-      href: https://wazuh.soniiit.net/
   - Teleport:
     - icon: https://d3g9o9u8re44ak.cloudfront.net/logo/11ddad5c-8c32-42c9-b7aa-b0cf89e19269/8ed0a16b-63bc-469d-a805-e737b3f7d725.png
       href: https://teleport.soniiit.net/
@@ -99,9 +81,3 @@
   - Authentik:
     - icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4JlKZrg0P2dl1qhRZ7VCZ-L8JoJnDVlNyGg&s
       href: https://auth.soniiit.net/
-  - Nextcloud:
-    - icon: https://yourdevice.ch/wp-content/uploads/2023/05/proxy-9-300x300.png
-      href: https://nextcloud.soniiit.net/
-  - Pterodactyl:
-    - icon: https://styles.redditmedia.com/t5_2ti8p/styles/communityIcon_wurci3h21ece1.png
-      href: https://panel.home.soniiit.net/

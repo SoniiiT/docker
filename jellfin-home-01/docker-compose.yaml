@@ -114,3 +114,75 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+
+  kapowarr:
+    image: mrcas/kapowarr:latest
+    container_name: kapowarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Berlin
+    volumes:
+      - kapowarr-db:/app/db
+      - /mnt/jellyfin/kapowarr/downloads:/app/temp_downloads
+      - /mnt/jellyfin/kapowarr/comics:/comics
+    ports:
+      - 5656:5656
+    restart: unless-stopped
+
+  kaizoku-pg:
+    image: postgres:alpine
+    container_name: kaizoku-pg
+    environment:
+      - POSTGRES_USER=kaizoku
+      - POSTGRES_PASSWORD=kaizoku
+      - POSTGRES_DB=kaizoku
+    volumes:
+      - kaizoku-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kaizoku"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  kaizoku-redis:
+    image: redis:7-alpine
+    container_name: kaizoku-redis
+    restart: unless-stopped
+
+  kaizoku:
+    image: ghcr.io/oae/kaizoku:latest
+    container_name: kaizoku
+    environment:
+      - DATABASE_URL=postgresql://kaizoku:kaizoku@kaizoku-pg:5432/kaizoku
+      - REDIS_HOST=kaizoku-redis
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/jellyfin/manga:/data
+      - /mnt/jellyfin/kaizoku/config:/config
+      - /mnt/jellyfin/kaizoku/logs:/logs
+    ports:
+      - 3000:3000
+    depends_on:
+      kaizoku-pg:
+        condition: service_healthy
+    restart: unless-stopped
+
+  komga:
+    image: gotson/komga:latest
+    container_name: komga
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/jellyfin/komga/config:/config
+      - /mnt/jellyfin/manga:/manga
+    ports:
+      - 25600:25600
+    restart: unless-stopped
+
+volumes:
+  kapowarr-db:
+  kaizoku-pg-data:
