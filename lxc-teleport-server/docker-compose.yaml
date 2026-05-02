@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   teleport:
-    image: public.ecr.aws/gravitational/teleport-distroless:18.5.0
+    image: public.ecr.aws/gravitational/teleport-distroless:18.7.6
     container_name: teleport
     restart: unless-stopped
     ports:
