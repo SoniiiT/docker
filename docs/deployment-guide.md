@@ -1,18 +1,17 @@
-# 🚀 Anleitung: Automatisiertes Docker-Deployment mit Git & Doppler
+# 🚀 Anleitung: Automatisiertes Docker-Deployment mit Git & .env
 
-Diese Anleitung richtet ein System ein, das automatisch Änderungen aus deinem Git-Repo zieht, Secrets sicher aus Doppler lädt und die Container aktualisiert.
+Diese Anleitung richtet ein System ein, das automatisch Änderungen aus dem Git-Repo zieht und die Container aktualisiert. Secrets werden lokal in einer `.env` Datei pro Stack gespeichert.
 
 ### Voraussetzungen
 *   Git ist installiert (`apt install git`)
 *   Docker & Docker Compose sind installiert
-*   Doppler CLI ist installiert ([Anleitung](https://docs.doppler.com/docs/install-cli))
 *   Du hast dich einmalig mit `git config --global credential.helper store` und einem `git pull` authentifiziert.
 
 ---
 
 ### Schritt 0: Repository einrichten (Optional: Sparse Checkout)
 
-Wenn du auf einem Server nur bestimmte Ordner (z.B. nur den Ordner für diesen Server und die Skripte) haben möchtest, kannst du **Git Sparse Checkout** verwenden. Das hält das Dateisystem sauber.
+Wenn du auf einem Server nur bestimmte Ordner haben möchtest, kannst du **Git Sparse Checkout** verwenden. Das hält das Dateisystem sauber.
 
 So richtest du es ein (Beispiel für `lxc-semaphore`):
 
@@ -43,61 +42,49 @@ So richtest du es ein (Beispiel für `lxc-semaphore`):
 
 ---
 
-### Schritt 1: Secrets sicher hinterlegen
+### Schritt 1: Secrets hinterlegen
 
-Wir speichern die Doppler-Tokens in einer geschützten Datei, damit sie nicht im Skript stehen.
+Jeder Stack bekommt eine `.env` Datei direkt im Stack-Ordner. Docker Compose lädt diese automatisch.
+Die `.env` Datei ist in `.gitignore` eingetragen und wird **nie** ins Repository committed.
+Die aktuellen Werte aller Secrets liegen in **1Password**.
 
-1.  **Datei erstellen & Rechte setzen (nur root darf lesen):**
+1.  **`.env` Datei erstellen & Rechte setzen:**
     ```bash
-    sudo touch /root/.doppler_secrets
-    sudo chmod 600 /root/.doppler_secrets
-    sudo nano /root/.doppler_secrets
+    touch /opt/docker-stack/lxc-semaphore/.env
+    chmod 600 /opt/docker-stack/lxc-semaphore/.env
+    nano /opt/docker-stack/lxc-semaphore/.env
     ```
 
-2.  **Tokens eintragen:**
-    Füge hier deine Service-Tokens ein.
-    *   *Für LXC-Semaphore (nur ein Token):*
-        ```bash
-        export DOPPLER_TOKEN="dp.st.prd.xxxxxxxxx"
-        ```
-    *   *Für Docker-SRV (mehrere Tokens):*
-        ```bash
-        export DOPPLER_TOKEN_PAPERLESS="dp.st.prd.xxxxxxxxx"
-        export DOPPLER_TOKEN_NGINX="dp.st.prd.yyyyyyyyy"
-        ```
+2.  **Secrets eintragen** (Werte aus 1Password kopieren):
+    ```env
+    MY_SECRET_KEY=xxxxxxxx
+    ANOTHER_SECRET=yyyyyyyy
+    ```
     *(Speichern mit `STRG+O`, Beenden mit `STRG+X`)*
+
+> Die Variablennamen entsprechen den `${VAR}`-Referenzen in der jeweiligen `docker-compose.yaml`.
 
 ---
 
-### Schritt 2: Das Update-Skript erstellen
+### Schritt 2: Das Update-Skript einrichten
 
-Das Skript liegt bereits im Repository unter `scripts/update_docker_stacks.sh`.
+Das Skript liegt im Repository unter `scripts/update_docker_stacks.sh`.
 
 1.  **Skript kopieren:**
-    Kopiere das Skript an den Zielort auf deinem Server:
     ```bash
-    sudo cp scripts/update_docker_stacks.sh /usr/local/bin/update_docker_stacks.sh
+    sudo cp /opt/docker-stack/scripts/update_docker_stacks.sh /usr/local/bin/update_docker_stacks.sh
     ```
 
 2.  **Konfiguration anpassen:**
-    Bearbeite das Skript und passe den Bereich `STACKS` an deine Ordnerstruktur an:
+    Bearbeite das Skript und trage deine Stack-Ordner ein:
     ```bash
     sudo nano /usr/local/bin/update_docker_stacks.sh
     ```
 
     ```bash
-    # List of Stacks: "Path to folder" -> "Variable Name in secrets file"
-    declare -A STACKS
     STACKS=(
-      # BEISPIEL LXC (Zeile einkommentieren & anpassen):
-      # ["/opt/docker-stack/LXC-Semaphore"]="DOPPLER_TOKEN"
-
-      # BEISPIEL DOCKER SERVER (Zeilen einkommentieren & anpassen):
-      # ["/opt/docker/paperless"]="DOPPLER_TOKEN_PAPERLESS"
-      # ["/opt/docker/nginx"]="DOPPLER_TOKEN_NGINX"
-
-      # BEISPIEL OHNE DOPPLER (einfach leer lassen):
-      # ["/opt/docker/simple-service"]=""
+      "/opt/docker-stack/lxc-semaphore"
+      # "/opt/docker-stack/another-service"
     )
     ```
 
@@ -110,26 +97,21 @@ Das Skript liegt bereits im Repository unter `scripts/update_docker_stacks.sh`.
 
 ### Schritt 3: Manueller Test
 
-Bevor wir die Automatisierung einschalten, teste einmal, ob alles klappt:
-
 ```bash
 /usr/local/bin/update_docker_stacks.sh
 ```
 *   Wenn keine Fehler kommen (und "No changes in Git" oder "Update completed" steht), ist alles perfekt.
 
 **Erzwingen des Starts:**
-Wenn du den Container starten möchtest, auch wenn keine Änderungen in Git vorliegen (z.B. nach einem Neustart oder manuellen Änderungen), kannst du das Flag `--start` verwenden:
+Wenn du den Container starten möchtest, auch wenn keine Änderungen in Git vorliegen (z.B. nach einem Neustart):
 
 ```bash
 /usr/local/bin/update_docker_stacks.sh --start
 ```
-Dies führt `docker compose pull` und `docker compose up -d` aus, unabhängig vom Git-Status.
 
 ---
 
 ### Schritt 4: Cronjob einrichten (Automatisierung)
-
-Damit der Server alle 15 Minuten prüft:
 
 1.  **Crontab öffnen:**
     ```bash
@@ -142,9 +124,8 @@ Damit der Server alle 15 Minuten prüft:
     ```
 
 3.  **Logs prüfen (optional):**
-    Du kannst später jederzeit schauen, was das Skript gemacht hat:
     ```bash
     cat /var/log/docker_stack_update.log
     ```
 
-✅ **Fertig!** Dein Server aktualisiert sich jetzt vollautomatisch und sicher.
+✅ **Fertig!** Dein Server aktualisiert sich jetzt vollautomatisch.
