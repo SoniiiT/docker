@@ -1,6 +1,6 @@
 services:
   twingate-connector-net-app:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-app
     restart: unless-stopped
     pull_policy: always
@@ -13,7 +13,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-demo:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-demo
     restart: unless-stopped
     pull_policy: always
@@ -26,7 +26,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-desktop:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-desktop
     restart: unless-stopped
     pull_policy: always
@@ -39,7 +39,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-development:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-development
     restart: unless-stopped
     pull_policy: always
@@ -52,7 +52,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-docker:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-docker
     restart: unless-stopped
     pull_policy: always
@@ -65,7 +65,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-home:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-home
     restart: unless-stopped
     pull_policy: always
@@ -78,7 +78,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-kubernetes:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-kubernetes
     restart: unless-stopped
     pull_policy: always
@@ -91,7 +91,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-lxc:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-lxc
     restart: unless-stopped
     pull_policy: always
@@ -104,7 +104,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-nas:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-nas
     restart: unless-stopped
     pull_policy: always
@@ -117,7 +117,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-runners:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-runners
     restart: unless-stopped
     pull_policy: always
@@ -130,7 +130,7 @@ services:
     dns:
       - 192.168.178.3
   twingate-connector-net-windows:
-    image: twingate/connector:1.82.0
+    image: twingate/connector:1.88.0
     container_name: twingate-connector-net-windows
     restart: unless-stopped
     pull_policy: always
