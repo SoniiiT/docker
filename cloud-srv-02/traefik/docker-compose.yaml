@@ -22,7 +22,6 @@ services:
       # Cloudflare DNS-01 (bevorzugt Token-Methode über LEGO):
       # https://go-acme.github.io/lego/dns/cloudflare/
       CF_DNS_API_TOKEN: ${CLOUDFLARE_API_TOKEN}
-      BASIC_AUTH_USERS: ${BASIC_AUTH_USERS}
       TZ: Europe/Berlin
     command:
       # Provider
@@ -36,9 +35,6 @@ services:
       - --entrypoints.websecure.address=:443
       - --entrypoints.web.http.redirections.entryPoint.to=websecure
       - --entrypoints.web.http.redirections.entryPoint.scheme=https
-
-      # Dashboard
-      - --api.dashboard=true
 
       # ===== ACME: Production (Cloudflare DNS-01) =====
       - --certificatesresolvers.leprod.acme.email=${LETSENCRYPT_EMAIL}
@@ -67,9 +63,3 @@ services:
     labels:
       - traefik.enable=true
 
-      # Dashboard auf traefik.home.soniiit.net → nutzt dein internes CA-Zertifikat
-      # - traefik.http.routers.api.rule=Host(`traefik.home.soniiit.net`)
-      # - traefik.http.routers.api.entrypoints=websecure
-      # - traefik.http.routers.api.tls.certresolver=leprod
-      # - traefik.http.routers.api.service=api@internal
-      # - traefik.http.routers.api.middlewares=basicauth@file,secureHeaders@file
