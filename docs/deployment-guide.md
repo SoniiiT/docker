@@ -48,9 +48,10 @@ Jeder Stack bekommt eine `.env` Datei direkt im Stack-Ordner. Docker Compose lä
 Die `.env` Datei ist in `.gitignore` eingetragen und wird **nie** ins Repository committed.
 Die aktuellen Werte aller Secrets liegen in **1Password**.
 
-1.  **`.env` Datei erstellen & Rechte setzen:**
+1.  **`.env` aus der Vorlage erstellen:**
+    Jeder Stack enthält eine `.env.example` Datei mit allen benötigten Variablennamen (Werte leer).
     ```bash
-    touch /opt/docker-stack/lxc-semaphore/.env
+    cp /opt/docker-stack/lxc-semaphore/.env.example /opt/docker-stack/lxc-semaphore/.env
     chmod 600 /opt/docker-stack/lxc-semaphore/.env
     nano /opt/docker-stack/lxc-semaphore/.env
     ```
@@ -62,7 +63,7 @@ Die aktuellen Werte aller Secrets liegen in **1Password**.
     ```
     *(Speichern mit `STRG+O`, Beenden mit `STRG+X`)*
 
-> Die Variablennamen entsprechen den `${VAR}`-Referenzen in der jeweiligen `docker-compose.yaml`.
+> Die `.env.example` enthält alle Variablennamen des Stacks. Die `.env` ist in `.gitignore` und wird **nie** von `git pull` überschrieben.
 
 ---
 
