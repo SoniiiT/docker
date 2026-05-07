@@ -71,10 +71,10 @@
         enableMediaControl: false # optional, defaults to true
         showEpisodeNumber: true # optional, defaults to false
         expandOneStreamToTwoRows: false # optional, defaults to true
-  - Jellyseerr:
+  - Seerr:
       href: https://jellyseerr.home.soniiit.net
       icon: jellyseerr.png
-      description: Jellyseerr
+      description: Seerr
       siteMonitor: https://jellyseerr.home.soniiit.net
       widget:
         type: jellyseerr
