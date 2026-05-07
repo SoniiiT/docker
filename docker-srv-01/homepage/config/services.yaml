@@ -73,7 +73,7 @@
         expandOneStreamToTwoRows: false # optional, defaults to true
   - Seerr:
       href: https://jellyseerr.home.soniiit.net
-      icon: https://docs.seerr.dev/img/logo_full.svg
+      icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/seerr.png
       description: Seerr
       siteMonitor: https://jellyseerr.home.soniiit.net
       widget:
