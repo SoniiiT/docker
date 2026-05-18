@@ -1,0 +1,17 @@
+http:
+  routers:
+    kavita:
+      rule: Host(`kavita.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: kavita-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    kavita-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:5010
+        passHostHeader: true

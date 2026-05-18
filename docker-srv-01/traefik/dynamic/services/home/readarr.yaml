@@ -1,0 +1,17 @@
+http:
+  routers:
+    readarr:
+      rule: Host(`readarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: readarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    readarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:8787
+        passHostHeader: true

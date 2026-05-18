@@ -180,18 +180,103 @@ services:
         condition: service_healthy
     restart: unless-stopped
 
-  komga:
-    image: gotson/komga:latest
-    container_name: komga
+  calibre-web:
+    image: linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/jellyfin/calibre-web/config:/config
+      - /mnt/jellyfin/books:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
+
+  readarr:
+    image: linuxserver/readarr:0.4.18-develop
+    container_name: readarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Berlin
+    volumes:
+      - /mnt/jellyfin/readarr/config:/config
+      - /mnt/jellyfin/books:/books
+      - /mnt/jellyfin/media/downloads:/downloads
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+
+  kavita:
+    image: ghcr.io/kareadita/kavita:latest
+    container_name: kavita
     environment:
       - TZ=Europe/Berlin
     volumes:
-      - /mnt/jellyfin/komga/config:/config
+      - /mnt/jellyfin/kavita/config:/kavita/config
+      - /mnt/jellyfin/books:/books
       - /mnt/jellyfin/manga:/manga
     ports:
-      - 25600:25600
+      - 5010:5000
+    restart: unless-stopped
+
+  romm-db:
+    image: mariadb:latest
+    container_name: romm-db
+    environment:
+      - MARIADB_DATABASE=romm
+      - MARIADB_USER=romm-user
+      - MARIADB_PASSWORD=${ROMM_DB_PASSWORD}
+      - MARIADB_ROOT_PASSWORD=${ROMM_DB_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  romm:
+    image: rommapp/romm:latest
+    container_name: romm
+    environment:
+      - DB_HOST=romm-db
+      - DB_NAME=romm
+      - DB_USER=romm-user
+      - DB_PASSWD=${ROMM_DB_PASSWORD}
+      - IGDB_CLIENT_ID=${IGDB_CLIENT_ID}
+      - IGDB_CLIENT_SECRET=${IGDB_CLIENT_SECRET}
+      - STEAMGRIDDB_API_KEY=${STEAMGRIDDB_API_KEY}
+      - RETROACHIEVEMENTS_API_KEY=${RETROACHIEVEMENTS_API_KEY}
+      - ROMM_AUTH_SECRET_KEY=${ROMM_AUTH_SECRET_KEY}
+      - HASHEOUS_API_ENABLED=true
+    volumes:
+      - romm_redis_data:/redis-data
+      - romm_resources:/romm/resources
+      - /mnt/jellyfin/romm/assets:/romm/assets
+      - /mnt/jellyfin/romm/config:/romm/config
+      - /mnt/jellyfin/romm/library:/romm/library
+    ports:
+      - 8008:8080
+    depends_on:
+      - romm-db
+    restart: unless-stopped
+
+  questarr:
+    image: ghcr.io/doezer/questarr:latest
+    container_name: questarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - PORT=5000
+      - SQLITE_DB_PATH=/app/data/sqlite.db
+    volumes:
+      - /home/soniiit/data:/app/data
+    ports:
+      - 5000:5000
     restart: unless-stopped
 
 volumes:
   kapowarr-db:
   kaizoku-pg-data:
+  romm_redis_data:
+  romm_resources:
+  mysql_data:

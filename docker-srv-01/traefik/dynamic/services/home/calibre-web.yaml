@@ -1,0 +1,17 @@
+http:
+  routers:
+    calibre-web:
+      rule: Host(`calibre-web.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: calibre-web-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    calibre-web-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:8083
+        passHostHeader: true

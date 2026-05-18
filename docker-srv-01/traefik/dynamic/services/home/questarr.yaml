@@ -1,0 +1,17 @@
+http:
+  routers:
+    questarr:
+      rule: Host(`questarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: questarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    questarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:5000
+        passHostHeader: true

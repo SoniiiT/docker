@@ -1,0 +1,17 @@
+http:
+  routers:
+    open-design:
+      rule: Host(`open-design.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: open-design-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    open-design-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.90:7456
+        passHostHeader: true

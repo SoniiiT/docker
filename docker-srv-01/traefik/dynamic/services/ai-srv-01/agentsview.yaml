@@ -1,0 +1,17 @@
+http:
+  routers:
+    agentsview:
+      rule: Host(`agentsview.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: agentsview-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    agentsview-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.90:8080
+        passHostHeader: true
