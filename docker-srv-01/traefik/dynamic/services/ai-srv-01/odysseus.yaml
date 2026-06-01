@@ -1,0 +1,17 @@
+http:
+  routers:
+    odysseus:
+      rule: Host(`odysseus.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: odysseus-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    odysseus-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.90:7000
+        passHostHeader: true
