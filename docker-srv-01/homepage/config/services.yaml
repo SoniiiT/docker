@@ -19,22 +19,22 @@
         type: fritzbox
         url: http://192.168.178.2
   - Traefik:
-      href: https://traefik.home.soniiit.net/dashboard/
+      href: https://192.168.178.30/dashboard/
       icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
       description: Traefik
-      siteMonitor: https://traefik.home.soniiit.net
+      siteMonitor: https://192.168.178.30
       widget:
         type: traefik
-        url: https://traefik.home.soniiit.net/
+        url: https://192.168.178.30
         username: "{{HOMEPAGE_VAR_TRAEFIK_USER}}"
         password: "{{HOMEPAGE_VAR_TRAEFIK_PASSWORD}}"
 
 - Infrastructure:
   - Proxmox:
-      href: https://proxmox.home.soniiit.net/
+      href: https://192.168.178.6:8006/
       icon: proxmox.png
       description: PVE-SRV-01
-      siteMonitor: https://proxmox.home.soniiit.net/
+      siteMonitor: https://192.168.178.6:8006/
       widget:
         type: proxmox
         url: https://192.168.178.6:8006
@@ -44,23 +44,23 @@
 
 - Management:
   - Portainer:
-      href: https://portainer.home.soniiit.net/
+      href: https://192.168.178.30:9443/
       icon: portainer.png
       description: Portainer
-      siteMonitor: https://portainer.home.soniiit.net/
+      siteMonitor: https://192.168.178.30:9443/
       widget:
         type: portainer
-        url: https://portainer.home.soniiit.net/
+        url: https://192.168.178.30:9443/
         env: 3
         kubernetes: false # optional, defaults to false
         key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
 
 - Media Stack:
   - Jellyfin:
-      href: https://jellyfin.home.soniiit.net
+      href: http://192.168.178.98:8096
       icon: jellyfin.png
       description: Jellyfin
-      siteMonitor: https://jellyfin.home.soniiit.net
+      siteMonitor: http://192.168.178.98:8096
       widget:
         type: jellyfin
         url: http://192.168.178.98:8096
@@ -72,39 +72,39 @@
         showEpisodeNumber: true # optional, defaults to false
         expandOneStreamToTwoRows: false # optional, defaults to true
   - Seerr:
-      href: https://jellyseerr.home.soniiit.net
+      href: http://192.168.178.98:5055
       icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/seerr.png
       description: Seerr
-      siteMonitor: https://jellyseerr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:5055
       widget:
         type: jellyseerr
         url: http://192.168.178.98:5055
         key: "{{HOMEPAGE_VAR_JELLYSEERR_KEY}}"
   - Sonarr:
-      href: https://sonarr.home.soniiit.net
+      href: http://192.168.178.98:8989
       icon: sonarr.png
       description: Sonarr
-      siteMonitor: https://sonarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:8989
       widget:
         type: sonarr
         url: http://192.168.178.98:8989
         key: "{{HOMEPAGE_VAR_SONARR_KEY}}"
         enableQueue: true # optional, defaults to false
   - Radarr:
-      href: https://radarr.home.soniiit.net
+      href: http://192.168.178.98:7878
       icon: radarr.png
       description: Radarr
-      siteMonitor: https://radarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:7878
       widget:
         type: radarr
         url: http://192.168.178.98:7878
         key: "{{HOMEPAGE_VAR_RADARR_KEY}}"
         enableQueue: true # optional, defaults to false
   - Prowlarr:
-      href: https://prowlarr.home.soniiit.net
+      href: http://192.168.178.98:9696
       icon: prowlarr.png
       description: Prowlarr
-      siteMonitor: https://prowlarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:9696
       widget:
         type: prowlarr
         url: http://192.168.178.98:9696
@@ -130,54 +130,54 @@
         url: http://192.168.178.98:8060
         key: "{{HOMEPAGE_VAR_SABNZBD_KEY}}"
   - Kapowarr:
-      href: https://kapowarr.home.soniiit.net
+      href: http://192.168.178.98:5656
       icon: kapowarr.png
       description: Kapowarr
-      siteMonitor: https://kapowarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:5656
   - Kaizoku:
       href: http://192.168.178.98:3000
       icon: kaizoku.png
       description: Kaizoku
       siteMonitor: http://192.168.178.98:3000
   - Calibre-Web:
-      href: https://calibre-web.home.soniiit.net
+      href: http://192.168.178.98:8083
       icon: calibre-web.png
       description: Calibre-Web
-      siteMonitor: https://calibre-web.home.soniiit.net
+      siteMonitor: http://192.168.178.98:8083
   - Readarr:
-      href: https://readarr.home.soniiit.net
+      href: http://192.168.178.98:8787
       icon: readarr.png
       description: Readarr
-      siteMonitor: https://readarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:8787
   - Kavita:
-      href: https://kavita.home.soniiit.net
+      href: http://192.168.178.98:5010
       icon: kavita.png
       description: Kavita
-      siteMonitor: https://kavita.home.soniiit.net
+      siteMonitor: http://192.168.178.98:5010
   - RomM:
-      href: https://romm.home.soniiit.net
+      href: http://192.168.178.98:8008
       icon: romm.png
       description: RomM
-      siteMonitor: https://romm.home.soniiit.net
+      siteMonitor: http://192.168.178.98:8008
   - Questarr:
-      href: https://questarr.home.soniiit.net
+      href: http://192.168.178.98:5000
       icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/questarr.png
       description: Questarr
-      siteMonitor: https://questarr.home.soniiit.net
+      siteMonitor: http://192.168.178.98:5000
 
 - Internal Services:
   - Odysseus:
-      href: https://odysseus.home.soniiit.net
+      href: http://192.168.178.90:7000
       icon: https://avatars.githubusercontent.com/u/pewdiepie-archdaemon
       description: Self-Hosted AI Workspace
-      siteMonitor: https://odysseus.home.soniiit.net
+      siteMonitor: http://192.168.178.90:7000
   - Open Design:
-      href: https://open-design.home.soniiit.net
+      href: http://192.168.178.90:7456
       icon: https://avatars.githubusercontent.com/u/194073946
       description: AI-Powered Design & Coding Tool
-      siteMonitor: https://open-design.home.soniiit.net
+      siteMonitor: http://192.168.178.90:7456
   - AgentsView:
-      href: https://agentsview.home.soniiit.net
+      href: http://192.168.178.90:8080
       icon: https://avatars.githubusercontent.com/u/wesm
       description: AI Agent Session Dashboard
-      siteMonitor: https://agentsview.home.soniiit.net
+      siteMonitor: http://192.168.178.90:8080
