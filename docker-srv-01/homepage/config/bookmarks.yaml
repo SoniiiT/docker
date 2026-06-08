@@ -66,10 +66,10 @@
 - Internal Services:
   - N8N:
     - icon: https://getumbrel.github.io/umbrel-apps-gallery/n8n/icon.svg
-      href: http://n8n.home.soniiit.net/
+      href: https://n8n.soniiit.net
   - Portainer:
     - icon: https://cdn.worldvectorlogo.com/logos/portainer.svg
-      href: https://portainer.home.soniiit.net/
+      href: https://192.168.178.30:9443/
 
 - Exposed Services:
   - Home Assistant:
