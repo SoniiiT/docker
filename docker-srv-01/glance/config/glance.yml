@@ -193,26 +193,6 @@ pages:
               </ul>
 
           - type: custom-api
-            title: Speedtest
-            cache: 30m
-            url: https://api.speedtest.net/api/datasources/speedtest/test-results
-            template: |
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.download" | printf "%.0f" }}</div>
-                  <div class="size-h6">DOWN</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.upload" | printf "%.0f" }}</div>
-                  <div class="size-h6">UP</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.latency" | printf "%.0f" }}</div>
-                  <div class="size-h6">PING</div>
-                </div>
-              </div>
-
-          - type: custom-api
             title: Markets
             cache: 30m
             url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=eur&include_market_cap=true&include_24hr_vol=true
