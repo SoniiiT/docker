@@ -50,86 +50,88 @@ pages:
             collapse-after-rows: 3
             video-url-template: https://www.youtube.com/watch?v={VIDEO-ID}
 
-          - type: bookmarks
-            title: Seite 1
-            groups:
-              - title: Entertainment
-                links:
-                  - title: YouTube
-                    url: https://youtube.com
-                    icon: si:youtube
-                  - title: Netflix
-                    url: https://netflix.com
-                    icon: si:netflix
-                  - title: Jellyfin
-                    url: http://192.168.178.98:8096
-                    icon: si:jellyfin
-                  - title: Jellyseerr
-                    url: http://192.168.178.98:5055
-                    icon: si:jellyseerr
+          - type: group
+            widgets:
+              - type: bookmarks
+                title: Seite 1
+                groups:
+                  - title: Entertainment
+                    links:
+                      - title: YouTube
+                        url: https://youtube.com
+                        icon: si:youtube
+                      - title: Netflix
+                        url: https://netflix.com
+                        icon: si:netflix
+                      - title: Jellyfin
+                        url: http://192.168.178.98:8096
+                        icon: si:jellyfin
+                      - title: Jellyseerr
+                        url: http://192.168.178.98:5055
+                        icon: si:jellyseerr
 
-              - title: Shopping
-                links:
-                  - title: Amazon
-                    url: https://amazon.de
-                    icon: si:amazon
-                  - title: eBay
-                    url: https://ebay.de
-                    icon: si:ebay
-                  - title: Wallos
-                    url: ${WALLOS_URL}
-                    icon: si:wallos
+                  - title: Shopping
+                    links:
+                      - title: Amazon
+                        url: https://amazon.de
+                        icon: si:amazon
+                      - title: eBay
+                        url: https://ebay.de
+                        icon: si:ebay
+                      - title: Wallos
+                        url: ${WALLOS_URL}
+                        icon: si:wallos
 
-              - title: Social
-                links:
-                  - title: Reddit
-                    url: https://reddit.com
-                    icon: si:reddit
-                  - title: Twitter/X
-                    url: https://twitter.com
-                    icon: si:x
-                  - title: Discord
-                    url: https://discord.com
-                    icon: si:discord
+                  - title: Social
+                    links:
+                      - title: Reddit
+                        url: https://reddit.com
+                        icon: si:reddit
+                      - title: Twitter/X
+                        url: https://twitter.com
+                        icon: si:x
+                      - title: Discord
+                        url: https://discord.com
+                        icon: si:discord
 
-          - type: bookmarks
-            title: Seite 2
-            groups:
-              - title: Learning & Career
-                links:
-                  - title: GitHub
-                    url: https://github.com
-                    icon: si:github
-                  - title: Stack Overflow
-                    url: https://stackoverflow.com
-                    icon: si:stackoverflow
-                  - title: Confluence
-                    url: https://soniiit.atlassian.net/wiki
-                    icon: si:confluence
+              - type: bookmarks
+                title: Seite 2
+                groups:
+                  - title: Learning & Career
+                    links:
+                      - title: GitHub
+                        url: https://github.com
+                        icon: si:github
+                      - title: Stack Overflow
+                        url: https://stackoverflow.com
+                        icon: si:stackoverflow
+                      - title: Confluence
+                        url: https://soniiit.atlassian.net/wiki
+                        icon: si:confluence
 
-              - title: AI & Dev Tools
-                links:
-                  - title: ChatGPT
-                    url: https://chatgpt.com
-                    icon: si:openai
-                  - title: Replit
-                    url: https://replit.com
-                    icon: si:replit
-                  - title: VS Code Online
-                    url: https://vscode.dev
-                    icon: si:visualstudiocode
+                  - title: AI & Dev Tools
+                    links:
+                      - title: ChatGPT
+                        url: https://chatgpt.com
+                        icon: si:openai
+                      - title: Replit
+                        url: https://replit.com
+                        icon: si:replit
+                      - title: VS Code Online
+                        url: https://vscode.dev
+                        icon: si:visualstudiocode
 
-              - title: Finance & Crypto
-                links:
-                  - title: Kraken
-                    url: https://kraken.com
-                    icon: si:kraken
-                  - title: Binance
-                    url: https://binance.com
-                    icon: si:binance
-                  - title: Coingecko
-                    url: https://coingecko.com
-                    icon: si:coingecko
+                  - title: Finance & Crypto
+                    links:
+                      - title: Kraken
+                        url: https://kraken.com
+                        icon: si:kraken
+                      - title: Binance
+                        url: https://binance.com
+                        icon: si:binance
+                      - title: Coingecko
+                        url: https://coingecko.com
+                        icon: si:coingecko
 
       - size: small
         widgets:
