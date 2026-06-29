@@ -4,7 +4,7 @@ http:
     basicauth:
       basicAuth:
         users:
-          - '{{ env "BASIC_AUTH_USERS" }}' #htpasswd -nbB USER PASSWORD
+          - SoniiiT:$2y$05$VoYWdCHwmfleRsVO2xV6a.dSlO10eKU9xVwIAaeaN7s43FseN1.aK
     secureHeaders:
       headers:
         frameDeny: true

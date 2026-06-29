@@ -1,12 +1,5 @@
 server:
   assets-path: /app/assets
-  proxied: true
-
-auth:
-  secret-key: ${GLANCE_SECRET}
-  users:
-    soniiit:
-      password-hash: ${GLANCE_PASSWORD_HASH}
 
 theme:
   custom-css-file: /assets/user.css
@@ -26,6 +19,32 @@ pages:
             location: Stuttgart, Germany
             units: metric
             hour-format: 24h
+
+          - type: releases
+            title: Releases
+            cache: 1d
+            show-source-icon: true
+            repositories:
+              - glanceapp/glance
+              - portainer/portainer-ce
+              - traefik/traefik
+              - jellyfin/jellyfin
+              - Fallenbagel/jellyseerr
+              - Sonarr/Sonarr
+              - Radarr/Radarr
+              - n8n-io/n8n
+              - cloudflare/cloudflared
+
+          - type: markets
+            markets:
+              - symbol: BTC-EUR
+                name: Bitcoin
+              - symbol: ETH-EUR
+                name: Ethereum
+              - symbol: NVDA
+                name: NVIDIA
+              - symbol: AMD
+                name: AMD
 
       - size: full
         widgets:
@@ -54,137 +73,99 @@ pages:
               # VirtualizationHowto: find ID at youtube.com/@VirtualizationHowto (view-source, search externalId)
               # Christian Lempa: find ID at youtube.com/@christianlempa (view-source, search externalId)
               # VS Code: find ID at youtube.com/@code (view-source, search externalId)
-            collapse-after-rows: 1
+            collapse-after-rows: 3
             video-url-template: https://www.youtube.com/watch?v={VIDEO-ID}
 
+          - type: rss
+            limit: 10
+            collapse-after: 5
+            cache: 6h
+            feeds:
+              - url: https://selfh.st/rss/
+                title: Self-Hosted
+              - url: https://news.ycombinator.com/rss
+                title: Hacker News
+
           - type: bookmarks
+            title: Seite 1
             groups:
-              - links:
+              - title: Entertainment
+                links:
                   - title: YouTube
                     url: https://youtube.com
                     icon: si:youtube
-                  - title: YouTube Music
-                    url: https://music.youtube.com
-                    icon: si:youtubemusic
+                  - title: Netflix
+                    url: https://netflix.com
+                    icon: si:netflix
+                  - title: Jellyfin
+                    url: https://jellyfin.soniiit.net
+                    icon: si:jellyfin
+                  - title: Jellyseerr
+                    url: https://request.soniiit.net
+                    icon: si:jellyseerr
 
-      - size: small
-        widgets:
-          - type: group
-            widgets:
-              - type: custom-api
-                title: Wallos – Subscriptions
-                url: ${WALLOS_URL}/api/subscriptions/get_subscriptions.php
-                cache: 1h
-                parameters:
-                  apiKey: ${WALLOS_API_KEY}
-                  sort: next_payment
-                  state: 0
-                  convert_currency: true
-                template: |
-                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
-                    {{ range .JSON.Array "subscriptions" }}
-                      <li>
-                        <div class="flex justify-between">
-                          <span class="size-h4">{{ .String "name" }}</span>
-                          <span class="color-highlight shrink-0">{{ .Float "price" | printf "%.2f" }} €</span>
-                        </div>
-                        <ul class="list-horizontal-text">
-                          <li {{ .String "next_payment" | parseTime "2006-01-02" | toRelativeTime }}></li>
-                        </ul>
-                      </li>
-                    {{ end }}
-                  </ul>
+              - title: Shopping
+                links:
+                  - title: Amazon
+                    url: https://amazon.de
+                    icon: si:amazon
+                  - title: eBay
+                    url: https://ebay.de
+                    icon: si:ebay
+                  - title: Wallos
+                    url: https://wallos.soniiit.net
+                    icon: si:shoppingcart
 
-              - type: custom-api
-                title: GitHub Actions
-                url: https://api.github.com/repos/SoniiiT/docker/actions/runs
-                cache: 5m
-                parameters:
-                  exclude_pull_requests: true
-                  per_page: 3
-                headers:
-                  Authorization: Bearer ${GITHUB_TOKEN}
-                  Accept: application/vnd.github.v3+json
-                  User-Agent: Glance-Dashboard
-                template: |
-                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
-                    {{ range .JSON.Array "workflow_runs" }}
-                      {{ $conclusion := .String "conclusion" }}
-                      <li>
-                        <a class="size-h4 color-primary-if-not-visited" href="{{ .String "html_url" }}">{{ .String "display_title" }}</a>
-                        <ul class="list-horizontal-text">
-                          <li>{{ .String "updated_at" | parseTime "rfc3339" | toRelativeTime }}</li>
-                          <li>{{ .String "name" }}</li>
-                          <li>
-                            {{ if eq $conclusion "success" }}
-                              <svg width="16" height="16" fill="var(--color-positive)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" /></svg>
-                            {{ else if eq $conclusion "failure" }}
-                              <svg width="16" height="16" fill="var(--color-negative)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" /></svg>
-                            {{ else }}
-                              <svg width="16" height="16" fill="var(--color-subtext)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-.75-4.75a.75.75 0 0 0 1.5 0V8.75a.75.75 0 0 0-1.5 0v4.5Zm.75-8.5A1 1 0 1 0 10 7a1 1 0 0 0 0-2Z" clip-rule="evenodd" /></svg>
-                            {{ end }}
-                          </li>
-                        </ul>
-                      </li>
-                    {{ end }}
-                  </ul>
+              - title: Social
+                links:
+                  - title: Reddit
+                    url: https://reddit.com
+                    icon: si:reddit
+                  - title: Twitter/X
+                    url: https://x.com
+                    icon: si:x
+                  - title: Discord
+                    url: https://discord.com
+                    icon: si:discord
 
-          - type: group
-            widgets:
-              - type: custom-api
-                title: Nearby Aircraft
-                cache: 5m
-                url: https://opensky-network.org/api/states/all
-                parameters:
-                  lamin: "48.55"
-                  lamax: "49.05"
-                  lomin: "8.93"
-                  lomax: "9.43"
-                template: |
-                  {{ $states := .JSON.Array "states" }}
-                  {{ $count := len $states }}
-                  <div class="margin-block-2">
-                    <div class="size-h6">FLUGZEUGE IN DER NÄHE: {{ $count }}</div>
-                  </div>
-                  {{ if gt $count 0 }}
-                    <ul class="list list-gap-10 collapsible-container" data-collapse-after="4">
-                      {{ range $states }}
-                        {{ $callsign := .String "1" }}
-                        {{ $icao24 := .String "0" }}
-                        {{ $origin := .String "2" }}
-                        {{ $onGround := .Bool "8" }}
-                        {{ $altitude := .Float "7" }}
-                        {{ $speed := .Float "9" }}
-                        <li>
-                          <div class="flex justify-between">
-                            <span class="size-h4 color-highlight">{{ if ne $callsign "" }}{{ $callsign | trimSpace }}{{ else }}{{ $icao24 }}{{ end }}</span>
-                            {{ if ne $origin "" }}<span class="size-h6 color-subtext">{{ $origin }}</span>{{ end }}
-                          </div>
-                          <ul class="list-horizontal-text">
-                            {{ if $onGround }}<li>Am Boden</li>{{ else }}
-                              {{ if ne $altitude 0.0 }}<li>{{ printf "%.0f" $altitude }}m</li>{{ end }}
-                              {{ if ne $speed 0.0 }}<li>{{ printf "%.0f" $speed }}m/s</li>{{ end }}
-                            {{ end }}
-                          </ul>
-                        </li>
-                      {{ end }}
-                    </ul>
-                  {{ else }}
-                    <p class="color-subtext size-h5">Keine Flugzeuge in der Nähe</p>
-                  {{ end }}
+          - type: bookmarks
+            title: Seite 2
+            groups:
+              - title: Learning & Career
+                links:
+                  - title: GitHub
+                    url: https://github.com
+                    icon: si:github
+                  - title: Stack Overflow
+                    url: https://stackoverflow.com
+                    icon: si:stackoverflow
+                  - title: Confluence
+                    url: https://soniiit.atlassian.net/wiki
+                    icon: si:confluence
 
-              - type: markets
-                markets:
-                  - symbol: BTC-EUR
-                    name: Bitcoin
-                  - symbol: ETH-EUR
-                    name: Ethereum
-                  - symbol: NVDA
-                    name: NVIDIA
-                  - symbol: AMD
-                    name: AMD
-                  - symbol: AMD
-                    name: AMD
+              - title: AI & Dev Tools
+                links:
+                  - title: ChatGPT
+                    url: https://chatgpt.com
+                    icon: si:openai
+                  - title: Replit
+                    url: https://replit.com
+                    icon: si:replit
+                  - title: VS Code Online
+                    url: https://vscode.dev
+                    icon: si:visualstudiocode
+
+              - title: Finance & Crypto
+                links:
+                  - title: Kraken
+                    url: https://kraken.com
+                    icon: si:kraken
+                  - title: Binance
+                    url: https://binance.com
+                    icon: si:binance
+                  - title: Coingecko
+                    url: https://coingecko.com
+                    icon: si:coingecko
 
   - name: Services
     columns:
@@ -205,6 +186,143 @@ pages:
                 allow-insecure: true
                 icon: si:proxmox
 
+          - type: custom-api
+            title: Jellyfin
+            cache: 1h
+            url: http://192.168.178.98:8096/Items/Counts
+            headers:
+              X-Emby-Token: ${JELLYFIN_API_KEY}
+            template: |
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "MovieCount" | formatNumber }}</div>
+                  <div class="size-h6">FILME</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "SeriesCount" | formatNumber }}</div>
+                  <div class="size-h6">SERIEN</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "EpisodeCount" | formatNumber }}</div>
+                  <div class="size-h6">EPISODEN</div>
+                </div>
+              </div>
+
+          - type: custom-api
+            title: Sonarr
+            cache: 30m
+            url: http://192.168.178.98:8989/api/v3/series
+            headers:
+              X-Api-Key: ${SONARR_API_KEY}
+            subrequests:
+              missing:
+                url: http://192.168.178.98:8989/api/v3/wanted/missing
+                parameters:
+                  pageSize: "1"
+                headers:
+                  X-Api-Key: ${SONARR_API_KEY}
+            template: |
+              {{ $total := len (.JSON.Array "") -}}
+              {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-highlight size-h3">{{ $total }}</div>
+                  <div class="size-h6">SERIEN</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
+                  <div class="size-h6">FEHLEND</div>
+                </div>
+              </div>
+
+          - type: custom-api
+            title: Radarr
+            cache: 30m
+            url: http://192.168.178.98:7878/api/v3/movie
+            headers:
+              X-Api-Key: ${RADARR_API_KEY}
+            subrequests:
+              missing:
+                url: http://192.168.178.98:7878/api/v3/wanted/missing
+                parameters:
+                  pageSize: "1"
+                headers:
+                  X-Api-Key: ${RADARR_API_KEY}
+            template: |
+              {{ $total := len (.JSON.Array "") -}}
+              {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-highlight size-h3">{{ $total }}</div>
+                  <div class="size-h6">FILME</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
+                  <div class="size-h6">FEHLEND</div>
+                </div>
+              </div>
+
+          - type: custom-api
+            title: Jellyseerr
+            cache: 5m
+            url: http://192.168.178.98:5055/api/v1/request/count
+            headers:
+              X-Api-Key: ${JELLYSEERR_API_KEY}
+            template: |
+              {{ $pending := .JSON.Int "pending" -}}
+              {{ $declined := .JSON.Int "declined" -}}
+              {{ $unavailable := .JSON.Int "unavailable" -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-positive size-h3">{{ .JSON.Int "available" }}</div>
+                  <div class="size-h6">VERFÜGBAR</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "processing" }}</div>
+                  <div class="size-h6">VERARBEITUNG</div>
+                </div>
+                <div>
+                  <div class="{{ if gt $pending 0 }}color-warn{{ else }}color-highlight{{ end }} size-h3">{{ $pending }}</div>
+                  <div class="size-h6">ANGEFRAGT</div>
+                </div>
+              </div>
+              <div class="flex justify-between text-center margin-top-10">
+                <div>
+                  <div class="{{ if gt $declined 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $declined }}</div>
+                  <div class="size-h6">ABGELEHNT</div>
+                </div>
+                <div>
+                  <div class="{{ if gt $unavailable 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $unavailable }}</div>
+                  <div class="size-h6">NICHT VERFÜGBAR</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Int "total" }}</div>
+                  <div class="size-h6">GESAMT</div>
+                </div>
+              </div>
+
+          - type: custom-api
+            title: Uptime Kuma - Services
+            cache: 1m
+            url: http://192.168.178.30:3001/api/status-page/heartbeat/services
+            template: |
+              {{ $up := 0 }}{{ $down := 0 -}}
+              {{ range .JSON.Array "heartbeatList.@values.#.#-1" -}}
+                {{ if eq (.Int "status") 1 }}{{ $up = add $up 1 }}{{ else }}{{ $down = add $down 1 }}{{ end -}}
+              {{ end -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-positive size-h3">{{ $up }}</div>
+                  <div class="size-h6">ONLINE</div>
+                </div>
+                <div>
+                  <div class="{{ if gt $down 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $down }}</div>
+                  <div class="size-h6">OFFLINE</div>
+                </div>
+              </div>
+
+      - size: full
+        widgets:
           - type: custom-api
             title: Docker Servers
             cache: 30s
@@ -340,128 +458,6 @@ pages:
               {{ end -}}
               </ul>
 
-          - type: custom-api
-            title: Uptime Kuma - Services
-            cache: 1m
-            url: http://192.168.178.30:3001/api/status-page/heartbeat/services
-            template: |
-              {{ $up := 0 }}{{ $down := 0 -}}
-              {{ range .JSON.Array "heartbeatList.@values.#.#-1" -}}
-                {{ if eq (.Int "status") 1 }}{{ $up = add $up 1 }}{{ else }}{{ $down = add $down 1 }}{{ end -}}
-              {{ end -}}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-positive size-h3">{{ $up }}</div>
-                  <div class="size-h6">ONLINE</div>
-                </div>
-                <div>
-                  <div class="{{ if gt $down 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $down }}</div>
-                  <div class="size-h6">OFFLINE</div>
-                </div>
-              </div>
-
-      - size: full
-        widgets:
-          - type: custom-api
-            title: Media Stack
-            cache: 30m
-            url: http://192.168.178.98:8096/Items/Counts
-            headers:
-              X-Emby-Token: ${JELLYFIN_API_KEY}
-            subrequests:
-              radarr:
-                url: http://192.168.178.98:7878/api/v3/movie
-                headers:
-                  X-Api-Key: ${RADARR_API_KEY}
-              radarr-missing:
-                url: http://192.168.178.98:7878/api/v3/wanted/missing
-                parameters:
-                  pageSize: "1"
-                headers:
-                  X-Api-Key: ${RADARR_API_KEY}
-              sonarr:
-                url: http://192.168.178.98:8989/api/v3/series
-                headers:
-                  X-Api-Key: ${SONARR_API_KEY}
-              sonarr-missing:
-                url: http://192.168.178.98:8989/api/v3/wanted/missing
-                parameters:
-                  pageSize: "1"
-                headers:
-                  X-Api-Key: ${SONARR_API_KEY}
-              jellyseerr:
-                url: http://192.168.178.98:5055/api/v1/request/count
-                headers:
-                  X-Api-Key: ${JELLYSEERR_API_KEY}
-            template: |
-              {{ $radarrTotal := len ((.Subrequest "radarr").JSON.Array "") }}
-              {{ $radarrMissing := (.Subrequest "radarr-missing").JSON.Int "totalRecords" }}
-              {{ $sonarrTotal := len ((.Subrequest "sonarr").JSON.Array "") }}
-              {{ $sonarrMissing := (.Subrequest "sonarr-missing").JSON.Int "totalRecords" }}
-              {{ $js := (.Subrequest "jellyseerr").JSON }}
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                <div>
-                  <div class="size-h6 color-subtext margin-bottom-5">JELLYFIN</div>
-                  <div class="flex justify-between text-center">
-                    <div>
-                      <div class="color-highlight size-h3">{{ .JSON.Int "MovieCount" | formatNumber }}</div>
-                      <div class="size-h6">FILME</div>
-                    </div>
-                    <div>
-                      <div class="color-highlight size-h3">{{ .JSON.Int "SeriesCount" | formatNumber }}</div>
-                      <div class="size-h6">SERIEN</div>
-                    </div>
-                    <div>
-                      <div class="color-highlight size-h3">{{ .JSON.Int "EpisodeCount" | formatNumber }}</div>
-                      <div class="size-h6">EPISODEN</div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="size-h6 color-subtext margin-bottom-5">RADARR</div>
-                  <div class="flex justify-between text-center">
-                    <div>
-                      <div class="color-highlight size-h3">{{ $radarrTotal }}</div>
-                      <div class="size-h6">FILME</div>
-                    </div>
-                    <div>
-                      <div class="size-h3{{ if gt $radarrMissing 0 }} color-negative{{ else }} color-highlight{{ end }}">{{ $radarrMissing }}</div>
-                      <div class="size-h6">FEHLEND</div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="size-h6 color-subtext margin-bottom-5">SONARR</div>
-                  <div class="flex justify-between text-center">
-                    <div>
-                      <div class="color-highlight size-h3">{{ $sonarrTotal }}</div>
-                      <div class="size-h6">SERIEN</div>
-                    </div>
-                    <div>
-                      <div class="size-h3{{ if gt $sonarrMissing 0 }} color-negative{{ else }} color-highlight{{ end }}">{{ $sonarrMissing }}</div>
-                      <div class="size-h6">FEHLEND</div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="size-h6 color-subtext margin-bottom-5">JELLYSEERR</div>
-                  <div class="flex justify-between text-center">
-                    <div>
-                      <div class="color-positive size-h3">{{ $js.Int "available" }}</div>
-                      <div class="size-h6">VERFÜGBAR</div>
-                    </div>
-                    <div>
-                      <div class="size-h3{{ if gt ($js.Int "pending") 0 }} color-warn{{ else }} color-highlight{{ end }}">{{ $js.Int "pending" }}</div>
-                      <div class="size-h6">ANGEFRAGT</div>
-                    </div>
-                    <div>
-                      <div class="color-highlight size-h3">{{ $js.Int "total" }}</div>
-                      <div class="size-h6">GESAMT</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
           - type: bookmarks
             groups:
               - title: Networking
@@ -551,91 +547,6 @@ pages:
 
   - name: Cloud & External
     columns:
-      - size: small
-        widgets:
-          - type: custom-api
-            title: Cloudflare Tunnels
-            cache: 5m
-            url: https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/cfd_tunnel/${CLOUDFLARE_TUNNEL_ID}/configurations
-            headers:
-              Authorization: Bearer ${CLOUDFLARE_API_KEY}
-            template: |
-              <ul class="list list-gap-14">
-              {{ range .JSON.Array "result.config.ingress" }}
-                {{ if (.String "hostname") }}
-                <li>
-                  <div class="flex items-center justify-between">
-                    <a href="https://{{ .String "hostname" }}" class="size-h4 color-highlight" target="_blank">{{ .String "hostname" | trimSuffix ".soniiit.net" }}</a>
-                    <span class="color-positive size-h6">● online</span>
-                  </div>
-                  {{ if (.String "service") }}
-                  <div class="size-h6 color-subtext">→ {{ .String "service" }}</div>
-                  {{ end }}
-                </li>
-                {{ end }}
-              {{ end }}
-              </ul>
-
-          - type: custom-api
-            title: Cloudflare Analytics
-            cache: 30m
-            url: https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/analytics/dashboard
-            parameters:
-              since: "-1440"
-              until: "0"
-              continuous: "true"
-            headers:
-              Authorization: Bearer ${CLOUDFLARE_API_KEY}
-            template: |
-              {{ $t := .JSON.Object "result.totals" }}
-              {{ $bw := divf ($t.Object "bandwidth").Float "all" 1048576 }}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{ ($t.Object "requests").Int "all" | formatNumber }}</div>
-                  <div class="size-h6">REQUESTS</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ printf "%.0f" $bw }}MB</div>
-                  <div class="size-h6">BANDWIDTH</div>
-                </div>
-                <div>
-                  <div class="size-h3{{ if gt (($t.Object "threats").Int "all") 0 }} color-negative{{ else }} color-positive{{ end }}">{{ ($t.Object "threats").Int "all" | formatNumber }}</div>
-                  <div class="size-h6">THREATS</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ ($t.Object "uniques").Int "all" | formatNumber }}</div>
-                  <div class="size-h6">UNIQUE</div>
-                </div>
-              </div>
-              <div class="size-h6 color-subtext margin-top-5 text-center">letzte 24 Stunden</div>
-
-          - type: custom-api
-            title: Trending Repositories
-            cache: 6h
-            url: https://api.github.com/search/repositories
-            parameters:
-              q: "stars:>500 created:>2026-06-22"
-              sort: stars
-              order: desc
-              per_page: 4
-            headers:
-              Authorization: Bearer ${GITHUB_TOKEN}
-              Accept: application/vnd.github.v3+json
-              User-Agent: Glance-Dashboard
-            template: |
-              <ul class="list list-gap-10 collapsible-container" data-collapse-after="4">
-                {{ range .JSON.Array "items" }}
-                  <li>
-                    <a class="size-h4 color-primary-if-not-visited" href="{{ .String "html_url" }}">{{ .String "full_name" }}</a>
-                    <ul class="list-horizontal-text">
-                      <li class="color-highlight">{{ .String "language" }}</li>
-                      <li>⭐ {{ .Int "stargazers_count" | formatNumber }}</li>
-                    </ul>
-                    <div class="size-h6 color-subtext" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ .String "description" }}</div>
-                  </li>
-                {{ end }}
-              </ul>
-
       - size: full
         widgets:
           - type: bookmarks
@@ -702,101 +613,3 @@ pages:
                   - title: Confluence
                     url: https://soniiit.atlassian.net/wiki
                     icon: si:confluence
-
-  - name: Work
-    columns:
-      - size: full
-        widgets:
-          - type: search
-            search-engine: google
-            new-tab: true
-            bangs:
-              - title: Confluence
-                shortcut: "!c"
-                url: https://itcares.atlassian.net/wiki/search?text={QUERY}
-              - title: GitHub
-                shortcut: "!gh"
-                url: https://github.com/search?q={QUERY}
-              - title: Google Maps
-                shortcut: "!m"
-                url: https://www.google.com/maps/search/{QUERY}
-
-          - type: bookmarks
-            groups:
-              - title: Cloud & HR
-                links:
-                  - title: Kaseya One
-                    url: https://one.kaseya.com/
-                    icon: si:kaseya
-                  - title: Confluence (itcares)
-                    url: https://itcares.atlassian.net/wiki/spaces
-                    icon: si:confluence
-                  - title: Personio
-                    url: https://login.personio.com/
-                    icon: si:personio
-                  - title: Lancom Cloud
-                    url: https://cloud.lancom.de/login
-                    icon: si:lancom
-                  - title: Acronis
-                    url: https://eu2-cloud.acronis.com/login
-                    icon: si:acronis
-                  - title: MS Admin
-                    url: https://admin.microsoft.com/#/homepage
-                    icon: si:microsoft
-                  - title: Mail Archiv
-                    url: http://my.secure-mailarchive.de:8470/web/login.html
-                    icon: si:maildotru
-
-              - title: Automation
-                links:
-                  - title: Power Automate
-                    url: https://make.powerautomate.com/
-                    icon: si:powerautomate
-                  - title: Zapier
-                    url: https://zapier.com/de/
-                    icon: si:zapier
-
-              - title: Dev & AI
-                links:
-                  - title: Replit
-                    url: https://replit.com/
-                    icon: si:replit
-                  - title: ChatGPT
-                    url: https://chatgpt.com/
-                    icon: si:openai
-                  - title: GitHub (itcares)
-                    url: https://github.com/itcares
-                    icon: si:github
-
-              - title: APIs
-                links:
-                  - title: API itcares.net
-                    url: https://api.itcares.net
-                    icon: si:swagger
-                  - title: API itcares.de
-                    url: https://api.itcares.de
-                    icon: si:swagger
-                  - title: ATSK API Docs
-                    url: https://api.k3s.itcares.local/atsk/v1/docs
-                    icon: si:swagger
-                  - title: LMC API Docs
-                    url: https://api.k3s.itcares.local/lmc/v1/docs
-                    icon: si:swagger
-
-              - title: Internal Tools
-                links:
-                  - title: itcares UI
-                    url: https://ui.itcares.local
-                    icon: si:homeassistant
-                  - title: Ops Performance
-                    url: https://ops-perf.itcares.local
-                    icon: si:grafana
-
-              - title: Infrastructure
-                links:
-                  - title: Portainer MSP-Docker-01
-                    url: https://192.168.10.123:9443/
-                    icon: si:portainer
-                  - title: Portainer MSP-Docker-02
-                    url: https://192.168.10.124:9443/
-                    icon: si:portainer
