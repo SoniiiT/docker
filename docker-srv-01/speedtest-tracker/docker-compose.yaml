@@ -9,7 +9,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
-      - DB_CONNECTION=sqlite
       - SPEEDTEST_SCHEDULE=0 */3 * * *
       - DISPLAY_TIMEZONE=Europe/Berlin
     volumes:
