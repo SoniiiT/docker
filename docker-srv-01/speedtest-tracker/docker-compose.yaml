@@ -9,6 +9,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
+      - APP_KEY=${SPEEDTEST_APP_KEY}
       - SPEEDTEST_SCHEDULE=0 */3 * * *
       - DISPLAY_TIMEZONE=Europe/Berlin
     volumes:
