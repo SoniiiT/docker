@@ -76,96 +76,108 @@ pages:
             collapse-after-rows: 3
             video-url-template: https://www.youtube.com/watch?v={VIDEO-ID}
 
-          - type: rss
-            limit: 10
-            collapse-after: 5
-            cache: 6h
-            feeds:
-              - url: https://selfh.st/rss/
-                title: Self-Hosted
-              - url: https://news.ycombinator.com/rss
-                title: Hacker News
+      - size: small
+        widgets:
+          - type: custom-api
+            title: GitHub Actions
+            url: https://api.github.com/repos/SoniiiT/docker/actions/runs
+            cache: 5m
+            parameters:
+              exclude_pull_requests: true
+              per_page: 8
+            headers:
+              Authorization: Bearer ${GITHUB_TOKEN}
+              Accept: application/vnd.github.v3+json
+              User-Agent: Glance-Dashboard
+            template: |
+              <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
+                {{ range .JSON.Array "workflow_runs" }}
+                  {{ $conclusion := .String "conclusion" }}
+                  <li>
+                    <a class="size-h4 color-primary-if-not-visited" href="{{ .String "html_url" }}">{{ .String "display_title" }}</a>
+                    <ul class="list-horizontal-text">
+                      <li>{{ .String "updated_at" | parseTime "rfc3339" | toRelativeTime }}</li>
+                      <li>{{ .String "name" }}</li>
+                      <li>
+                        {{ if eq $conclusion "success" }}
+                          <svg width="16" height="16" fill="var(--color-positive)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" /></svg>
+                        {{ else if eq $conclusion "failure" }}
+                          <svg width="16" height="16" fill="var(--color-negative)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clip-rule="evenodd" /></svg>
+                        {{ else }}
+                          <svg width="16" height="16" fill="var(--color-subtext)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-.75-4.75a.75.75 0 0 0 1.5 0V8.75a.75.75 0 0 0-1.5 0v4.5Zm.75-8.5A1 1 0 1 0 10 7a1 1 0 0 0 0-2Z" clip-rule="evenodd" /></svg>
+                        {{ end }}
+                      </li>
+                    </ul>
+                  </li>
+                {{ end }}
+              </ul>
 
-          - type: bookmarks
-            title: Seite 1
-            groups:
-              - title: Entertainment
-                links:
-                  - title: YouTube
-                    url: https://youtube.com
-                    icon: si:youtube
-                  - title: Netflix
-                    url: https://netflix.com
-                    icon: si:netflix
-                  - title: Jellyfin
-                    url: https://jellyfin.soniiit.net
-                    icon: si:jellyfin
-                  - title: Jellyseerr
-                    url: https://request.soniiit.net
-                    icon: si:jellyseerr
+          - type: custom-api
+            title: Wallos – Subscriptions
+            url: ${WALLOS_URL}/api/subscriptions/get_subscriptions.php
+            cache: 1h
+            parameters:
+              apiKey: ${WALLOS_API_KEY}
+              sort: next_payment
+              state: 0
+              convert_currency: true
+            template: |
+              <ul class="list list-gap-10 collapsible-container" data-collapse-after="6">
+                {{ range .JSON.Array "subscriptions" }}
+                  <li>
+                    <div class="flex justify-between">
+                      <span class="size-h4">{{ .String "name" }}</span>
+                      <span class="color-highlight shrink-0">{{ .Float "price" | printf "%.2f" }} €</span>
+                    </div>
+                    <ul class="list-horizontal-text">
+                      <li>{{ .String "next_payment" | parseTime "2006-01-02" | toRelativeTime }}</li>
+                      <li>{{ .String "category_name" }}</li>
+                    </ul>
+                  </li>
+                {{ end }}
+              </ul>
 
-              - title: Shopping
-                links:
-                  - title: Amazon
-                    url: https://amazon.de
-                    icon: si:amazon
-                  - title: eBay
-                    url: https://ebay.de
-                    icon: si:ebay
-                  - title: Wallos
-                    url: https://wallos.soniiit.net
-                    icon: si:shoppingcart
-
-              - title: Social
-                links:
-                  - title: Reddit
-                    url: https://reddit.com
-                    icon: si:reddit
-                  - title: Twitter/X
-                    url: https://x.com
-                    icon: si:x
-                  - title: Discord
-                    url: https://discord.com
-                    icon: si:discord
-
-          - type: bookmarks
-            title: Seite 2
-            groups:
-              - title: Learning & Career
-                links:
-                  - title: GitHub
-                    url: https://github.com
-                    icon: si:github
-                  - title: Stack Overflow
-                    url: https://stackoverflow.com
-                    icon: si:stackoverflow
-                  - title: Confluence
-                    url: https://soniiit.atlassian.net/wiki
-                    icon: si:confluence
-
-              - title: AI & Dev Tools
-                links:
-                  - title: ChatGPT
-                    url: https://chatgpt.com
-                    icon: si:openai
-                  - title: Replit
-                    url: https://replit.com
-                    icon: si:replit
-                  - title: VS Code Online
-                    url: https://vscode.dev
-                    icon: si:visualstudiocode
-
-              - title: Finance & Crypto
-                links:
-                  - title: Kraken
-                    url: https://kraken.com
-                    icon: si:kraken
-                  - title: Binance
-                    url: https://binance.com
-                    icon: si:binance
-                  - title: Coingecko
-                    url: https://coingecko.com
-                    icon: si:coingecko
+          - type: custom-api
+            title: Nearby Aircraft
+            cache: 5m
+            url: https://opensky-network.org/api/states/all
+            parameters:
+              lamin: "48.55"
+              lamax: "49.05"
+              lomin: "8.93"
+              lomax: "9.43"
+            template: |
+              {{ $states := .JSON.Array "states" }}
+              {{ $count := len $states }}
+              <div class="margin-block-2">
+                <div class="size-h6">FLUGZEUGE IN DER NÄHE: {{ $count }}</div>
+              </div>
+              {{ if gt $count 0 }}
+                <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                  {{ range $states }}
+                    {{ $callsign := .String "1" }}
+                    {{ $icao24 := .String "0" }}
+                    {{ $origin := .String "2" }}
+                    {{ $onGround := .Bool "8" }}
+                    {{ $altitude := .Float "7" }}
+                    {{ $speed := .Float "9" }}
+                    <li>
+                      <div class="flex justify-between">
+                        <span class="size-h4 color-highlight">{{ if ne $callsign "" }}{{ $callsign | trimSpace }}{{ else }}{{ $icao24 }}{{ end }}</span>
+                        {{ if ne $origin "" }}<span class="size-h6 color-subtext">{{ $origin }}</span>{{ end }}
+                      </div>
+                      <ul class="list-horizontal-text">
+                        {{ if $onGround }}<li>Am Boden</li>{{ else }}
+                          {{ if ne $altitude 0.0 }}<li>{{ printf "%.0f" $altitude }}m</li>{{ end }}
+                          {{ if ne $speed 0.0 }}<li>{{ printf "%.0f" $speed }}m/s</li>{{ end }}
+                        {{ end }}
+                      </ul>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ else }}
+                <p class="color-subtext size-h5">Keine Flugzeuge in der Nähe</p>
+              {{ end }}
 
   - name: Services
     columns:
