@@ -1,6 +1,6 @@
 services:
   speedtest-tracker:
-    image: ghcr.io/alexjustesen/speedtest-tracker:latest
+    image: lscr.io/linuxserver/speedtest-tracker:latest
     container_name: speedtest-tracker
     restart: unless-stopped
     ports:
@@ -9,8 +9,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Berlin
-      - APP_KEY=${SPEEDTEST_APP_KEY}
       - DB_CONNECTION=sqlite
       - SPEEDTEST_SCHEDULE=0 */3 * * *
+      - DISPLAY_TIMEZONE=Europe/Berlin
     volumes:
       - /mnt/docker/speedtest-tracker/config:/config
