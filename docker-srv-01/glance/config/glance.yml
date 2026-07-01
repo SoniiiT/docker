@@ -1440,7 +1440,7 @@ pages:
                 groups:
                   - title: MSP Tools
                     links:
-                      - title: Kaseya
+                      - title: KaseyaOne
                         url: https://one.kaseya.com/login
                         icon: si:kaseya
                       - title: Autotask
@@ -1467,10 +1467,10 @@ pages:
                       - title: M365 Admin
                         url: https://admin.microsoft.com/#/homepage
                         icon: si:microsoft365
-                      - title: Lancom
+                      - title: Lancom Cloud
                         url: https://cloud.lancom.de/
                         icon: si:lancom
-                      - title: Acronis
+                      - title: Acronis Cloud
                         url: https://eu2-cloud.acronis.com/
                         icon: si:acronis
                       - title: AppRiver
