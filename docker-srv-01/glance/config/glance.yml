@@ -816,11 +816,116 @@ pages:
               - type: bookmarks
                 title: IP
                 groups:
-                  - title: IP
+                  - title: Media Stack
                     links:
-                      - title: IP-Übersicht
-                        url: http://192.168.178.0
+                      - title: Jellyseerr
+                        url: http://192.168.178.98:5055
+                        icon: si:jellyseerr
+                      - title: Jellyfin
+                        url: http://192.168.178.98:8096
+                        icon: si:jellyfin
+                      - title: Jellyfin Vue
+                        url: http://192.168.178.98:8645
+                        icon: si:jellyfin
+                      - title: Sonarr
+                        url: http://192.168.178.98:8989
+                        icon: si:sonarr
+                      - title: Radarr
+                        url: http://192.168.178.98:7878
+                        icon: si:radarr
+                      - title: Prowlarr
+                        url: http://192.168.178.98:9696
+                        icon: si:prowlarr
+                      - title: Kapowarr
+                        url: http://192.168.178.98:5656
+                        icon: si:bookstack
+                      - title: Calibre Web
+                        url: http://192.168.178.98:8083
+                        icon: si:calibre
+                      - title: Readarr
+                        url: http://192.168.178.98:8787
+                        icon: si:bookstack
+                      - title: Kavita
+                        url: http://192.168.178.98:5010
+                        icon: si:bookstack
+                      - title: RoMM
+                        url: http://192.168.178.98:8008
+                        icon: si:nintendo
+                      - title: Questarr
+                        url: http://192.168.178.98:5000
+                        icon: si:radarr
+
+                  - title: Infrastructure
+                    links:
+                      - title: Proxmox
+                        url: https://192.168.178.6:8006
+                        icon: si:proxmox
+                      - title: Portainer
+                        url: https://192.168.178.30:9443/
+                        icon: si:portainer
+                      - title: WGDashboard
+                        url: http://192.168.178.45:10086
+                        icon: si:wireguard
+                      - title: Omada
+                        url: https://192.168.178.51:8043
+                        icon: si:tp-link
+                      - title: Uptime Kuma
+                        url: http://192.168.178.30:3001/
+                        icon: si:uptimekuma
+                      - title: Home Assistant
+                        url: http://192.168.178.8:8123
+                        icon: si:homeassistant
+                      - title: Pterodactyl
+                        url: https://192.168.178.40
+                        icon: si:pterodactyl
+                      - title: Remotely
+                        url: http://192.168.178.46:5000
+                        icon: si:remotely
+
+                  - title: Tools & Dev
+                    links:
+                      - title: IT-Tools
+                        url: http://192.168.178.31:8080/
+                        icon: si:tools
+                      - title: Odysseus
+                        url: http://192.168.178.90:7000
+                        icon: si:webassembly
+                      - title: Open Design
+                        url: http://192.168.178.90:7456
+                        icon: si:figma
+                      - title: AgentsView
+                        url: http://192.168.178.90:8080
+                        icon: si:openai
+                      - title: Network Toolbox
+                        url: http://192.168.178.31:3001/
+                        icon: si:bind9
+                      - title: Scanopy
+                        url: http://192.168.178.52:60072
                         icon: si:cisco
+                      - title: Semaphore
+                        url: http://192.168.178.50:3001
+                        icon: si:ansible
+                      - title: WUD
+                        url: http://192.168.178.31:3000
+                        icon: si:docker
+                      - title: Dokploy
+                        url: http://192.168.178.32:3000/
+                        icon: si:docker
+                      - title: Coolify
+                        url: http://192.168.178.61:8000/
+                        icon: si:coolify
+                      - title: Wallos
+                        url: http://192.168.178.31:8282/
+                        icon: si:wallos
+                      - title: Speedtest
+                        url: http://192.168.178.30:8765/
+                        icon: si:speedtest
+                      - title: N8N
+                        url: http://192.168.178.31:5678/
+                        icon: si:n8n
+                      - title: Harbor
+                        url: http://192.168.178.42/
+                        icon: si:harbor
               - type: bookmarks
                 title: Teleport
                 groups:
