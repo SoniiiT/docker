@@ -90,12 +90,15 @@ pages:
 
                   - title: Social Media
                     links:
-                      - title: Instagram
-                        url: https://www.instagram.com/
-                        icon: si:instagram
+                      - title: pr0gramm
+                        url: https://pr0gramm.com/
+                        icon: si:p
                       - title: TikTok
                         url: https://www.tiktok.com/en/
                         icon: si:tiktok
+                      - title: Instagram
+                        url: https://www.instagram.com/
+                        icon: si:instagram
                       - title: Discord
                         url: https://discord.com/
                         icon: si:discord
@@ -117,36 +120,33 @@ pages:
                       - title: LinkedIn
                         url: https://www.linkedin.com/
                         icon: si:linkedin
-                      - title: pr0gramm
-                        url: https://pr0gramm.com/
-                        icon: si:p
 
                   - title: AI
                     links:
-                      - title: ChatGPT
-                        url: https://chatgpt.com/
-                        icon: si:openai
+                      - title: GitHub
+                        url: https://github.com/
+                        icon: si:github
                       - title: Claude
                         url: https://claude.ai/login
                         icon: si:anthropic
                       - title: Gemini
                         url: https://gemini.google.com/app
                         icon: si:googlegemini
+                      - title: NotebookLM
+                        url: https://notebooklm.google/
+                        icon: si:google
+                      - title: ChatGPT
+                        url: https://chatgpt.com/
+                        icon: si:openai
+                      - title: M365 Copilot
+                        url: https://m365.cloud.microsoft/chat
+                        icon: si:microsoftcopilot
                       - title: DeepSeek
                         url: https://chat.deepseek.com/
                         icon: si:deepseek
                       - title: Grok
                         url: https://grok.com/
                         icon: si:x
-                      - title: NotebookLM
-                        url: https://notebooklm.google/
-                        icon: si:google
-                      - title: M365 Copilot
-                        url: https://m365.cloud.microsoft/chat
-                        icon: si:microsoftcopilot
-                      - title: GitHub
-                        url: https://github.com/
-                        icon: si:github
 
               - type: bookmarks
                 title: Seite 2
