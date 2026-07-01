@@ -664,7 +664,7 @@ pages:
           - type: custom-api
             title: N8N – Aktive Workflows
             cache: 5m
-            url: http://192.168.178.29:5678/api/v1/workflows
+            url: https://n8n.soniiit.net/api/v1/workflows
             headers:
               X-N8N-API-KEY: ${N8N_API_KEY}
             template: |
@@ -715,7 +715,10 @@ pages:
               limit: "5"
             template: |
               <ul class="list list-gap-10">
+                {{ $i := 0 -}}
                 {{ range .JSON.Array "" -}}
+                {{ if lt $i 5 -}}
+                {{ $i = add $i 1 -}}
                   {{ $status := .String "status" -}}
                   <li>
                     <div class="flex justify-between">
@@ -726,6 +729,7 @@ pages:
                       <li {{ .String "created" | parseTime "rfc3339" | toRelativeTime }}></li>
                     </ul>
                   </li>
+                {{ end -}}
                 {{ end -}}
               </ul>
 
@@ -872,7 +876,7 @@ pages:
           - type: custom-api
             title: N8N Workflows
             cache: 5m
-            url: http://192.168.178.29:5678/api/v1/workflows
+            url: https://n8n.soniiit.net/api/v1/workflows
             headers:
               X-N8N-API-KEY: ${N8N_API_KEY}
             template: |
