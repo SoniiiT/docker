@@ -658,7 +658,7 @@ pages:
                 {{ end -}}
               </ul>
 
-
+      - size: small
         widgets:
           - type: custom-api
             title: Proxmox – Status
