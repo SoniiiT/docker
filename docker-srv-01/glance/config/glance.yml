@@ -1476,7 +1476,7 @@ pages:
                       - title: AppRiver
                         url: https://account.appriver.com/
                         icon: si:microsoft
-                      - title: Secure Mail Archive
+                      - title: Mailstore
                         url: http://my.secure-mailarchive.de:8470/web/login.html
                         icon: si:mail
                       - title: ZScaler ZDX
@@ -1501,7 +1501,7 @@ pages:
                         url: https://make.powerautomate.com/
                         icon: si:microsoftpowerautomate
                       - title: Zapier
-                        url: https://zapier.com/de/
+                        url: https://zapier.com/app/login
                         icon: si:zapier
                       - title: Confluence
                         url: https://itcares.atlassian.net/wiki/spaces
@@ -1510,7 +1510,7 @@ pages:
                         url: https://lucid.app/documents#/dashboard
                         icon: si:lucid
                       - title: Fonio
-                        url: https://www.fonio.ai/de
+                        url: https://app.fonio.ai/
                         icon: si:voip
                       - title: NextCloud
                         url: https://cloud.itcares.de/
@@ -1563,6 +1563,9 @@ pages:
                       - title: SMS API
                         url: https://api.k3s.itcares.local/sms/v1/docs
                         icon: si:swagger
+                      - title: Replit
+                        url: https://replit.com/
+                        icon: si:replit
 
                   - title: Kubernetes
                     links:
@@ -1603,10 +1606,10 @@ pages:
                         url: https://insights.ibm.com/cui/01f0294b-013a-1702-98db-d65f707b7cb9/dashboard
                         icon: si:ibm
                       - title: QNAP Backup-01
-                        url: https://10.10.10.225:8443/
+                        url: https://10.10.10.225:8443/cgi-bin/
                         icon: si:qnap
                       - title: QNAP Backup-02
-                        url: https://10.10.10.235:8443/
+                        url: https://10.10.10.235:8443/cgi-bin/
                         icon: si:qnap
                       - title: iDRAC HyperV6
                         url: https://10.10.10.26/
