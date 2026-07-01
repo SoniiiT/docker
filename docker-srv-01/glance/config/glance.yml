@@ -306,143 +306,6 @@ pages:
                 icon: si:proxmox
 
           - type: custom-api
-            title: Jellyfin
-            cache: 1h
-            url: http://192.168.178.98:8096/Items/Counts
-            headers:
-              X-Emby-Token: ${JELLYFIN_API_KEY}
-            template: |
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "MovieCount" | formatNumber }}</div>
-                  <div class="size-h6">FILME</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "SeriesCount" | formatNumber }}</div>
-                  <div class="size-h6">SERIEN</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "EpisodeCount" | formatNumber }}</div>
-                  <div class="size-h6">EPISODEN</div>
-                </div>
-              </div>
-
-          - type: custom-api
-            title: Sonarr
-            cache: 30m
-            url: http://192.168.178.98:8989/api/v3/series
-            headers:
-              X-Api-Key: ${SONARR_API_KEY}
-            subrequests:
-              missing:
-                url: http://192.168.178.98:8989/api/v3/wanted/missing
-                parameters:
-                  pageSize: "1"
-                headers:
-                  X-Api-Key: ${SONARR_API_KEY}
-            template: |
-              {{ $total := len (.JSON.Array "") -}}
-              {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{ $total }}</div>
-                  <div class="size-h6">SERIEN</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
-                  <div class="size-h6">FEHLEND</div>
-                </div>
-              </div>
-
-          - type: custom-api
-            title: Radarr
-            cache: 30m
-            url: http://192.168.178.98:7878/api/v3/movie
-            headers:
-              X-Api-Key: ${RADARR_API_KEY}
-            subrequests:
-              missing:
-                url: http://192.168.178.98:7878/api/v3/wanted/missing
-                parameters:
-                  pageSize: "1"
-                headers:
-                  X-Api-Key: ${RADARR_API_KEY}
-            template: |
-              {{ $total := len (.JSON.Array "") -}}
-              {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-highlight size-h3">{{ $total }}</div>
-                  <div class="size-h6">FILME</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
-                  <div class="size-h6">FEHLEND</div>
-                </div>
-              </div>
-
-          - type: custom-api
-            title: Jellyseerr
-            cache: 5m
-            url: http://192.168.178.98:5055/api/v1/request/count
-            headers:
-              X-Api-Key: ${JELLYSEERR_API_KEY}
-            template: |
-              {{ $pending := .JSON.Int "pending" -}}
-              {{ $declined := .JSON.Int "declined" -}}
-              {{ $unavailable := .JSON.Int "unavailable" -}}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-positive size-h3">{{ .JSON.Int "available" }}</div>
-                  <div class="size-h6">VERFÜGBAR</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "processing" }}</div>
-                  <div class="size-h6">VERARBEITUNG</div>
-                </div>
-                <div>
-                  <div class="{{ if gt $pending 0 }}color-warn{{ else }}color-highlight{{ end }} size-h3">{{ $pending }}</div>
-                  <div class="size-h6">ANGEFRAGT</div>
-                </div>
-              </div>
-              <div class="flex justify-between text-center margin-top-10">
-                <div>
-                  <div class="{{ if gt $declined 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $declined }}</div>
-                  <div class="size-h6">ABGELEHNT</div>
-                </div>
-                <div>
-                  <div class="{{ if gt $unavailable 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $unavailable }}</div>
-                  <div class="size-h6">NICHT VERFÜGBAR</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Int "total" }}</div>
-                  <div class="size-h6">GESAMT</div>
-                </div>
-              </div>
-
-          - type: custom-api
-            title: Uptime Kuma - Services
-            cache: 1m
-            url: http://192.168.178.30:3001/api/status-page/heartbeat/services
-            template: |
-              {{ $up := 0 }}{{ $down := 0 -}}
-              {{ range .JSON.Array "heartbeatList.@values.#.#-1" -}}
-                {{ if eq (.Int "status") 1 }}{{ $up = add $up 1 }}{{ else }}{{ $down = add $down 1 }}{{ end -}}
-              {{ end -}}
-              <div class="flex justify-between text-center">
-                <div>
-                  <div class="color-positive size-h3">{{ $up }}</div>
-                  <div class="size-h6">ONLINE</div>
-                </div>
-                <div>
-                  <div class="{{ if gt $down 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $down }}</div>
-                  <div class="size-h6">OFFLINE</div>
-                </div>
-              </div>
-
-      - size: full
-        widgets:
-          - type: custom-api
             title: Docker Servers
             cache: 30s
             url: https://192.168.178.30:9443/api/endpoints
@@ -577,43 +440,293 @@ pages:
               {{ end -}}
               </ul>
 
-          - type: bookmarks
-            groups:
-              - title: Networking
-                links:
-                  - title: Fritz!Box Main
-                    url: http://192.168.178.1
-                    icon: si:fritz-box
-                  - title: Fritz!Box Tony
-                    url: http://192.168.178.2
-                    icon: si:fritz-box
-                  - title: Traefik
-                    url: https://traefik.home.soniiit.net/dashboard/
-                    icon: si:traefik
+          - type: custom-api
+            title: Uptime Kuma – Services
+            cache: 1m
+            url: http://192.168.178.30:3001/api/status-page/heartbeat/services
+            template: |
+              {{ $up := 0 }}{{ $down := 0 -}}
+              {{ range .JSON.Array "heartbeatList.@values.#.#-1" -}}
+                {{ if eq (.Int "status") 1 }}{{ $up = add $up 1 }}{{ else }}{{ $down = add $down 1 }}{{ end -}}
+              {{ end -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-positive size-h3">{{ $up }}</div>
+                  <div class="size-h6">ONLINE</div>
+                </div>
+                <div>
+                  <div class="{{ if gt $down 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $down }}</div>
+                  <div class="size-h6">OFFLINE</div>
+                </div>
+              </div>
 
-              - title: Infrastructure & Management
-                links:
-                  - title: Proxmox
-                    url: https://192.168.178.6:8006/
-                    icon: si:proxmox
-                  - title: Portainer
-                    url: https://192.168.178.30:9443/
-                    icon: si:portainer
+          - type: custom-api
+            title: GitHub – Beliebte Repos
+            cache: 6h
+            url: https://api.github.com/users/SoniiiT/repos
+            parameters:
+              sort: stargazers_count
+              direction: desc
+              per_page: "5"
+            headers:
+              Authorization: Bearer ${GITHUB_TOKEN}
+              Accept: application/vnd.github.v3+json
+              User-Agent: Glance-Dashboard
+            template: |
+              <ul class="list list-gap-10">
+                {{ range .JSON.Array "" -}}
+                  <li>
+                    <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "name" }}</a>
+                    <ul class="list-horizontal-text size-h6">
+                      <li>⭐ {{ .Int "stargazers_count" }}</li>
+                      <li>{{ .String "language" }}</li>
+                    </ul>
+                  </li>
+                {{ end -}}
+              </ul>
 
-              - title: Media Stack
-                links:
-                  - title: Jellyfin
-                    url: http://192.168.178.98:8096
-                    icon: si:jellyfin
-                  - title: Jellyseerr
-                    url: http://192.168.178.98:5055
-                    icon: si:jellyseerr
-                  - title: Sonarr
-                    url: http://192.168.178.98:8989
-                    icon: si:sonarr
-                  - title: Radarr
-                    url: http://192.168.178.98:7878
-                    icon: si:radarr
+      - size: full
+        widgets:
+          - type: group
+            widgets:
+              - type: custom-api
+                title: Jellyfin
+                cache: 1h
+                url: http://192.168.178.98:8096/Items/Counts
+                headers:
+                  X-Emby-Token: ${JELLYFIN_API_KEY}
+                template: |
+                  <div class="flex justify-between text-center">
+                    <div>
+                      <div class="color-highlight size-h3">{{ .JSON.Int "MovieCount" | formatNumber }}</div>
+                      <div class="size-h6">FILME</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ .JSON.Int "SeriesCount" | formatNumber }}</div>
+                      <div class="size-h6">SERIEN</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ .JSON.Int "EpisodeCount" | formatNumber }}</div>
+                      <div class="size-h6">EPISODEN</div>
+                    </div>
+                  </div>
+
+              - type: custom-api
+                title: Sonarr
+                cache: 30m
+                url: http://192.168.178.98:8989/api/v3/series
+                headers:
+                  X-Api-Key: ${SONARR_API_KEY}
+                subrequests:
+                  missing:
+                    url: http://192.168.178.98:8989/api/v3/wanted/missing
+                    parameters:
+                      pageSize: "1"
+                    headers:
+                      X-Api-Key: ${SONARR_API_KEY}
+                template: |
+                  {{ $total := len (.JSON.Array "") -}}
+                  {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
+                  <div class="flex justify-between text-center">
+                    <div>
+                      <div class="color-highlight size-h3">{{ $total }}</div>
+                      <div class="size-h6">SERIEN</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
+                      <div class="size-h6">FEHLEND</div>
+                    </div>
+                  </div>
+
+              - type: custom-api
+                title: Radarr
+                cache: 30m
+                url: http://192.168.178.98:7878/api/v3/movie
+                headers:
+                  X-Api-Key: ${RADARR_API_KEY}
+                subrequests:
+                  missing:
+                    url: http://192.168.178.98:7878/api/v3/wanted/missing
+                    parameters:
+                      pageSize: "1"
+                    headers:
+                      X-Api-Key: ${RADARR_API_KEY}
+                template: |
+                  {{ $total := len (.JSON.Array "") -}}
+                  {{ $missing := (.Subrequest "missing").JSON.Int "totalRecords" -}}
+                  <div class="flex justify-between text-center">
+                    <div>
+                      <div class="color-highlight size-h3">{{ $total }}</div>
+                      <div class="size-h6">FILME</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3{{ if gt $missing 0 }} color-negative{{ end }}">{{ $missing }}</div>
+                      <div class="size-h6">FEHLEND</div>
+                    </div>
+                  </div>
+
+              - type: custom-api
+                title: Jellyseerr
+                cache: 5m
+                url: http://192.168.178.98:5055/api/v1/request/count
+                headers:
+                  X-Api-Key: ${JELLYSEERR_API_KEY}
+                template: |
+                  {{ $pending := .JSON.Int "pending" -}}
+                  {{ $declined := .JSON.Int "declined" -}}
+                  {{ $unavailable := .JSON.Int "unavailable" -}}
+                  <div class="flex justify-between text-center">
+                    <div>
+                      <div class="color-positive size-h3">{{ .JSON.Int "available" }}</div>
+                      <div class="size-h6">VERFÜGBAR</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ .JSON.Int "processing" }}</div>
+                      <div class="size-h6">VERARBEITUNG</div>
+                    </div>
+                    <div>
+                      <div class="{{ if gt $pending 0 }}color-warn{{ else }}color-highlight{{ end }} size-h3">{{ $pending }}</div>
+                      <div class="size-h6">ANGEFRAGT</div>
+                    </div>
+                  </div>
+                  <div class="flex justify-between text-center margin-top-10">
+                    <div>
+                      <div class="{{ if gt $declined 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $declined }}</div>
+                      <div class="size-h6">ABGELEHNT</div>
+                    </div>
+                    <div>
+                      <div class="{{ if gt $unavailable 0 }}color-negative{{ else }}color-highlight{{ end }} size-h3">{{ $unavailable }}</div>
+                      <div class="size-h6">NICHT VERFÜGBAR</div>
+                    </div>
+                    <div>
+                      <div class="color-highlight size-h3">{{ .JSON.Int "total" }}</div>
+                      <div class="size-h6">GESAMT</div>
+                    </div>
+                  </div>
+
+          - type: group
+            widgets:
+              - type: bookmarks
+                title: Seite 1
+                groups:
+                  - title: DNS
+                    links:
+                      - title: DNS Server
+                        url: http://example.example.de
+                        icon: si:bind9
+                  - title: IP
+                    links:
+                      - title: IP-Übersicht
+                        url: http://192.168.178.0
+                        icon: si:cisco
+              - type: bookmarks
+                title: Seite 2
+                groups:
+                  - title: Teleport
+                    links:
+                      - title: Teleport
+                        url: https://teleport.example.de
+                        icon: si:teleport
+
+      - size: small
+        widgets:
+          - type: custom-api
+            title: Proxmox – Status
+            cache: 1m
+            url: https://192.168.178.6:8006/api2/json/nodes/pve-srv-01/status
+            allow-insecure: true
+            headers:
+              Authorization: PVEAPIToken=${PROXMOX_API_TOKEN}
+            template: |
+              {{ $cpu := mul (.JSON.Float "data.cpu") 100 -}}
+              {{ $memUsed := .JSON.Float "data.memory.used" -}}
+              {{ $memTotal := .JSON.Float "data.memory.total" -}}
+              {{ $memPct := mul (div $memUsed $memTotal) 100 -}}
+              {{ $diskUsed := .JSON.Float "data.rootfs.used" -}}
+              {{ $diskTotal := .JSON.Float "data.rootfs.total" -}}
+              {{ $diskPct := mul (div $diskUsed $diskTotal) 100 -}}
+              <div class="flex justify-between text-center">
+                <div>
+                  <div class="color-highlight size-h3">{{ $cpu | printf "%.0f" }}%</div>
+                  <div class="size-h6">CPU</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ $memPct | printf "%.0f" }}%</div>
+                  <div class="size-h6">RAM</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ $diskPct | printf "%.0f" }}%</div>
+                  <div class="size-h6">DISK</div>
+                </div>
+              </div>
+
+          - type: custom-api
+            title: N8N – Aktive Workflows
+            cache: 5m
+            url: http://192.168.178.29:5678/api/v1/workflows
+            headers:
+              X-N8N-API-KEY: ${N8N_API_KEY}
+            template: |
+              <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                {{ range .JSON.Array "data" -}}
+                  {{ if .Bool "active" -}}
+                  <li>
+                    <span class="size-h4 color-highlight">{{ .String "name" }}</span>
+                    <ul class="list-horizontal-text size-h6">
+                      <li class="color-positive">aktiv</li>
+                    </ul>
+                  </li>
+                  {{ end -}}
+                {{ end -}}
+              </ul>
+
+          - type: custom-api
+            title: WireGuard Tunnels
+            cache: 1m
+            url: http://192.168.178.45:10086/api/getWireguardConfigurations
+            headers:
+              wg-dashboard-apikey: ${WGD_API_KEY}
+            template: |
+              <ul class="list list-gap-14">
+                {{ range .JSON.Array "data" -}}
+                  {{ $total := .Int "TotalPeers" -}}
+                  {{ $connected := .Int "ConnectedPeers" -}}
+                  {{ $disconnected := sub $total $connected -}}
+                  <li>
+                    <div class="flex justify-between">
+                      <span class="size-h4 color-highlight">{{ .String "Name" }}</span>
+                    </div>
+                    <ul class="list-horizontal-text size-h6">
+                      <li class="color-positive">{{ $connected | toInt }} verbunden</li>
+                      <li class="color-subtext">{{ $disconnected | toInt }} getrennt</li>
+                    </ul>
+                  </li>
+                {{ end -}}
+              </ul>
+
+          - type: custom-api
+            title: Semaphore – Letzte Runs
+            cache: 2m
+            url: http://192.168.178.50:3001/api/projects/1/tasks
+            headers:
+              Authorization: Bearer ${SEMAPHORE_API_TOKEN}
+            parameters:
+              limit: "5"
+            template: |
+              <ul class="list list-gap-10">
+                {{ range .JSON.Array "" -}}
+                  {{ $status := .String "status" -}}
+                  <li>
+                    <div class="flex justify-between">
+                      <span class="size-h4">Task #{{ .Int "id" }}</span>
+                      <span class="{{ if eq $status "success" }}color-positive{{ else if eq $status "error" }}color-negative{{ else if eq $status "running" }}color-highlight{{ else }}color-subtext{{ end }} size-h6">{{ $status }}</span>
+                    </div>
+                    <ul class="list-horizontal-text size-h6">
+                      <li {{ .String "created" | parseTime "rfc3339" | toRelativeTime }}></li>
+                    </ul>
+                  </li>
+                {{ end -}}
+              </ul>
 
   - name: Exposed Services
     columns:
