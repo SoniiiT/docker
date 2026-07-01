@@ -869,18 +869,9 @@ pages:
                       - title: Omada
                         url: https://192.168.178.51:8043
                         icon: si:tp-link
-                      - title: Uptime Kuma
-                        url: http://192.168.178.30:3001/
-                        icon: si:uptimekuma
-                      - title: Home Assistant
-                        url: http://192.168.178.8:8123
-                        icon: si:homeassistant
                       - title: Pterodactyl
                         url: https://192.168.178.40
                         icon: si:pterodactyl
-                      - title: Remotely
-                        url: http://192.168.178.46:5000
-                        icon: si:remotely
 
                   - title: Tools & Dev
                     links:
@@ -926,6 +917,15 @@ pages:
                       - title: Harbor
                         url: http://192.168.178.42/
                         icon: si:harbor
+                      - title: Uptime Kuma
+                        url: http://192.168.178.30:3001/
+                        icon: si:uptimekuma
+                      - title: Home Assistant
+                        url: http://192.168.178.8:8123
+                        icon: si:homeassistant
+                      - title: Remotely
+                        url: http://192.168.178.46:5000
+                        icon: si:remotely
               - type: bookmarks
                 title: Teleport
                 groups:
