@@ -605,20 +605,23 @@ pages:
           - type: group
             widgets:
               - type: bookmarks
-                title: Seite 1
+                title: DNS
                 groups:
                   - title: DNS
                     links:
                       - title: DNS Server
                         url: http://example.example.de
                         icon: si:bind9
+              - type: bookmarks
+                title: IP
+                groups:
                   - title: IP
                     links:
                       - title: IP-Übersicht
                         url: http://192.168.178.0
                         icon: si:cisco
               - type: bookmarks
-                title: Seite 2
+                title: Teleport
                 groups:
                   - title: Teleport
                     links:
