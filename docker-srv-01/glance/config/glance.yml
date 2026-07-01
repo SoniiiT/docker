@@ -225,6 +225,12 @@ pages:
                     name: Bitcoin
                   - symbol: ETH-EUR
                     name: Ethereum
+                  - symbol: USDT-EUR
+                    name: Tether
+                  - symbol: BNB-EUR
+                    name: BNB
+                  - symbol: XRP-EUR
+                    name: XRP
 
               - type: markets
                 title: Stocks
@@ -235,6 +241,10 @@ pages:
                     name: AMD
                   - symbol: GOOG
                     name: Alphabet C
+                  - symbol: AAPL
+                    name: Apple
+                  - symbol: SAP
+                    name: SAP
 
               - type: custom-api
                 title: Nearby Aircraft
