@@ -785,6 +785,12 @@ pages:
                       - title: Coolify
                         url: https://coolify.home.soniiit.net/
                         icon: si:coolify
+                      - title: Wallos
+                        url: https://wallos.home.soniiit.net/
+                        icon: si:wallos
+                      - title: Speedtest
+                        url: https://speedtest.home.soniiit.net/
+                        icon: si:speedtest
 
                   - title: Tools & Dev
                     links:
