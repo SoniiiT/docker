@@ -1290,11 +1290,41 @@ pages:
         widgets:
           - type: bookmarks
             groups:
-              - title: Exposed Services
+              - title: Monitoring & Access
                 links:
-                  - title: example.example.de
-                    url: https://example.example.de
-                    icon: si:cloudflare
+                  - title: Uptime Kuma (Internal)
+                    url: https://uptime.soniiit.net/
+                    icon: si:uptimekuma
+                  - title: Uptime Kuma (Cloud)
+                    url: https://status.soniiit.net/
+                    icon: si:uptimekuma
+                  - title: Teleport
+                    url: https://teleport.soniiit.net/
+                    icon: si:teleport
+
+              - title: Auth & Management
+                links:
+                  - title: Authentik
+                    url: https://sso.soniiit.net/
+                    icon: si:authentik
+                  - title: Home Assistant
+                    url: https://homeassistant.soniiit.net/
+                    icon: si:homeassistant
+                  - title: Pterodactyl
+                    url: https://panel.soniiit.net/
+                    icon: si:pterodactyl
+
+              - title: Tools & Automation
+                links:
+                  - title: Harbor
+                    url: https://reg.soniiit.net/
+                    icon: si:harbor
+                  - title: Remotely
+                    url: https://remote.soniiit.net/
+                    icon: si:remotely
+                  - title: N8N
+                    url: https://n8n.soniiit.net/
+                    icon: si:n8n
 
   - name: Cloud
     columns:
