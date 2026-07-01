@@ -1397,12 +1397,12 @@ pages:
                   - title: Artifact Hub
                     url: https://artifacthub.io/
                     icon: si:artifacthub
-                  - title: Doppler
-                    url: https://dashboard.doppler.com/
-                    icon: si:doppler
 
               - title: AI & Utilities
                 links:
+                  - title: Claude
+                    url: https://claude.ai/login
+                    icon: si:anthropic
                   - title: ChatGPT
                     url: https://chatgpt.com/
                     icon: si:openai
