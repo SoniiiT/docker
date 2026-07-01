@@ -1503,6 +1503,9 @@ pages:
                       - title: Zapier
                         url: https://zapier.com/app/login
                         icon: si:zapier
+                      - title: Replit
+                        url: https://replit.com/
+                        icon: si:replit
                       - title: Confluence
                         url: https://itcares.atlassian.net/wiki/spaces
                         icon: si:confluence
@@ -1563,9 +1566,6 @@ pages:
                       - title: SMS API
                         url: https://api.k3s.itcares.local/sms/v1/docs
                         icon: si:swagger
-                      - title: Replit
-                        url: https://replit.com/
-                        icon: si:replit
 
                   - title: Kubernetes
                     links:
