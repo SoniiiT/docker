@@ -84,12 +84,6 @@ pages:
                       - title: DAZN
                         url: https://www.dazn.com/de-DE
                         icon: si:dazn
-                      - title: Discovery+
-                        url: https://www.discoveryplus.com/de/de
-                        icon: si:discovery
-                      - title: Magenta TV
-                        url: https://www.magenta.tv/
-                        icon: si:telekom
                       - title: Twitch
                         url: https://www.twitch.tv/
                         icon: si:twitch
