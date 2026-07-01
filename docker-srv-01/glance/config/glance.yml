@@ -180,7 +180,7 @@ pages:
                       <li>
                         <a class="size-h4 color-primary-if-not-visited" href="{{ .String "html_url" }}">{{ .String "display_title" }}</a>
                         <ul class="list-horizontal-text">
-                          <li>{{ .String "updated_at" | parseTime "rfc3339" | toRelativeTime }}</li>
+                          <li {{ .String "updated_at" | parseTime "rfc3339" | toRelativeTime }}></li>
                           <li>{{ .String "name" }}</li>
                           <li>
                             {{ if eq $conclusion "success" }}
