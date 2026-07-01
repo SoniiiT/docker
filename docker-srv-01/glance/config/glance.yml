@@ -699,7 +699,7 @@ pages:
                     </div>
                     <ul class="list-horizontal-text size-h6">
                       <li class="color-positive">{{ $connected }} verbunden</li>
-                      <li class="color-subtext">{{ $disconnected | printf "%.0f" }} getrennt</li>
+                      <li class="color-subtext">{{ $disconnected }} getrennt</li>
                     </ul>
                   </li>
                 {{ end -}}
@@ -708,7 +708,7 @@ pages:
           - type: custom-api
             title: Semaphore – Letzte Runs
             cache: 2m
-            url: http://192.168.178.50:3001/api/projects/2/tasks
+            url: http://192.168.178.50:3001/api/project/2/tasks
             headers:
               Authorization: Bearer ${SEMAPHORE_API_TOKEN}
             parameters:
@@ -719,7 +719,7 @@ pages:
                   {{ $status := .String "status" -}}
                   <li>
                     <div class="flex justify-between">
-                      <span class="size-h4">Task #{{ .Int "id" }}</span>
+                      <span class="size-h4">{{ .String "tpl_alias" }}</span>
                       <span class="{{ if eq $status "success" }}color-positive{{ else if eq $status "error" }}color-negative{{ else if eq $status "running" }}color-highlight{{ else }}color-subtext{{ end }} size-h6">{{ $status }}</span>
                     </div>
                     <ul class="list-horizontal-text size-h6">
