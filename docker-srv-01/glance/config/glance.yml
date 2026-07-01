@@ -199,19 +199,19 @@ pages:
           - type: custom-api
             title: Speedtest
             cache: 30m
-            url: https://api.speedtest.net/api/datasources/speedtest/test-results
+            url: http://192.168.178.98:8090/api/speedtest/latest
             template: |
               <div class="flex justify-between text-center">
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.download" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "download" | printf "%.0f" }}</div>
                   <div class="size-h6">DOWN</div>
                 </div>
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.upload" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "upload" | printf "%.0f" }}</div>
                   <div class="size-h6">UP</div>
                 </div>
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "result.data.0.speeds.latency" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "ping" | printf "%.0f" }}</div>
                   <div class="size-h6">PING</div>
                 </div>
               </div>
@@ -227,7 +227,7 @@ pages:
                     <li>
                       <div class="flex justify-between">
                         <span class="size-h4">Bitcoin</span>
-                        <span class="color-highlight">€{{ .Float "bitcoin.eur" | printf "%.0f" }}</span>
+                        <span class="color-highlight">€{{ .JSON.Float "bitcoin.eur" | printf "%.0f" }}</span>
                       </div>
                       <ul class="list-horizontal-text size-h6">
                         <li>BTC</li>
@@ -236,7 +236,7 @@ pages:
                     <li>
                       <div class="flex justify-between">
                         <span class="size-h4">Ethereum</span>
-                        <span class="color-highlight">€{{ .Float "ethereum.eur" | printf "%.0f" }}</span>
+                        <span class="color-highlight">€{{ .JSON.Float "ethereum.eur" | printf "%.0f" }}</span>
                       </div>
                       <ul class="list-horizontal-text size-h6">
                         <li>ETH</li>
