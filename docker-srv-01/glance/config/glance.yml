@@ -717,11 +717,96 @@ pages:
               - type: bookmarks
                 title: DNS
                 groups:
-                  - title: DNS
+                  - title: Media Stack
                     links:
-                      - title: DNS Server
-                        url: http://example.example.de
+                      - title: Jellyfin
+                        url: https://jellyfin.home.soniiit.net/
+                        icon: si:jellyfin
+                      - title: Jellyfin Vue
+                        url: https://jellyfin-vue.home.soniiit.net/
+                        icon: si:jellyfin
+                      - title: Sonarr
+                        url: https://sonarr.home.soniiit.net/
+                        icon: si:sonarr
+                      - title: Radarr
+                        url: https://radarr.home.soniiit.net/
+                        icon: si:radarr
+                      - title: Jellyseerr
+                        url: https://jellyseerr.home.soniiit.net/
+                        icon: si:jellyseerr
+                      - title: Prowlarr
+                        url: https://prowlarr.home.soniiit.net/
+                        icon: si:prowlarr
+                      - title: Kapowarr
+                        url: https://kapowarr.home.soniiit.net/
+                        icon: si:bookstack
+                      - title: Calibre-Web
+                        url: https://calibre-web.home.soniiit.net/
+                        icon: si:calibre
+                      - title: Readarr
+                        url: https://readarr.home.soniiit.net/
+                        icon: si:bookstack
+                      - title: Kavita
+                        url: https://kavita.home.soniiit.net/
+                        icon: si:bookstack
+                      - title: RoMM
+                        url: https://romm.home.soniiit.net/
+                        icon: si:nintendo
+                      - title: Questarr
+                        url: https://questarr.home.soniiit.net/
+                        icon: si:radarr
+
+                  - title: Infrastructure
+                    links:
+                      - title: Proxmox
+                        url: https://proxmox.home.soniiit.net/
+                        icon: si:proxmox
+                      - title: Traefik
+                        url: https://traefik.home.soniiit.net/
+                        icon: si:traefik
+                      - title: Portainer
+                        url: https://portainer.home.soniiit.net/
+                        icon: si:portainer
+                      - title: Semaphore
+                        url: https://semaphore.home.soniiit.net/
+                        icon: si:ansible
+                      - title: WGDashboard
+                        url: https://wgdashboard.home.soniiit.net/
+                        icon: si:wireguard
+                      - title: Omada
+                        url: https://omada.home.soniiit.net/
+                        icon: si:tp-link
+                      - title: WUD
+                        url: https://wud.home.soniiit.net/
+                        icon: si:docker
+                      - title: Dokploy
+                        url: https://dokploy.home.soniiit.net/
+                        icon: si:docker
+                      - title: Coolify
+                        url: https://coolify.home.soniiit.net/
+                        icon: si:coolify
+
+                  - title: Tools & Dev
+                    links:
+                      - title: IT-Tools
+                        url: https://it.home.soniiit.net/
+                        icon: si:tools
+                      - title: Odysseus
+                        url: https://odysseus.home.soniiit.net/
+                        icon: si:webassembly
+                      - title: Open Design
+                        url: https://open-design.home.soniiit.net/
+                        icon: si:figma
+                      - title: AgentsView
+                        url: https://agentsview.home.soniiit.net/
+                        icon: si:openai
+                      - title: DNS
+                        url: https://dns.home.soniiit.net/
                         icon: si:bind9
+                      - title: Network
+                        url: https://network.home.soniiit.net/
+                        icon: si:cisco
+
               - type: bookmarks
                 title: IP
                 groups:
