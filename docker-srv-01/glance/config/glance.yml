@@ -630,11 +630,11 @@ pages:
                         icon: si:teleport
 
           - type: custom-api
-            title: GitHub – Mein Feed
+            title: GitHub – Following Feed
             cache: 15m
             url: https://api.github.com/users/SoniiiT/received_events
             parameters:
-              per_page: "10"
+              per_page: "20"
             headers:
               Authorization: Bearer ${GITHUB_TOKEN}
               Accept: application/vnd.github.v3+json
@@ -645,16 +645,19 @@ pages:
                   {{ $type := .String "type" -}}
                   {{ $actor := .String "actor.login" -}}
                   {{ $repo := .String "repo.name" -}}
+                  {{ if ne $actor "SoniiiT" -}}
                   <li>
-                    <div class="flex justify-between">
-                      <a class="size-h4 color-highlight" href="https://github.com/{{ $repo }}" target="_blank">{{ $repo }}</a>
-                      <span class="color-subtext size-h6">{{ $actor }}</span>
+                    <div class="flex items-center gap-8">
+                      <img src="{{ .String "actor.avatar_url" }}" width="20" height="20" style="border-radius:50%" />
+                      <a class="size-h4 color-highlight" href="https://github.com/{{ $actor }}" target="_blank">{{ $actor }}</a>
                     </div>
                     <ul class="list-horizontal-text size-h6">
                       <li>{{ $type | trimSuffix "Event" }}</li>
+                      <li><a href="https://github.com/{{ $repo }}" target="_blank" class="color-subtext">{{ $repo }}</a></li>
                       <li {{ .String "created_at" | parseTime "rfc3339" | toRelativeTime }}></li>
                     </ul>
                   </li>
+                  {{ end -}}
                 {{ end -}}
               </ul>
 
