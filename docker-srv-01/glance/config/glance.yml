@@ -1433,10 +1433,187 @@ pages:
                 shortcut: "!dh"
                 url: https://hub.docker.com/search?q={QUERY}
 
-          - type: bookmarks
-            groups:
-              - title: Work
-                links:
-                  - title: example.example.de
-                    url: https://example.example.de
-                    icon: si:cloudflare
+          - type: group
+            widgets:
+              - type: bookmarks
+                title: Business & Tools
+                groups:
+                  - title: MSP Tools
+                    links:
+                      - title: Kaseya
+                        url: https://one.kaseya.com/login
+                        icon: si:kaseya
+                      - title: Autotask
+                        url: https://ww18.autotask.net/AutotaskOnyx/LandingPage?view=dashboard
+                        icon: si:autotask
+                      - title: IT Glue
+                        url: https://itcares.eu.itglue.com/organizations?after_sign_in=1
+                        icon: si:itglue
+                      - title: Datto RMM
+                        url: https://merlot.rmm.datto.com/dashboard/b39lFTVUxbI5lxvb8cu_C/default-dashboard
+                        icon: si:datto
+                      - title: AutoElevate
+                        url: https://msp.autoelevate.com/
+                        icon: si:windows
+                      - title: Personio
+                        url: https://login.personio.com/
+                        icon: si:personio
+                      - title: Memtime
+                        url: https://login.memtime.com/
+                        icon: si:clockify
+
+                  - title: Cloud & Security
+                    links:
+                      - title: M365 Admin
+                        url: https://admin.microsoft.com/#/homepage
+                        icon: si:microsoft365
+                      - title: Lancom
+                        url: https://cloud.lancom.de/
+                        icon: si:lancom
+                      - title: Acronis
+                        url: https://eu2-cloud.acronis.com/
+                        icon: si:acronis
+                      - title: AppRiver
+                        url: https://account.appriver.com/
+                        icon: si:microsoft
+                      - title: Secure Mail Archive
+                        url: http://my.secure-mailarchive.de:8470/web/login.html
+                        icon: si:mail
+                      - title: ZScaler ZDX
+                        url: https://admin.zdxcloud.net/
+                        icon: si:zscaler
+                      - title: ZScaler ZIA
+                        url: https://admin.zscaler.net
+                        icon: si:zscaler
+                      - title: ZScaler ZPA
+                        url: https://admin.private.zscaler.com/
+                        icon: si:zscaler
+
+                  - title: Produktivität
+                    links:
+                      - title: Outlook
+                        url: https://outlook.office.com/mail/
+                        icon: si:microsoftoutlook
+                      - title: Teams
+                        url: https://teams.microsoft.com/v2/
+                        icon: si:microsoftteams
+                      - title: Power Automate
+                        url: https://make.powerautomate.com/
+                        icon: si:microsoftpowerautomate
+                      - title: Zapier
+                        url: https://zapier.com/de/
+                        icon: si:zapier
+                      - title: Confluence
+                        url: https://itcares.atlassian.net/wiki/spaces
+                        icon: si:confluence
+                      - title: Lucid
+                        url: https://lucid.app/documents#/dashboard
+                        icon: si:lucid
+                      - title: Fonio
+                        url: https://www.fonio.ai/de
+                        icon: si:voip
+                      - title: NextCloud
+                        url: https://cloud.itcares.de/
+                        icon: si:nextcloud
+                      - title: Froxlor
+                        url: https://config.superwebpage.de
+                        icon: si:froxlor
+                      - title: Anynode
+                        url: http://10.10.11.100:8088
+                        icon: si:asterisk
+
+              - type: bookmarks
+                title: Dev & Infrastructure
+                groups:
+                  - title: APIs
+                    links:
+                      - title: API itcares.de
+                        url: https://api.itcares.de
+                        icon: si:swagger
+                      - title: API itcares.net
+                        url: https://api.itcares.net
+                        icon: si:swagger
+                      - title: Frontend Manager
+                        url: https://ui.itcares.local
+                        icon: si:swagger
+                      - title: ATSK API
+                        url: https://api.k3s.itcares.local/atsk/v1/docs
+                        icon: si:swagger
+                      - title: CEVS API
+                        url: https://api.k3s.itcares.local/cevs/v1/docs
+                        icon: si:swagger
+                      - title: HRM API
+                        url: https://api.k3s.itcares.local/hrm/v1/docs
+                        icon: si:swagger
+                      - title: IMI API
+                        url: https://api.k3s.itcares.local/imi/v3/docs
+                        icon: si:swagger
+                      - title: ITGL API
+                        url: https://api.k3s.itcares.local/itgl/v1/docs
+                        icon: si:swagger
+                      - title: LMC API
+                        url: https://api.k3s.itcares.local/lmc/v1/docs
+                        icon: si:swagger
+                      - title: MLSTR API
+                        url: https://api.k3s.itcares.local/mlstr/v1/docs
+                        icon: si:swagger
+                      - title: MS365 API
+                        url: https://api.k3s.itcares.local/ms365/v1/docs
+                        icon: si:swagger
+                      - title: SMS API
+                        url: https://api.k3s.itcares.local/sms/v1/docs
+                        icon: si:swagger
+
+                  - title: Kubernetes
+                    links:
+                      - title: Harbor
+                        url: https://reg.itcares.net
+                        icon: si:harbor
+                      - title: ArgoCD
+                        url: https://argocd.k3s.itcares.local/
+                        icon: si:argo
+                      - title: Grafana
+                        url: https://grafana.k3s.itcares.local
+                        icon: si:grafana
+                      - title: Longhorn
+                        url: https://longhorn.k3s.itcares.local
+                        icon: si:rancher
+                      - title: N8N
+                        url: https://n8n.k3s.itcares.local
+                        icon: si:n8n
+                      - title: Portainer
+                        url: https://portainer.k3s.itcares.local
+                        icon: si:portainer
+                      - title: Traefik
+                        url: https://traefik.k3s.itcares.local
+                        icon: si:traefik
+                      - title: Uptime Kuma
+                        url: https://uptimekuma.k3s.itcares.local
+                        icon: si:uptimekuma
+                      - title: Kibana
+                        url: https://kibana.k3s.itcares.local
+                        icon: si:kibana
+
+                  - title: Hardware & Infra
+                    links:
+                      - title: Cisco BD
+                        url: https://10.10.10.89/
+                        icon: si:cisco
+                      - title: IBM Insights
+                        url: https://insights.ibm.com/cui/01f0294b-013a-1702-98db-d65f707b7cb9/dashboard
+                        icon: si:ibm
+                      - title: QNAP Backup-01
+                        url: https://10.10.10.225:8443/
+                        icon: si:qnap
+                      - title: QNAP Backup-02
+                        url: https://10.10.10.235:8443/
+                        icon: si:qnap
+                      - title: iDRAC HyperV6
+                        url: https://10.10.10.26/
+                        icon: si:dell
+                      - title: iDRAC HyperV7
+                        url: https://10.10.10.27/
+                        icon: si:dell
+                      - title: iDRAC HyperV8
+                        url: https://10.10.10.28/
+                        icon: si:dell
