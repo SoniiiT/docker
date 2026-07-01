@@ -44,9 +44,15 @@ pages:
               - UC9x0AN7BWHpCDHSm9NiJFJQ  # NetworkChuck
               - UCivJ3eKyApxatQJNt7M18jA  # Techno Tim
               - UC7c3Kb6jYCRj4JOHHZTxKsQ  # GitHub
-              # VirtualizationHowto: find ID at youtube.com/@VirtualizationHowto (view-source, search externalId)
-              # Christian Lempa: find ID at youtube.com/@christianlempa (view-source, search externalId)
-              # VS Code: find ID at youtube.com/@code (view-source, search externalId)
+              - UCSmqdViH_SxhVaRtI8KP1Sg  # VirtualizationHowto
+              - UCTIhfOopxukTIRkbXJ3kN-g  # Christian Lempa
+              - UCs5Y5_7XK8HLDX0f1ENCvyA  # VS Code
+              - UCsBjURrPoezykLs9EqgamOA  # Fireship
+              - UCR-DXc1voovS8nhAvccRZhg  # Jeff Geerling
+              - UCajiMK_CY9icRhLepS8_3ug  # AZisk
+              - UCKJgBJcJkc0Q4kZeGIyNTYA  # ThisIsE
+              - UCV03SRZXJEz-hchIAogeJOg  # Claude
+              - UCrDwWp7EBBv4NwvScIpBDOA  # Anthropic AI
             collapse-after-rows: 3
             video-url-template: https://www.youtube.com/watch?v={VIDEO-ID}
 
