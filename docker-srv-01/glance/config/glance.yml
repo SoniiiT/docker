@@ -219,7 +219,7 @@ pages:
           - type: group
             widgets:
               - type: custom-api
-                title: Markets
+                title: Crypto
                 cache: 30m
                 url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=eur&include_market_cap=true&include_24hr_vol=true
                 template: |
@@ -243,6 +243,16 @@ pages:
                       </ul>
                     </li>
                   </ul>
+
+              - type: markets
+                title: Stocks
+                markets:
+                  - symbol: NVDA
+                    name: NVIDIA
+                  - symbol: AMD
+                    name: AMD
+                  - symbol: GOOG
+                    name: Alphabet C
 
               - type: custom-api
                 title: Nearby Aircraft
