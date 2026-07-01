@@ -246,7 +246,7 @@ pages:
           - type: group
             widgets:
               - type: custom-api
-                title: Wallos – Subscriptions
+                title: Wallos
                 url: ${WALLOS_URL}/api/subscriptions/get_subscriptions.php
                 cache: 1h
                 parameters:
