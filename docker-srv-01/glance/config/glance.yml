@@ -776,6 +776,12 @@ pages:
                       - title: Omada
                         url: https://omada.home.soniiit.net/
                         icon: si:tp-link
+                      - title: Fritz!Box Main
+                        url: https://gw01.home.soniiit.net/
+                        icon: si:fritz-box
+                      - title: Fritz!Box Tony
+                        url: https://gw02.home.soniiit.net/
+                        icon: si:fritz-box
 
                   - title: Tools & Dev
                     links:
@@ -881,6 +887,12 @@ pages:
                       - title: Omada
                         url: https://192.168.178.51:8043
                         icon: si:tp-link
+                      - title: Fritz!Box Main
+                        url: http://192.168.178.1
+                        icon: si:fritz-box
+                      - title: Fritz!Box Tony
+                        url: http://192.168.178.2
+                        icon: si:fritz-box
                       - title: Pterodactyl
                         url: https://192.168.178.40
                         icon: si:pterodactyl
