@@ -688,6 +688,29 @@ pages:
                     {{ end -}}
                   </ul>
 
+              - type: custom-api
+                title: Watched
+                cache: 1h
+                url: https://api.github.com/users/SoniiiT/subscriptions
+                parameters:
+                  per_page: "10"
+                headers:
+                  Authorization: Bearer ${GITHUB_TOKEN}
+                  Accept: application/vnd.github.v3+json
+                  User-Agent: Glance-Dashboard
+                template: |
+                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                    {{ range .JSON.Array "" -}}
+                      <li>
+                        <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "full_name" }}</a>
+                        <ul class="list-horizontal-text size-h6">
+                          <li>⭐ {{ .Int "stargazers_count" | formatNumber }}</li>
+                          <li>{{ .String "language" }}</li>
+                        </ul>
+                      </li>
+                    {{ end -}}
+                  </ul>
+
       - size: small
         widgets:
           - type: custom-api
