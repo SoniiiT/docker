@@ -670,14 +670,16 @@ pages:
             template: |
               <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
                 {{ range .JSON.Array "data" -}}
-                  {{ if .Bool "active" -}}
                   <li>
-                    <span class="size-h4 color-highlight">{{ .String "name" }}</span>
-                    <ul class="list-horizontal-text size-h6">
-                      <li class="color-positive">aktiv</li>
-                    </ul>
+                    <div class="flex justify-between">
+                      <span class="size-h4">{{ .String "name" }}</span>
+                      {{ if .Bool "active" -}}
+                      <span class="color-positive size-h6">● aktiv</span>
+                      {{ else -}}
+                      <span class="color-subtext size-h6">● inaktiv</span>
+                      {{ end -}}
+                    </div>
                   </li>
-                  {{ end -}}
                 {{ end -}}
               </ul>
 
