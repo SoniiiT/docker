@@ -755,6 +755,9 @@ pages:
                       - title: Questarr
                         url: https://questarr.home.soniiit.net/
                         icon: si:radarr
+                      - title: Kaizoku
+                        url: https://kaizoku.home.soniiit.net/
+                        icon: si:bookstack
 
                   - title: Infrastructure
                     links:
@@ -854,6 +857,15 @@ pages:
                       - title: Questarr
                         url: http://192.168.178.98:5000
                         icon: si:radarr
+                      - title: Kaizoku
+                        url: http://192.168.178.98:3000/
+                        icon: si:bookstack
+                      - title: SABnzbd
+                        url: http://192.168.178.98:8060/
+                        icon: si:sabnzbd
+                      - title: qBittorrent
+                        url: http://192.168.178.98:8070/
+                        icon: si:qbittorrent
 
                   - title: Infrastructure
                     links:
@@ -970,7 +982,7 @@ pages:
                       - title: Questarr
                         url: https://questarr.teleport.soniiit.net/
                         icon: si:radarr
-                      - title: SabNZBD
+                      - title: SABnzbd
                         url: https://sabnzbd.teleport.soniiit.net/
                         icon: si:sabnzbd
                       - title: qBittorrent
