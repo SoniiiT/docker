@@ -162,6 +162,24 @@ pages:
                       - title: Monkeytype
                         url: https://monkeytype.com/
                         icon: si:monkeytype
+                      - title: Steam
+                        url: https://store.steampowered.com/
+                        icon: si:steam
+                      - title: Ubisoft
+                        url: https://www.ubisoft.com/de-de
+                        icon: si:ubisoft
+                      - title: Battle.net
+                        url: https://eu.shop.battle.net/de-de
+                        icon: si:battlenet
+                      - title: EA
+                        url: https://www.ea.com/de-de
+                        icon: si:ea
+                      - title: GOG
+                        url: https://www.gog.com/en/
+                        icon: si:gog
+                      - title: itch.io
+                        url: https://itch.io/
+                        icon: si:itchdotio
 
                   - title: Finance & Banking
                     links:
