@@ -740,6 +740,9 @@ pages:
                       - title: Kapowarr
                         url: https://kapowarr.home.soniiit.net/
                         icon: si:bookstack
+                      - title: Kaizoku
+                        url: https://kaizoku.home.soniiit.net/
+                        icon: si:bookstack
                       - title: Calibre-Web
                         url: https://calibre-web.home.soniiit.net/
                         icon: si:calibre
@@ -755,9 +758,6 @@ pages:
                       - title: Questarr
                         url: https://questarr.home.soniiit.net/
                         icon: si:radarr
-                      - title: Kaizoku
-                        url: https://kaizoku.home.soniiit.net/
-                        icon: si:bookstack
 
                   - title: Infrastructure
                     links:
@@ -842,6 +842,9 @@ pages:
                       - title: Kapowarr
                         url: http://192.168.178.98:5656
                         icon: si:bookstack
+                      - title: Kaizoku
+                        url: http://192.168.178.98:3000/
+                        icon: si:bookstack
                       - title: Calibre Web
                         url: http://192.168.178.98:8083
                         icon: si:calibre
@@ -857,9 +860,6 @@ pages:
                       - title: Questarr
                         url: http://192.168.178.98:5000
                         icon: si:radarr
-                      - title: Kaizoku
-                        url: http://192.168.178.98:3000/
-                        icon: si:bookstack
                       - title: SABnzbd
                         url: http://192.168.178.98:8060/
                         icon: si:sabnzbd
