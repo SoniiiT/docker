@@ -896,84 +896,23 @@ pages:
 
       - size: full
         widgets:
-          - type: custom-api
-            title: IT-Workflows
-            cache: 2h
-            url: https://192.168.178.30:9443/api/stacks
-            allow-insecure: true
-            headers:
-              X-API-Key: ${PORTAINER_API_KEY}
-            template: |
-              <ul class="list list-gap-14">
-                <li>
-                  <span class="size-h4 color-highlight">Speedtest Monitor - Fritz!Box</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li>Reboot</li>
-                    <li>inaktiv</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">Uptime Kuma + Autotask PSA</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li>Production Ready</li>
-                    <li>inaktiv</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">Speedtest Monitor - Fritz!Box</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li>Reboot</li>
-                    <li>inaktiv</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">Fritz!Box TR-364 Credential Test</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li>Test</li>
-                    <li>inaktiv</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">IFTL Backup Workflow</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li>inaktiv</li>
-                  </ul>
-                </li>
-              </ul>
+          - type: search
+            search-engine: google
+            bangs:
+              - title: YouTube
+                shortcut: "!yt"
+                url: https://www.youtube.com/results?search_query={QUERY}
+              - title: GitHub
+                shortcut: "!gh"
+                url: https://github.com/search?q={QUERY}
+              - title: Docker Hub
+                shortcut: "!dh"
+                url: https://hub.docker.com/search?q={QUERY}
 
-          - type: custom-api
-            title: Seraphore Tasks
-            cache: 5m
-            url: https://192.168.178.25:4242/api/tasks
-            allow-insecure: true
-            template: |
-              <ul class="list list-gap-10 collapsible-container" data-collapse-after="8">
-                <li>
-                  <span class="size-h4 color-highlight">[DOCKER] Docker Cleanup</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li class="color-negative">error</li>
-                    <li>2h</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">[DOCKER] Docker Cleanup</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li class="color-negative">error</li>
-                    <li>3d</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">[DOCKER] Docker Cleanup</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li class="color-negative">error</li>
-                    <li>2d</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="size-h4 color-highlight">[DOCKER] Docker Cleanup</span>
-                  <ul class="list-horizontal-text size-h6">
-                    <li class="color-negative">error</li>
-                    <li>3d</li>
-                  </ul>
-                </li>
-              </ul>
+          - type: bookmarks
+            groups:
+              - title: Work
+                links:
+                  - title: example.example.de
+                    url: https://example.example.de
+                    icon: si:cloudflare
