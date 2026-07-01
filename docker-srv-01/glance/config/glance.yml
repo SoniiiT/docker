@@ -396,7 +396,7 @@ pages:
                     <p class="color-subtext size-h5">Keine Flugzeuge in der Nähe</p>
                   {{ end }}
 
-  - name: Services
+  - name: Internal Services
     columns:
       - size: small
         widgets:
@@ -1296,7 +1296,7 @@ pages:
                     url: https://example.example.de
                     icon: si:cloudflare
 
-  - name: Cloud & External
+  - name: Cloud
     columns:
       - size: full
         widgets:
