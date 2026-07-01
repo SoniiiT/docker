@@ -837,7 +837,7 @@ pages:
                   Accept: application/vnd.github.v3+json
                   User-Agent: Glance-Dashboard
                 template: |
-                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
+                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="2">
                     {{ range .JSON.Array "" -}}
                       {{ $type := .String "type" -}}
                       {{ $actor := .String "actor.login" -}}
@@ -871,7 +871,7 @@ pages:
                   Accept: application/vnd.github.v3+json
                   User-Agent: Glance-Dashboard
                 template: |
-                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
+                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="2">
                     {{ range .JSON.Array "" -}}
                       <li>
                         <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "full_name" }}</a>
@@ -894,7 +894,7 @@ pages:
                   Accept: application/vnd.github.v3+json
                   User-Agent: Glance-Dashboard
                 template: |
-                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
+                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="2">
                     {{ range .JSON.Array "" -}}
                       <li>
                         <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "full_name" }}</a>
