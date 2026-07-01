@@ -721,7 +721,7 @@ pages:
               <ul class="list list-gap-10">
                 {{ $i := 0 -}}
                 {{ range .JSON.Array "" -}}
-                {{ if lt $i 5 -}}
+                {{ if lt $i 3 -}}
                 {{ $i = add $i 1 -}}
                   {{ $status := .String "status" -}}
                   <li>
