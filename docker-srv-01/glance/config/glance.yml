@@ -929,11 +929,116 @@ pages:
               - type: bookmarks
                 title: Teleport
                 groups:
-                  - title: Teleport
+                  - title: Media Stack
                     links:
-                      - title: Teleport
-                        url: https://teleport.example.de
-                        icon: si:teleport
+                      - title: Jellyseerr
+                        url: https://jellyseerr.teleport.soniiit.net/
+                        icon: si:jellyseerr
+                      - title: Jellyfin
+                        url: https://jellyfin.teleport.soniiit.net/
+                        icon: si:jellyfin
+                      - title: Jellyfin Vue
+                        url: https://jellyfin-vue.teleport.soniiit.net/
+                        icon: si:jellyfin
+                      - title: Sonarr
+                        url: https://sonarr.teleport.soniiit.net/
+                        icon: si:sonarr
+                      - title: Radarr
+                        url: https://radarr.teleport.soniiit.net/
+                        icon: si:radarr
+                      - title: Prowlarr
+                        url: https://prowlarr.teleport.soniiit.net/
+                        icon: si:prowlarr
+                      - title: Kapowarr
+                        url: https://kapowarr.teleport.soniiit.net/
+                        icon: si:bookstack
+                      - title: Kaizoku
+                        url: https://kaizoku.teleport.soniiit.net/
+                        icon: si:bookstack
+                      - title: Calibre Web
+                        url: https://calibre-web.teleport.soniiit.net/
+                        icon: si:calibre
+                      - title: Readarr
+                        url: https://readarr.teleport.soniiit.net/
+                        icon: si:bookstack
+                      - title: Kavita
+                        url: https://kavita.teleport.soniiit.net/
+                        icon: si:bookstack
+                      - title: RoMM
+                        url: https://romm.teleport.soniiit.net/
+                        icon: si:nintendo
+                      - title: Questarr
+                        url: https://questarr.teleport.soniiit.net/
+                        icon: si:radarr
+                      - title: SabNZBD
+                        url: https://sabnzbd.teleport.soniiit.net/
+                        icon: si:sabnzbd
+                      - title: qBittorrent
+                        url: https://qBittorrent.teleport.soniiit.net/
+                        icon: si:qbittorrent
+
+                  - title: Infrastructure
+                    links:
+                      - title: Proxmox
+                        url: https://proxmox.teleport.soniiit.net/
+                        icon: si:proxmox
+                      - title: Traefik
+                        url: https://traefik.teleport.soniiit.net/
+                        icon: si:traefik
+                      - title: Portainer
+                        url: https://portainer.teleport.soniiit.net/
+                        icon: si:portainer
+                      - title: WGDashboard
+                        url: https://whdashboard.teleport.soniiit.net/
+                        icon: si:wireguard
+                      - title: Omada
+                        url: https://omada.teleport.soniiit.net/
+                        icon: si:tp-link
+
+                  - title: Tools & Dev
+                    links:
+                      - title: IT-Tools
+                        url: https://it.teleport.soniiit.net/
+                        icon: si:tools
+                      - title: Odysseus
+                        url: https://odysseus.teleport.soniiit.net/
+                        icon: si:webassembly
+                      - title: Open Design
+                        url: https://open-design.teleport.soniiit.net/
+                        icon: si:figma
+                      - title: AgentsView
+                        url: https://agentsview.teleport.soniiit.net/
+                        icon: si:openai
+                      - title: Network Toolbox
+                        url: https://dns.teleport.soniiit.net/
+                        icon: si:bind9
+                      - title: Scanopy
+                        url: https://network.teleport.soniiit.net/
+                        icon: si:cisco
+                      - title: Semaphore
+                        url: https://semaphore.teleport.soniiit.net/
+                        icon: si:ansible
+                      - title: WUD
+                        url: https://wud.teleport.soniiit.net/
+                        icon: si:docker
+                      - title: Dokploy
+                        url: https://dokploy.teleport.soniiit.net/
+                        icon: si:docker
+                      - title: Coolify
+                        url: https://colify.teleport.soniiit.net/
+                        icon: si:coolify
+                      - title: Wallos
+                        url: https://wallos.teleport.soniiit.net/
+                        icon: si:wallos
+                      - title: Speedtest
+                        url: https://speedtest.teleport.soniiit.net/
+                        icon: si:speedtest
+                      - title: Uptime Kuma
+                        url: https://uptimekuma.teleport.soniiit.net/
+                        icon: si:uptimekuma
+                      - title: N8N
+                        url: https://n8n.teleport.soniiit.net/
+                        icon: si:n8n
 
           - type: group
             widgets:
