@@ -55,83 +55,176 @@ pages:
               - type: bookmarks
                 title: Seite 1
                 groups:
-                  - title: Entertainment
+                  - title: Streaming
                     links:
                       - title: YouTube
-                        url: https://youtube.com
+                        url: https://www.youtube.com/
                         icon: si:youtube
+                      - title: YouTube Music
+                        url: https://music.youtube.com/
+                        icon: si:youtubemusic
                       - title: Netflix
-                        url: https://netflix.com
+                        url: https://www.netflix.com/de/
                         icon: si:netflix
-                      - title: Jellyfin
-                        url: http://192.168.178.98:8096
-                        icon: si:jellyfin
-                      - title: Jellyseerr
-                        url: http://192.168.178.98:5055
-                        icon: si:jellyseerr
+                      - title: Disney+
+                        url: https://www.disneyplus.com/de-de
+                        icon: si:disneyplus
+                      - title: HBO Max
+                        url: https://play.hbomax.com/
+                        icon: si:hbo
+                      - title: Paramount+
+                        url: https://www.paramountplus.com/de/
+                        icon: si:paramountplus
+                      - title: Amazon Prime Video
+                        url: https://www.amazon.de/Amazon-Video/b/?&node=3010075031
+                        icon: si:amazonprime
+                      - title: Crunchyroll
+                        url: https://www.crunchyroll.com/de/discover
+                        icon: si:crunchyroll
+                      - title: DAZN
+                        url: https://www.dazn.com/de-DE
+                        icon: si:dazn
+                      - title: Discovery+
+                        url: https://www.discoveryplus.com/de/de
+                        icon: si:discovery
+                      - title: Magenta TV
+                        url: https://www.magenta.tv/
+                        icon: si:telekom
+                      - title: Twitch
+                        url: https://www.twitch.tv/
+                        icon: si:twitch
 
-                  - title: Shopping
+                  - title: Social Media
                     links:
-                      - title: Amazon
-                        url: https://amazon.de
-                        icon: si:amazon
-                      - title: eBay
-                        url: https://ebay.de
-                        icon: si:ebay
-                      - title: Wallos
-                        url: ${WALLOS_URL}
-                        icon: si:wallos
-
-                  - title: Social
-                    links:
-                      - title: Reddit
-                        url: https://reddit.com
-                        icon: si:reddit
-                      - title: Twitter/X
-                        url: https://twitter.com
-                        icon: si:x
+                      - title: Instagram
+                        url: https://www.instagram.com/
+                        icon: si:instagram
+                      - title: TikTok
+                        url: https://www.tiktok.com/en/
+                        icon: si:tiktok
                       - title: Discord
-                        url: https://discord.com
+                        url: https://discord.com/
                         icon: si:discord
+                      - title: WhatsApp
+                        url: https://web.whatsapp.com/
+                        icon: si:whatsapp
+                      - title: Telegram
+                        url: https://web.telegram.org/k/
+                        icon: si:telegram
+                      - title: X
+                        url: https://x.com/home
+                        icon: si:x
+                      - title: Reddit
+                        url: https://www.reddit.com/
+                        icon: si:reddit
+                      - title: Patreon
+                        url: https://www.patreon.com/home
+                        icon: si:patreon
+                      - title: LinkedIn
+                        url: https://www.linkedin.com/
+                        icon: si:linkedin
+                      - title: pr0gramm
+                        url: https://pr0gramm.com/
+                        icon: si:p
+
+                  - title: AI
+                    links:
+                      - title: ChatGPT
+                        url: https://chatgpt.com/
+                        icon: si:openai
+                      - title: Claude
+                        url: https://claude.ai/login
+                        icon: si:anthropic
+                      - title: Gemini
+                        url: https://gemini.google.com/app
+                        icon: si:googlegemini
+                      - title: DeepSeek
+                        url: https://chat.deepseek.com/
+                        icon: si:deepseek
+                      - title: Grok
+                        url: https://grok.com/
+                        icon: si:x
+                      - title: NotebookLM
+                        url: https://notebooklm.google/
+                        icon: si:google
+                      - title: M365 Copilot
+                        url: https://m365.cloud.microsoft/chat
+                        icon: si:microsoftcopilot
+                      - title: GitHub
+                        url: https://github.com/
+                        icon: si:github
 
               - type: bookmarks
                 title: Seite 2
                 groups:
-                  - title: Learning & Career
+                  - title: Shopping & Gaming
                     links:
-                      - title: GitHub
-                        url: https://github.com
-                        icon: si:github
-                      - title: Stack Overflow
-                        url: https://stackoverflow.com
-                        icon: si:stackoverflow
-                      - title: Confluence
-                        url: https://soniiit.atlassian.net/wiki
-                        icon: si:confluence
+                      - title: Amazon
+                        url: https://www.amazon.de/
+                        icon: si:amazon
+                      - title: Instant Gaming
+                        url: https://www.instant-gaming.com/de/
+                        icon: si:steam
+                      - title: Monkeytype
+                        url: https://monkeytype.com/
+                        icon: si:monkeytype
 
-                  - title: AI & Dev Tools
+                  - title: Finance & Banking
                     links:
-                      - title: ChatGPT
-                        url: https://chatgpt.com
-                        icon: si:openai
-                      - title: Replit
-                        url: https://replit.com
-                        icon: si:replit
-                      - title: VS Code Online
-                        url: https://vscode.dev
-                        icon: si:visualstudiocode
-
-                  - title: Finance & Crypto
-                    links:
+                      - title: BW-Bank
+                        url: https://www.bw-bank.de/de/home.html
+                        icon: si:deutschebank
+                      - title: Revolut
+                        url: https://www.revolut.com/
+                        icon: si:revolut
+                      - title: Trade Republic
+                        url: https://traderepublic.com/en-de
+                        icon: si:traderepublic
+                      - title: Bison
+                        url: https://bisonapp.com/
+                        icon: si:bitcoin
                       - title: Kraken
-                        url: https://kraken.com
+                        url: https://pro.kraken.com/de
                         icon: si:kraken
-                      - title: Binance
-                        url: https://binance.com
-                        icon: si:binance
-                      - title: Coingecko
-                        url: https://coingecko.com
-                        icon: si:coingecko
+                      - title: PayPal
+                        url: https://www.paypal.com/de/home
+                        icon: si:paypal
+                      - title: O2 Online
+                        url: https://www.o2online.de/mein-o2/
+                        icon: si:o2
+
+                  - title: Learning
+                    links:
+                      - title: Udemy
+                        url: https://www.udemy.com/
+                        icon: si:udemy
+                      - title: boot.dev
+                        url: https://www.boot.dev/
+                        icon: si:go
+                      - title: Anthropic Skilljar
+                        url: https://anthropic.skilljar.com/
+                        icon: si:anthropic
+
+              - type: bookmarks
+                title: Seite 3
+                groups:
+                  - title: Tools & Utilities
+                    links:
+                      - title: Speedtest
+                        url: https://www.speedtest.net/
+                        icon: si:speedtest
+
+                  - title: Cloud
+                    links:
+                      - title: iCloud
+                        url: https://www.icloud.com/
+                        icon: si:icloud
+
+                  - title: Sonstiges
+                    links:
+                      - title: Wallos
+                        url: ${WALLOS_URL}
+                        icon: si:wallos
 
       - size: small
         widgets:
