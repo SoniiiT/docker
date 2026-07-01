@@ -645,7 +645,7 @@ pages:
                   {{ $type := .String "type" -}}
                   {{ $actor := .String "actor.login" -}}
                   {{ $repo := .String "repo.name" -}}
-                  {{ if ne $actor "SoniiiT" -}}
+                  {{ if and (ne $actor "SoniiiT") (or (eq $type "WatchEvent") (eq $type "ForkEvent") (eq $type "ReleaseEvent") (eq $type "CreateEvent") (eq $type "PublicEvent") (eq $type "PushEvent")) -}}
                   <li>
                     <div class="flex items-center gap-8">
                       <img src="{{ .String "actor.avatar_url" }}" width="20" height="20" style="border-radius:50%" />
