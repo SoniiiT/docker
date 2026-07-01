@@ -218,31 +218,13 @@ pages:
 
           - type: group
             widgets:
-              - type: custom-api
+              - type: markets
                 title: Crypto
-                cache: 30m
-                url: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=eur&include_market_cap=true&include_24hr_vol=true
-                template: |
-                  <ul class="list list-gap-14">
-                    <li>
-                      <div class="flex justify-between">
-                        <span class="size-h4">Bitcoin</span>
-                        <span class="color-highlight">€{{ .JSON.Float "bitcoin.eur" | printf "%.0f" }}</span>
-                      </div>
-                      <ul class="list-horizontal-text size-h6">
-                        <li>BTC</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="flex justify-between">
-                        <span class="size-h4">Ethereum</span>
-                        <span class="color-highlight">€{{ .JSON.Float "ethereum.eur" | printf "%.0f" }}</span>
-                      </div>
-                      <ul class="list-horizontal-text size-h6">
-                        <li>ETH</li>
-                      </ul>
-                    </li>
-                  </ul>
+                markets:
+                  - symbol: BTC-EUR
+                    name: Bitcoin
+                  - symbol: ETH-EUR
+                    name: Ethereum
 
               - type: markets
                 title: Stocks
