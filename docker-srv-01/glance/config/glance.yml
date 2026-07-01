@@ -629,7 +629,36 @@ pages:
                         url: https://teleport.example.de
                         icon: si:teleport
 
-      - size: small
+          - type: custom-api
+            title: GitHub – Mein Feed
+            cache: 15m
+            url: https://api.github.com/users/SoniiiT/received_events
+            parameters:
+              per_page: "10"
+            headers:
+              Authorization: Bearer ${GITHUB_TOKEN}
+              Accept: application/vnd.github.v3+json
+              User-Agent: Glance-Dashboard
+            template: |
+              <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
+                {{ range .JSON.Array "" -}}
+                  {{ $type := .String "type" -}}
+                  {{ $actor := .String "actor.login" -}}
+                  {{ $repo := .String "repo.name" -}}
+                  <li>
+                    <div class="flex justify-between">
+                      <a class="size-h4 color-highlight" href="https://github.com/{{ $repo }}" target="_blank">{{ $repo }}</a>
+                      <span class="color-subtext size-h6">{{ $actor }}</span>
+                    </div>
+                    <ul class="list-horizontal-text size-h6">
+                      <li>{{ $type | trimSuffix "Event" }}</li>
+                      <li {{ .String "created_at" | parseTime "rfc3339" | toRelativeTime }}></li>
+                    </ul>
+                  </li>
+                {{ end -}}
+              </ul>
+
+
         widgets:
           - type: custom-api
             title: Proxmox – Status
