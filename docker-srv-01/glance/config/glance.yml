@@ -629,37 +629,64 @@ pages:
                         url: https://teleport.example.de
                         icon: si:teleport
 
-          - type: custom-api
-            title: GitHub – Following Feed
-            cache: 15m
-            url: https://api.github.com/users/SoniiiT/received_events
-            parameters:
-              per_page: "20"
-            headers:
-              Authorization: Bearer ${GITHUB_TOKEN}
-              Accept: application/vnd.github.v3+json
-              User-Agent: Glance-Dashboard
-            template: |
-              <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
-                {{ range .JSON.Array "" -}}
-                  {{ $type := .String "type" -}}
-                  {{ $actor := .String "actor.login" -}}
-                  {{ $repo := .String "repo.name" -}}
-                  {{ if and (ne $actor "SoniiiT") (or (eq $type "WatchEvent") (eq $type "ForkEvent") (eq $type "ReleaseEvent") (eq $type "CreateEvent") (eq $type "PublicEvent") (eq $type "PushEvent")) -}}
-                  <li>
-                    <div class="flex items-center gap-8">
-                      <img src="{{ .String "actor.avatar_url" }}" width="20" height="20" style="border-radius:50%" />
-                      <a class="size-h4 color-highlight" href="https://github.com/{{ $actor }}" target="_blank">{{ $actor }}</a>
-                    </div>
-                    <ul class="list-horizontal-text size-h6">
-                      <li>{{ $type | trimSuffix "Event" }}</li>
-                      <li><a href="https://github.com/{{ $repo }}" target="_blank" class="color-subtext">{{ $repo }}</a></li>
-                      <li {{ .String "created_at" | parseTime "rfc3339" | toRelativeTime }}></li>
-                    </ul>
-                  </li>
-                  {{ end -}}
-                {{ end -}}
-              </ul>
+          - type: group
+            widgets:
+              - type: custom-api
+                title: Following
+                cache: 15m
+                url: https://api.github.com/users/SoniiiT/received_events
+                parameters:
+                  per_page: "20"
+                headers:
+                  Authorization: Bearer ${GITHUB_TOKEN}
+                  Accept: application/vnd.github.v3+json
+                  User-Agent: Glance-Dashboard
+                template: |
+                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
+                    {{ range .JSON.Array "" -}}
+                      {{ $type := .String "type" -}}
+                      {{ $actor := .String "actor.login" -}}
+                      {{ $repo := .String "repo.name" -}}
+                      {{ if and (ne $actor "SoniiiT") (or (eq $type "WatchEvent") (eq $type "ForkEvent") (eq $type "ReleaseEvent") (eq $type "CreateEvent") (eq $type "PublicEvent") (eq $type "PushEvent")) -}}
+                      <li>
+                        <div class="flex items-center gap-8">
+                          <img src="{{ .String "actor.avatar_url" }}" width="20" height="20" style="border-radius:50%" />
+                          <a class="size-h4 color-highlight" href="https://github.com/{{ $actor }}" target="_blank">{{ $actor }}</a>
+                        </div>
+                        <ul class="list-horizontal-text size-h6">
+                          <li>{{ $type | trimSuffix "Event" }}</li>
+                          <li><a href="https://github.com/{{ $repo }}" target="_blank" class="color-subtext">{{ $repo }}</a></li>
+                          <li {{ .String "created_at" | parseTime "rfc3339" | toRelativeTime }}></li>
+                        </ul>
+                      </li>
+                      {{ end -}}
+                    {{ end -}}
+                  </ul>
+
+              - type: custom-api
+                title: Starred
+                cache: 1h
+                url: https://api.github.com/users/SoniiiT/starred
+                parameters:
+                  per_page: "10"
+                  sort: created
+                  direction: desc
+                headers:
+                  Authorization: Bearer ${GITHUB_TOKEN}
+                  Accept: application/vnd.github.v3+json
+                  User-Agent: Glance-Dashboard
+                template: |
+                  <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                    {{ range .JSON.Array "" -}}
+                      <li>
+                        <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "full_name" }}</a>
+                        <ul class="list-horizontal-text size-h6">
+                          <li>⭐ {{ .Int "stargazers_count" | formatNumber }}</li>
+                          <li>{{ .String "language" }}</li>
+                        </ul>
+                      </li>
+                    {{ end -}}
+                  </ul>
 
       - size: small
         widgets:
