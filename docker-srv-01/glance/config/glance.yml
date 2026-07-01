@@ -636,13 +636,13 @@ pages:
                 cache: 15m
                 url: https://api.github.com/users/SoniiiT/received_events
                 parameters:
-                  per_page: "20"
+                  per_page: "50"
                 headers:
                   Authorization: Bearer ${GITHUB_TOKEN}
                   Accept: application/vnd.github.v3+json
                   User-Agent: Glance-Dashboard
                 template: |
-                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="3">
+                  <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
                     {{ range .JSON.Array "" -}}
                       {{ $type := .String "type" -}}
                       {{ $actor := .String "actor.login" -}}
