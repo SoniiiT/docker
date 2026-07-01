@@ -231,12 +231,15 @@ pages:
                       - title: iCloud
                         url: https://www.icloud.com/
                         icon: si:icloud
+                      - title: Gmail
+                        url: https://mail.google.com/mail/u/0/#inbox
+                        icon: si:gmail
+                      - title: Outlook
+                        url: https://outlook.live.com/mail/
+                        icon: si:microsoftoutlook
 
                   - title: Sonstiges
-                    links:
-                      - title: Wallos
-                        url: ${WALLOS_URL}
-                        icon: si:wallos
+                    links: []
 
       - size: small
         widgets:
