@@ -767,30 +767,12 @@ pages:
                       - title: Portainer
                         url: https://portainer.home.soniiit.net/
                         icon: si:portainer
-                      - title: Semaphore
-                        url: https://semaphore.home.soniiit.net/
-                        icon: si:ansible
                       - title: WGDashboard
                         url: https://wgdashboard.home.soniiit.net/
                         icon: si:wireguard
                       - title: Omada
                         url: https://omada.home.soniiit.net/
                         icon: si:tp-link
-                      - title: WUD
-                        url: https://wud.home.soniiit.net/
-                        icon: si:docker
-                      - title: Dokploy
-                        url: https://dokploy.home.soniiit.net/
-                        icon: si:docker
-                      - title: Coolify
-                        url: https://coolify.home.soniiit.net/
-                        icon: si:coolify
-                      - title: Wallos
-                        url: https://wallos.home.soniiit.net/
-                        icon: si:wallos
-                      - title: Speedtest
-                        url: https://speedtest.home.soniiit.net/
-                        icon: si:speedtest
 
                   - title: Tools & Dev
                     links:
@@ -812,6 +794,24 @@ pages:
                       - title: Network
                         url: https://network.home.soniiit.net/
                         icon: si:cisco
+                      - title: Semaphore
+                        url: https://semaphore.home.soniiit.net/
+                        icon: si:ansible
+                      - title: WUD
+                        url: https://wud.home.soniiit.net/
+                        icon: si:docker
+                      - title: Dokploy
+                        url: https://dokploy.home.soniiit.net/
+                        icon: si:docker
+                      - title: Coolify
+                        url: https://coolify.home.soniiit.net/
+                        icon: si:coolify
+                      - title: Wallos
+                        url: https://wallos.home.soniiit.net/
+                        icon: si:wallos
+                      - title: Speedtest
+                        url: https://speedtest.home.soniiit.net/
+                        icon: si:speedtest
 
               - type: bookmarks
                 title: IP
