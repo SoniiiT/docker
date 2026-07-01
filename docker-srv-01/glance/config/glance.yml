@@ -294,12 +294,9 @@ pages:
             title: Infrastruktur
             cache: 1m
             sites:
-              - title: Traefik
-                url: https://traefik.home.soniiit.net/dashboard/
-                icon: si:traefik
-                basic-auth:
-                  username: ${TRAEFIK_USER}
-                  password: ${TRAEFIK_PASSWORD}
+              - title: Fritz!Box
+                url: http://192.168.178.1
+                icon: si:fritz-box
               - title: Proxmox
                 url: https://192.168.178.6:8006/
                 allow-insecure: true
