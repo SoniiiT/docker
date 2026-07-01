@@ -155,7 +155,7 @@ pages:
                           <span class="color-highlight shrink-0">{{ .Float "price" | printf "%.2f" }} €</span>
                         </div>
                         <ul class="list-horizontal-text">
-                          <li>{{ .String "next_payment" | parseTime "2006-01-02" | toRelativeTime }}</li>
+                          <li {{ .String "next_payment" | parseTime "2006-01-02" | toRelativeTime }}></li>
                           <li>{{ .String "category_name" }}</li>
                         </ul>
                       </li>
@@ -199,19 +199,19 @@ pages:
           - type: custom-api
             title: Speedtest
             cache: 30m
-            url: http://192.168.178.98:8090/api/speedtest/latest
+            url: http://192.168.178.30:8765/api/speedtest/latest
             template: |
               <div class="flex justify-between text-center">
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "download" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "data.download" | printf "%.0f" }}</div>
                   <div class="size-h6">DOWN</div>
                 </div>
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "upload" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "data.upload" | printf "%.0f" }}</div>
                   <div class="size-h6">UP</div>
                 </div>
                 <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "ping" | printf "%.0f" }}</div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "data.ping" | printf "%.0f" }}</div>
                   <div class="size-h6">PING</div>
                 </div>
               </div>
