@@ -739,6 +739,28 @@ pages:
       - size: small
         widgets:
           - type: custom-api
+            title: Cloudflare Tunnels
+            cache: 5m
+            url: https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/cfd_tunnel
+            parameters:
+              is_deleted: "false"
+              per_page: "10"
+            headers:
+              Authorization: Bearer ${CLOUDFLARE_API_KEY}
+            template: |
+              <ul class="list list-gap-10">
+                {{ range .JSON.Array "result" -}}
+                  {{ $status := .String "status" -}}
+                  <li>
+                    <div class="flex justify-between">
+                      <span class="size-h4">{{ .String "name" }}</span>
+                      <span class="{{ if eq $status "healthy" }}color-positive{{ else if eq $status "degraded" }}color-warn{{ else }}color-negative{{ end }} size-h6">● {{ $status }}</span>
+                    </div>
+                  </li>
+                {{ end -}}
+              </ul>
+
+          - type: custom-api
             title: Uptime Kuma - Exposed
             cache: 1m
             url: http://192.168.178.30:3001/api/status-page/heartbeat/exposed
@@ -762,26 +784,11 @@ pages:
         widgets:
           - type: bookmarks
             groups:
-              - title: Internal
+              - title: Exposed Services
                 links:
-                  - title: Home Assistant
-                    url: https://homeassistant.soniiit.net/
-                    icon: si:homeassistant
-                  - title: Teleport
-                    url: https://teleport.soniiit.net/
-                    icon: si:teleport
-                  - title: Remotely
-                    url: https://remote.soniiit.net/
-                    icon: si:remotely
-                  - title: Authentik
-                    url: https://auth.soniiit.net/
-                    icon: si:authentik
-
-              - title: N8N & Tools
-                links:
-                  - title: N8N
-                    url: https://n8n.soniiit.net
-                    icon: si:n8n
+                  - title: example.example.de
+                    url: https://example.example.de
+                    icon: si:cloudflare
 
   - name: Cloud & External
     columns:
