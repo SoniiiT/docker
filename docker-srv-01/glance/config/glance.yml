@@ -741,22 +741,20 @@ pages:
           - type: custom-api
             title: Cloudflare Tunnels
             cache: 5m
-            url: https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/cfd_tunnel
-            parameters:
-              is_deleted: "false"
-              per_page: "10"
+            url: https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/cfd_tunnel/${CLOUDFLARE_TUNNEL_ID}/configurations
             headers:
               Authorization: Bearer ${CLOUDFLARE_API_KEY}
             template: |
               <ul class="list list-gap-10">
-                {{ range .JSON.Array "result" -}}
-                  {{ $status := .String "status" -}}
+                {{ range .JSON.Array "result.config.ingress" -}}
+                  {{ if .String "hostname" -}}
                   <li>
-                    <div class="flex justify-between">
-                      <span class="size-h4">{{ .String "name" }}</span>
-                      <span class="{{ if eq $status "healthy" }}color-positive{{ else if eq $status "degraded" }}color-warn{{ else }}color-negative{{ end }} size-h6">● {{ $status }}</span>
-                    </div>
+                    <a class="size-h4 color-highlight" href="https://{{ .String "hostname" }}" target="_blank">{{ .String "hostname" }}</a>
+                    <ul class="list-horizontal-text size-h6">
+                      <li class="color-subtext">{{ .String "service" }}</li>
+                    </ul>
                   </li>
+                  {{ end -}}
                 {{ end -}}
               </ul>
 
