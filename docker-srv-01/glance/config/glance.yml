@@ -719,6 +719,9 @@ pages:
                 groups:
                   - title: Media Stack
                     links:
+                      - title: Jellyseerr
+                        url: https://jellyseerr.home.soniiit.net/
+                        icon: si:jellyseerr
                       - title: Jellyfin
                         url: https://jellyfin.home.soniiit.net/
                         icon: si:jellyfin
@@ -731,9 +734,6 @@ pages:
                       - title: Radarr
                         url: https://radarr.home.soniiit.net/
                         icon: si:radarr
-                      - title: Jellyseerr
-                        url: https://jellyseerr.home.soniiit.net/
-                        icon: si:jellyseerr
                       - title: Prowlarr
                         url: https://prowlarr.home.soniiit.net/
                         icon: si:prowlarr
@@ -788,10 +788,10 @@ pages:
                       - title: AgentsView
                         url: https://agentsview.home.soniiit.net/
                         icon: si:openai
-                      - title: DNS
+                      - title: Network Toolbox
                         url: https://dns.home.soniiit.net/
                         icon: si:bind9
-                      - title: Network
+                      - title: Scanopy
                         url: https://network.home.soniiit.net/
                         icon: si:cisco
                       - title: Semaphore
