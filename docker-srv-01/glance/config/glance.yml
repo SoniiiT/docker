@@ -1361,6 +1361,12 @@ pages:
                   - title: Netdata
                     url: https://app.netdata.cloud
                     icon: si:netdata
+                  - title: Hetzner
+                    url: https://www.hetzner.com/
+                    icon: si:hetzner
+                  - title: Ubiquiti
+                    url: https://account.ui.com/
+                    icon: si:ubiquiti
 
               - title: Monitoring & Tools
                 links:
@@ -1379,6 +1385,9 @@ pages:
                   - title: WhatIsMyIP
                     url: https://www.whatismyip.com/
                     icon: si:curl
+                  - title: Pushover
+                    url: https://pushover.net/
+                    icon: si:pushover
 
               - title: Development
                 links:
