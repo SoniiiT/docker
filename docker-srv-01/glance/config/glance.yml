@@ -461,24 +461,25 @@ pages:
               </div>
 
           - type: custom-api
-            title: GitHub – Beliebte Repos
+            title: GitHub – Trending Diese Woche
             cache: 6h
-            url: https://api.github.com/users/SoniiiT/repos
-            parameters:
-              sort: stargazers_count
-              direction: desc
-              per_page: "5"
-            headers:
-              Authorization: Bearer ${GITHUB_TOKEN}
-              Accept: application/vnd.github.v3+json
-              User-Agent: Glance-Dashboard
             template: |
+              {{ $weekAgo := offsetNow "-168h" | formatTime "2006-01-02" -}}
+              {{ $repos := newRequest "https://api.github.com/search/repositories"
+                  | withParameter "q" (concat "created:>" $weekAgo)
+                  | withParameter "sort" "stars"
+                  | withParameter "order" "desc"
+                  | withParameter "per_page" "5"
+                  | withHeader "Authorization" "Bearer ${GITHUB_TOKEN}"
+                  | withHeader "Accept" "application/vnd.github.v3+json"
+                  | withHeader "User-Agent" "Glance-Dashboard"
+                  | getResponse -}}
               <ul class="list list-gap-10">
-                {{ range .JSON.Array "" -}}
+                {{ range $repos.JSON.Array "items" -}}
                   <li>
-                    <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "name" }}</a>
+                    <a class="size-h4 color-highlight" href="{{ .String "html_url" }}" target="_blank">{{ .String "full_name" }}</a>
                     <ul class="list-horizontal-text size-h6">
-                      <li>⭐ {{ .Int "stargazers_count" }}</li>
+                      <li>⭐ {{ .Int "stargazers_count" | formatNumber }}</li>
                       <li>{{ .String "language" }}</li>
                     </ul>
                   </li>
@@ -697,8 +698,8 @@ pages:
                       <span class="size-h4 color-highlight">{{ .String "Name" }}</span>
                     </div>
                     <ul class="list-horizontal-text size-h6">
-                      <li class="color-positive">{{ $connected | toInt }} verbunden</li>
-                      <li class="color-subtext">{{ $disconnected | toInt }} getrennt</li>
+                      <li class="color-positive">{{ $connected }} verbunden</li>
+                      <li class="color-subtext">{{ $disconnected | printf "%.0f" }} getrennt</li>
                     </ul>
                   </li>
                 {{ end -}}
@@ -707,7 +708,7 @@ pages:
           - type: custom-api
             title: Semaphore – Letzte Runs
             cache: 2m
-            url: http://192.168.178.50:3001/api/projects/1/tasks
+            url: http://192.168.178.50:3001/api/projects/2/tasks
             headers:
               Authorization: Bearer ${SEMAPHORE_API_TOKEN}
             parameters:
