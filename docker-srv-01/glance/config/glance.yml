@@ -1,6 +1,12 @@
 server:
   assets-path: /app/assets
 
+auth:
+  secret-key: ${GLANCE_SECRET}
+  users:
+    SoniiiT:
+      password-hash: ${GLANCE_PASSWORD_HASH}
+
 theme:
   custom-css-file: /assets/user.css
 
