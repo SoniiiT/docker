@@ -1485,9 +1485,6 @@ pages:
                       - title: Acronis Cloud
                         url: https://eu2-cloud.acronis.com/
                         icon: si:acronis
-                      - title: AppRiver
-                        url: https://account.appriver.com/
-                        icon: si:microsoft
                       - title: Mailstore
                         url: http://my.secure-mailarchive.de:8470/web/login.html
                         icon: si:mail
