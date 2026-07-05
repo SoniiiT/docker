@@ -1,0 +1,17 @@
+http:
+  routers:
+    casaos:
+      rule: Host(`casaos.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: casaos-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    casaos-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.56
+        passHostHeader: true

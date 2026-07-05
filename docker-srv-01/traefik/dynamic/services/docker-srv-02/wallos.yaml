@@ -1,0 +1,17 @@
+http:
+  routers:
+    wallos:
+      rule: Host(`wallos.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: wallos-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    wallos-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.31:8282
+        passHostHeader: true

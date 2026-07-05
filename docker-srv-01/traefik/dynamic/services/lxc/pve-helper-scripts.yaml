@@ -1,0 +1,17 @@
+http:
+  routers:
+    pve-helper:
+      rule: Host(`pve-helper.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: pve-helper-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    pve-helper-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.53:3000
+        passHostHeader: true

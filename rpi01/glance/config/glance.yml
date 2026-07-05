@@ -794,6 +794,18 @@ pages:
                       - title: Omada
                         url: https://omada.home.soniiit.net/
                         icon: si:tp-link
+                      - title: AdGuard
+                        url: https://adguard.home.soniiit.net/
+                        icon: si:adguard
+                      - title: PVE Helper
+                        url: https://pve-helper.home.soniiit.net/
+                        icon: si:proxmox
+                      - title: CasaOS
+                        url: https://casaos.home.soniiit.net/
+                        icon: si:casaos
+                      - title: UmbrelOS
+                        url: https://umbrelos.home.soniiit.net/
+                        icon: si:umbrel
 
                   - title: Tools & Dev
                     links:
@@ -812,6 +824,9 @@ pages:
                       - title: Network Toolbox
                         url: https://dns.home.soniiit.net/
                         icon: si:bind9
+                      - title: Cosmos
+                        url: https://cosmos.home.soniiit.net/
+                        icon: si:cosmos
                       - title: Scanopy
                         url: https://network.home.soniiit.net/
                         icon: si:cisco
@@ -908,6 +923,18 @@ pages:
                       - title: Pterodactyl
                         url: https://192.168.178.40
                         icon: si:pterodactyl
+                      - title: AdGuard
+                        url: https://192.168.178.55
+                        icon: si:adguard
+                      - title: PVE Helper
+                        url: http://192.168.178.53:3000
+                        icon: si:proxmox
+                      - title: CasaOS
+                        url: http://192.168.178.56
+                        icon: si:casaos
+                      - title: UmbrelOS
+                        url: http://192.168.178.92
+                        icon: si:umbrel
 
                   - title: Tools & Dev
                     links:
@@ -926,6 +953,9 @@ pages:
                       - title: Network Toolbox
                         url: http://192.168.178.31:3001/
                         icon: si:bind9
+                      - title: Cosmos
+                        url: https://192.168.178.57
+                        icon: si:cosmos
                       - title: Scanopy
                         url: http://192.168.178.52:60072
                         icon: si:cisco
@@ -1030,6 +1060,18 @@ pages:
                       - title: Omada
                         url: https://omada.teleport.soniiit.net/
                         icon: si:tp-link
+                      - title: AdGuard
+                        url: https://adguard.teleport.soniiit.net/
+                        icon: si:adguard
+                      - title: PVE Helper
+                        url: https://pve-helper.teleport.soniiit.net/
+                        icon: si:proxmox
+                      - title: CasaOS
+                        url: https://casaos.teleport.soniiit.net/
+                        icon: si:casaos
+                      - title: UmbrelOS
+                        url: https://umbrelos.teleport.soniiit.net/
+                        icon: si:umbrel
 
                   - title: Tools & Dev
                     links:
@@ -1048,6 +1090,9 @@ pages:
                       - title: Network Toolbox
                         url: https://dns.teleport.soniiit.net/
                         icon: si:bind9
+                      - title: Cosmos
+                        url: https://cosmos.teleport.soniiit.net/
+                        icon: si:cosmos
                       - title: Scanopy
                         url: https://network.teleport.soniiit.net/
                         icon: si:cisco

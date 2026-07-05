@@ -1,0 +1,17 @@
+http:
+  routers:
+    umbrelos:
+      rule: Host(`umbrelos.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: umbrelos-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    umbrelos-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.92
+        passHostHeader: true

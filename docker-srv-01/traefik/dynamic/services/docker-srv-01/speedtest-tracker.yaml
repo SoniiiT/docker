@@ -1,0 +1,17 @@
+http:
+  routers:
+    speedtest:
+      rule: Host(`speedtest.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: speedtest-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    speedtest-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.30:8765
+        passHostHeader: true

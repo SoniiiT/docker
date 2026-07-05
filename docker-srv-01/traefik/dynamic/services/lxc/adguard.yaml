@@ -1,0 +1,22 @@
+http:
+  routers:
+    adguard:
+      rule: Host(`adguard.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: adguard-svc
+      middlewares:
+        - pveHeaders@file
+
+  services:
+    adguard-svc:
+      loadBalancer:
+        servers:
+          - url: https://192.168.178.55
+        passHostHeader: true
+        serversTransport: adguard-transport
+
+  serversTransports:
+    adguard-transport:
+      insecureSkipVerify: true
