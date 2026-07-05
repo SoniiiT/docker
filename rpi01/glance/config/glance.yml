@@ -824,9 +824,6 @@ pages:
                       - title: Network Toolbox
                         url: https://dns.home.soniiit.net/
                         icon: si:bind9
-                      - title: Cosmos
-                        url: https://cosmos.home.soniiit.net/
-                        icon: si:cosmos
                       - title: Scanopy
                         url: https://network.home.soniiit.net/
                         icon: si:cisco
