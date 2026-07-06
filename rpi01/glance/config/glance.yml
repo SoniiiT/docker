@@ -135,18 +135,18 @@ pages:
 
                   - title: AI
                     links:
-                      - title: GitHub
-                        url: https://github.com/
-                        icon: si:github
+                      - title: GitHub Copilot
+                        url: https://github.com/copilot
+                        icon: si:githubcopilot
                       - title: Claude
                         url: https://claude.ai/login
-                        icon: si:anthropic
+                        icon: si:claude
                       - title: Gemini
                         url: https://gemini.google.com/app
                         icon: si:googlegemini
                       - title: NotebookLM
                         url: https://notebooklm.google/
-                        icon: si:google
+                        icon: si:notebooklm
                       - title: ChatGPT
                         url: https://chatgpt.com/
                         icon: si:openai
@@ -158,7 +158,7 @@ pages:
                         icon: si:deepseek
                       - title: Grok
                         url: https://grok.com/
-                        icon: si:grok
+                        icon: si:x
                       - title: OpenRouter
                         url: https://openrouter.ai/
                         icon: si:openrouter
@@ -188,13 +188,13 @@ pages:
                         icon: si:ubisoft
                       - title: Battle.net
                         url: https://eu.shop.battle.net/de-de
-                        icon: si:battlenet
+                        icon: si:battledotnet
                       - title: EA
                         url: https://www.ea.com/de-de
                         icon: si:ea
                       - title: GOG
                         url: https://www.gog.com/en/
-                        icon: si:gog
+                        icon: si:gogdotcom
                       - title: itch.io
                         url: https://itch.io/
                         icon: si:itchdotio
@@ -255,6 +255,9 @@ pages:
                       - title: Outlook
                         url: https://outlook.live.com/mail/
                         icon: si:microsoftoutlook
+                      - title: GitHub
+                        url: https://github.com/
+                        icon: si:github
 
                   - title: Sonstiges
                     links: []
@@ -424,7 +427,7 @@ pages:
             sites:
               - title: Fritz!Box
                 url: http://192.168.178.1
-                icon: si:fritz-box
+                icon: si:fritz
               - title: Proxmox
                 url: https://192.168.178.6:8006/
                 allow-insecure: true
@@ -781,16 +784,16 @@ pages:
                     links:
                       - title: Fritz!Box Main
                         url: https://gw01.home.soniiit.net/
-                        icon: si:fritz-box
+                        icon: si:fritz
                       - title: Fritz!Box Tony
                         url: https://gw02.home.soniiit.net/
-                        icon: si:fritz-box
+                        icon: si:fritz
                       - title: Proxmox
                         url: https://proxmox.home.soniiit.net/
                         icon: si:proxmox
                       - title: Traefik
                         url: https://traefik.home.soniiit.net/
-                        icon: si:traefik
+                        icon: si:traefikproxy
                       - title: Portainer
                         url: https://portainer.home.soniiit.net/
                         icon: si:portainer
@@ -907,10 +910,10 @@ pages:
                     links:
                       - title: Fritz!Box Main
                         url: http://192.168.178.1
-                        icon: si:fritz-box
+                        icon: si:fritz
                       - title: Fritz!Box Tony
                         url: http://192.168.178.2
-                        icon: si:fritz-box
+                        icon: si:fritz
                       - title: Proxmox
                         url: https://192.168.178.6:8006
                         icon: si:proxmox
@@ -1053,7 +1056,7 @@ pages:
                         icon: si:proxmox
                       - title: Traefik
                         url: https://traefik.teleport.soniiit.net/
-                        icon: si:traefik
+                        icon: si:traefikproxy
                       - title: Portainer
                         url: https://portainer.teleport.soniiit.net/
                         icon: si:portainer
@@ -1646,7 +1649,7 @@ pages:
                         icon: si:portainer
                       - title: Traefik
                         url: https://traefik.k3s.itcares.local
-                        icon: si:traefik
+                        icon: si:traefikproxy
                       - title: Uptime Kuma
                         url: https://uptimekuma.k3s.itcares.local
                         icon: si:uptimekuma
