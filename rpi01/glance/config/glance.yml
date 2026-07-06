@@ -158,7 +158,13 @@ pages:
                         icon: si:deepseek
                       - title: Grok
                         url: https://grok.com/
-                        icon: si:x
+                        icon: si:grok
+                      - title: OpenRouter
+                        url: https://openrouter.ai/
+                        icon: si:openrouter
+                      - title: Hugging Face
+                        url: https://huggingface.co/
+                        icon: si:huggingface
 
               - type: bookmarks
                 title: Seite 2
