@@ -19,7 +19,7 @@ networks:
 
 services:
   hbbs:
-    image: rustdesk/rustdesk-server:latest
+    image: rustdesk/rustdesk-server:1.1.15
     container_name: rustdesk-hbbs
     command: hbbs
     restart: unless-stopped
@@ -28,7 +28,7 @@ services:
       - "21115:21115"       # NAT type test (TCP)
       - "21116:21116"       # ID registration & heartbeat (TCP)
       - "21116:21116/udp"   # Hole punching (UDP) — cannot go through Traefik
-      - "21118:21118"       # Optional: web console hbbs (TCP)
+      - "21118:21118"       # WebSocket for browser-based RustDesk client (TCP)
     volumes:
       - ./data:/root
     environment:
@@ -37,14 +37,14 @@ services:
       - hbbr
 
   hbbr:
-    image: rustdesk/rustdesk-server:latest
+    image: rustdesk/rustdesk-server:1.1.15
     container_name: rustdesk-hbbr
     command: hbbr
     restart: unless-stopped
     networks: [rustdesk]
     ports:
       - "21117:21117"       # Relay (TCP)
-      - "21119:21119"       # Optional: web console hbbr (TCP)
+      - "21119:21119"       # WebSocket for browser-based RustDesk client (TCP)
     volumes:
       - ./data:/root
     environment:
