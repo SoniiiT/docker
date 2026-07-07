@@ -1,5 +1,3 @@
-version: "3.9"
-
 # RustDesk Self-Hosted Server
 # Ports are exposed directly — Traefik cannot handle UDP (port 21116/udp),
 # so all RustDesk protocol ports bypass Traefik and are bound directly.
