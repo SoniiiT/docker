@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   wallos:
-    image: bellamy/wallos:latest
+    image: bellamy/wallos:4.9.6
     container_name: wallos
     restart: unless-stopped
     ports:

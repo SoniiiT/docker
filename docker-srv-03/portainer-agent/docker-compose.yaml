@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   portainer_agent:
-    image: portainer/agent:2.39.4
+    image: portainer/agent:2.43.0
     container_name: portainer_agent
     restart: always
     ports:
