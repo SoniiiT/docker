@@ -1292,7 +1292,7 @@ pages:
           - type: custom-api
             title: Semaphore – Letzte Runs
             cache: 2m
-            url: http://192.168.178.50:3001/api/project/2/tasks
+            url: http://192.168.178.50:3000/api/project/2/tasks
             headers:
               Authorization: Bearer ${SEMAPHORE_API_TOKEN}
             parameters:
