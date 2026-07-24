@@ -1,0 +1,14 @@
+$TTL 2d
+
+$ORIGIN mcp.soniiit.net.
+
+@               IN      SOA     ns.mcp.soniiit.net. sonilpreal.gmail.com (
+                                2026072522      ; serial
+                                12h             ; refresh
+                                15m             ; retry
+                                3w              ; expire
+                                2h              ; minimum ttl
+                                )
+                IN      NS      ns.mcp.soniiit.net.
+
+ns.mcp.soniiit.net.    IN A    192.168.178.3
