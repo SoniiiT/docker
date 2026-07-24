@@ -1,0 +1,15 @@
+http:
+  routers:
+    portainer-mcp:
+      rule: Host(`portainer.mcp.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: portainer-mcp-svc
+
+  services:
+    portainer-mcp-svc:
+      loadBalancer:
+        servers:
+          - url: http://portainer-mcp:17717
+        passHostHeader: true
