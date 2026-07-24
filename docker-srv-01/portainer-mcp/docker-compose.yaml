@@ -11,6 +11,7 @@ services:
     networks: [proxy]
     environment:
       PORTAINER_URL: ${PORTAINER_URL:?PORTAINER_URL is required}
+      PORTAINER_TLS_VERIFY: "0"
       PORTAINER_MCP_TRANSPORT: http
       PORTAINER_MCP_HTTP_PORT: "17717"
       PORTAINER_MCP_AUTH_TOKEN: ${PORTAINER_MCP_AUTH_TOKEN:?PORTAINER_MCP_AUTH_TOKEN is required}
