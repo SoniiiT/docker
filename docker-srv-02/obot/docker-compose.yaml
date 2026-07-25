@@ -12,6 +12,7 @@ services:
       OBOT_BOOTSTRAP_TOKEN: "${OBOT_BOOTSTRAP_TOKEN:?Set OBOT_BOOTSTRAP_TOKEN in .env}"
     volumes:
       - /mnt/docker/obot:/data
+      - /var/run/docker.sock:/var/run/docker.sock
 
     # Remote and composite MCP servers are proxied by Obot and do not need
     # access to the Docker daemon. Keep the host socket out of this stack.
