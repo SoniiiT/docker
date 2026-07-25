@@ -2,14 +2,16 @@ version: "3.9"
 
 services:
   obot:
-    image: ghcr.io/obot-platform/obot:v0.24.0
+    image: ghcr.io/obot-platform/obot:v0.24.1
     container_name: obot
     restart: unless-stopped
     ports:
       - "8081:8080"
     environment:
+      OBOT_SERVER_HOSTNAME: "${OBOT_SERVER_HOSTNAME}"
       OBOT_SERVER_ENABLE_AUTHENTICATION: "true"
-      OBOT_BOOTSTRAP_TOKEN: "${OBOT_BOOTSTRAP_TOKEN:?Set OBOT_BOOTSTRAP_TOKEN in .env}"
+      OBOT_BOOTSTRAP_TOKEN: "${OBOT_BOOTSTRAP_TOKEN}"
+      OBOT_SERVER_DISALLOW_PRIVATE_IPMCP: "false"
     volumes:
       - /mnt/docker/obot:/data
       - /var/run/docker.sock:/var/run/docker.sock
