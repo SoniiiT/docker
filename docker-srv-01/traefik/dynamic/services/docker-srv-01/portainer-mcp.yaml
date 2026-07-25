@@ -1,7 +1,7 @@
 http:
   routers:
     portainer-mcp:
-      rule: Host(`portainer.mcp.soniiit.net`)
+      rule: Host(`portainer.mcp.home.soniiit.net`)
       entryPoints: [websecure]
       tls:
         certResolver: leprod
