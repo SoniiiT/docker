@@ -1,0 +1,15 @@
+services:
+  obot:
+    image: ghcr.io/obot-platform/obot:latest
+    container_name: obot
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      OBOT_SERVER_ENABLE_AUTHENTICATION: "true"
+      OBOT_BOOTSTRAP_TOKEN: "${OBOT_BOOTSTRAP_TOKEN:?Set OBOT_BOOTSTRAP_TOKEN in .env}"
+    volumes:
+      - ./data/obot:/data
+
+    # Remote and composite MCP servers are proxied by Obot and do not need
+    # access to the Docker daemon. Keep the host socket out of this stack.
