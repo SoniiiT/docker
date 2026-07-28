@@ -37,7 +37,7 @@ Docker kann auf verschiedenen Betriebssystemen installiert werden:
 
 ## Deployment Strategie
 
-Wir verwenden eine standardisierte Deployment-Strategie mit Git, Docker Compose und Doppler für Secrets Management.
+Wir verwenden eine standardisierte Deployment-Strategie mit Git, Docker Compose und 1Password für das Secrets Management.
 
 - **Anleitung:** [docs/deployment-guide.md](docs/deployment-guide.md)
 - **Skript:** [scripts/update_docker_stacks.sh](scripts/update_docker_stacks.sh)
