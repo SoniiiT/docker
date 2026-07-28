@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-28T10:52:13+02:00",
+  "entries": [
+    {"path": "README.md", "kind": "file", "area": "documentation", "purpose": "Docker overview and deployment strategy links", "status": "source"},
+    {"path": "docs/deployment-guide.md", "kind": "file", "area": "deployment", "purpose": "Sparse checkout, local environment files, update script, and cron procedure", "status": "source"},
+    {"path": "scripts/update_docker_stacks.sh", "kind": "file", "area": "deployment", "purpose": "Configured stack pull and conditional Compose update helper", "status": "source"},
+    {"path": "renovate.json", "kind": "file", "area": "dependency-management", "purpose": "Renovate recommended configuration", "status": "source"},
+    {"path": ".gitignore", "kind": "file", "area": "repository", "purpose": "Ignores editor metadata and local .env files", "status": "source"},
+    {"path": "cloud-srv-02", "kind": "directory", "area": "cloud-host", "purpose": "Authentik, Traefik, and Uptime Kuma stacks", "status": "source"},
+    {"path": "cloud-srv-03", "kind": "directory", "area": "cloud-host", "purpose": "RustDesk, Teleport, Traefik, and supporting dynamic configuration", "status": "source"},
+    {"path": "docker-srv-01", "kind": "directory", "area": "docker-host", "purpose": "Primary ingress, Docker services, and dynamic route source", "status": "source"},
+    {"path": "docker-srv-01/traefik/dynamic/services", "kind": "directory", "area": "routing", "purpose": "Nested Traefik HTTP route definitions grouped by target host", "status": "source"},
+    {"path": "docker-srv-02", "kind": "directory", "area": "docker-host", "purpose": "Application stacks, Obot, n8n, Wallos, and tunnel", "status": "source"},
+    {"path": "docker-srv-03", "kind": "directory", "area": "docker-host", "purpose": "Portainer Agent stack", "status": "source"},
+    {"path": "jellfin-home-01/docker-compose.yaml", "kind": "file", "area": "home-host", "purpose": "Media, download, library, and game-library Compose project", "status": "source"},
+    {"path": "lxc-bind9", "kind": "directory", "area": "dns", "purpose": "Bind9 Compose stack, named configuration, and DNS zones", "status": "source"},
+    {"path": "lxc-pterodactyl", "kind": "directory", "area": "game-hosting", "purpose": "Pterodactyl Panel and Wings stacks", "status": "source"},
+    {"path": "lxc-remotely", "kind": "directory", "area": "remote-management", "purpose": "Remotely server and local application data mount", "status": "source"},
+    {"path": "lxc-wgdashboard", "kind": "directory", "area": "networking", "purpose": "Cloudflare DDNS updater with host networking", "status": "source"},
+    {"path": "rpi01/glance", "kind": "directory", "area": "dashboard", "purpose": "Glance Compose deployment, pages, styling, and API integration config", "status": "source"},
+    {"path": "docker-srv-01/traefik/relink.sh", "kind": "file", "area": "routing", "purpose": "Creates flat generated symlinks for nested dynamic files", "status": "source"},
+    {"path": "docker-srv-01/traefik/relink-watch.sh", "kind": "file", "area": "routing", "purpose": "Runs relink after recursive inotify changes", "status": "source"},
+    {"path": "docker-srv-01/traefik/README.md", "kind": "file", "area": "routing", "purpose": "Relinker installation, systemd, and troubleshooting guide", "status": "source"},
+    {"path": "cloud-srv-03/teleport/config/teleport.yaml", "kind": "file", "area": "cloud-host", "purpose": "Teleport runtime configuration mounted into the container", "status": "source"},
+    {"path": "lxc-bind9/config/named.conf", "kind": "file", "area": "dns", "purpose": "ACL, recursion, forwarding, and zone declarations", "status": "source"},
+    {"path": "rpi01/glance/config/glance.yml", "kind": "file", "area": "dashboard", "purpose": "Glance theme, pages, widgets, and service API calls", "status": "source"},
+    {"path": "rpi01/glance/config/home.yml", "kind": "file", "area": "dashboard", "purpose": "Glance home page column configuration", "status": "source"}
+  ]
+}

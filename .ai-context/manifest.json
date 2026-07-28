@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "project_root": ".",
+  "analysis_mode": "refresh",
+  "analyzed_at": "2026-07-28T10:56:53+02:00",
+  "analyzed_areas": [
+    "docker-compose stacks",
+    "reverse proxy and routing",
+    "DNS and network boundaries",
+    "deployment and update automation",
+    "secrets configuration contracts",
+    "documentation and repository conventions"
+  ],
+  "source_fingerprints": {
+    "git_head": "1ae11266e1d2e2be4543c1942246173a77f42590",
+    "tracked_file_count": 98,
+    "compose_manifest_count": 27,
+    "traefik_route_count": 36,
+    "env_example_count": 13
+  },
+  "refresh_status": {
+    "state": "complete",
+    "reason": "Confirmed that 1Password is the project secrets source and aligned repository documentation.",
+    "curated_knowledge_preserved": true,
+    "secret_values_read": false,
+    "ignored_generated_or_secret_artifacts": [
+      ".git",
+      ".env files",
+      "lxc-bind9/config/named.conf.key"
+    ]
+  }
+}

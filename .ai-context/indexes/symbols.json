@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-28T10:52:13+02:00",
+  "entries": [
+    {"symbol": "traefik", "kind": "compose-service", "file": "docker-srv-01/traefik/docker-compose.yaml", "purpose": "Primary internal HTTPS ingress, ACME, Docker provider, and file provider"},
+    {"symbol": "authentik server/worker", "kind": "compose-services", "file": "cloud-srv-02/authentik/docker-compose.yaml", "purpose": "Identity service backed by PostgreSQL and Redis"},
+    {"symbol": "teleport", "kind": "compose-service", "file": "cloud-srv-03/teleport/docker-compose.yaml", "purpose": "HTTP wildcard access plus SSH and reverse tunnel TCP routes"},
+    {"symbol": "hbbs/hbbr", "kind": "compose-services", "file": "cloud-srv-03/rustdesk/docker-compose.yaml", "purpose": "RustDesk ID and relay servers with direct protocol ports"},
+    {"symbol": "home media stack", "kind": "compose-project", "file": "jellfin-home-01/docker-compose.yaml", "purpose": "Jellyfin, automation, downloaders, libraries, and supporting databases"},
+    {"symbol": "Pterodactyl Panel/Wings", "kind": "compose-projects", "file": "lxc-pterodactyl", "purpose": "Game server control plane and node daemon"},
+    {"symbol": "bind9", "kind": "compose-service", "file": "lxc-bind9/docker-compose.yaml", "purpose": "Internal authoritative and recursive DNS"},
+    {"symbol": "cloudflare-ddns", "kind": "compose-service", "file": "lxc-wgdashboard/docker-compose.yml", "purpose": "Cloudflare DNS address updater"},
+    {"symbol": "glance", "kind": "compose-service", "file": "rpi01/glance/docker-compose.yaml", "purpose": "Multi-page service dashboard"},
+    {"symbol": "relink.sh", "kind": "shell-script", "file": "docker-srv-01/traefik/relink.sh", "purpose": "Generates _svc__* symlinks from nested dynamic service files"},
+    {"symbol": "relink-watch.sh", "kind": "shell-script", "file": "docker-srv-01/traefik/relink-watch.sh", "purpose": "Watches route sources with inotifywait"},
+    {"symbol": "update_docker_stacks.sh", "kind": "shell-script", "file": "scripts/update_docker_stacks.sh", "purpose": "Pulls and updates configured Compose stacks"},
+    {"symbol": "home.soniiit.net", "kind": "dns-zone", "file": "lxc-bind9/config/named.conf", "purpose": "Internal home service zone"},
+    {"symbol": "dev.soniiit.net", "kind": "dns-zone", "file": "lxc-bind9/config/named.conf", "purpose": "Development zone"},
+    {"symbol": "demo.soniiit.net", "kind": "dns-zone", "file": "lxc-bind9/config/named.conf", "purpose": "Demo zone"},
+    {"symbol": "192.168.178.in-addr.arpa", "kind": "dns-zone", "file": "lxc-bind9/config/named.conf", "purpose": "Internal reverse lookup zone"},
+    {"symbol": "dynamic/services", "kind": "route-collection", "file": "docker-srv-01/traefik/dynamic/services", "purpose": "36 file-provider HTTP route definitions across six target groups"},
+    {"symbol": "Home/Internal Services/Exposed Services/Cloud/Work", "kind": "dashboard-pages", "file": "rpi01/glance/config/glance.yml", "purpose": "Observed Glance page navigation"}
+  ]
+}
