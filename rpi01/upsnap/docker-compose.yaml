@@ -1,0 +1,12 @@
+services:
+  upsnap:
+    container_name: upsnap
+    image: ghcr.io/seriousm4x/upsnap:4
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /docker/upsnap/data:/app/pb_data
+    environment:
+      - TZ=Europe/Berlin
+      - UPSNAP_INTERVAL=@every 10s
+      - UPSNAP_SCAN_RANGE=192.168.1.0/24
