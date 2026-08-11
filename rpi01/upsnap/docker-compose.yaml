@@ -5,7 +5,7 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - /docker/upsnap/data:/app/pb_data
+      - ./data:/app/pb_data
     environment:
       - TZ=Europe/Berlin
       - UPSNAP_INTERVAL=@every 10s
