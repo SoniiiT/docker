@@ -10,3 +10,4 @@ services:
       - TZ=Europe/Berlin
       - UPSNAP_INTERVAL=*/10 * * * * *
       - UPSNAP_SCAN_RANGE=192.168.178.0/24
+      - UPSNAP_PING_PRIVILEGED=true
