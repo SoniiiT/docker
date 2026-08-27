@@ -1600,31 +1600,31 @@ pages:
                         url: https://ui.itcares.local
                         icon: si:swagger
                       - title: ATSK API
-                        url: https://api.k3s.itcares.local/atsk/v1/docs
+                        url: http://api.k3s.itcares.local/atsk/v1/docs
                         icon: si:swagger
                       - title: CEVS API
-                        url: https://api.k3s.itcares.local/cevs/v1/docs
+                        url: http://api.k3s.itcares.local/cevs/v1/docs
                         icon: si:swagger
                       - title: HRM API
-                        url: https://api.k3s.itcares.local/hrm/v1/docs
+                        url: http://api.k3s.itcares.local/hrm/v1/docs
                         icon: si:swagger
                       - title: IMI API
-                        url: https://api.k3s.itcares.local/imi/v3/docs
+                        url: http://api.k3s.itcares.local/imi/v3/docs
                         icon: si:swagger
                       - title: ITGL API
-                        url: https://api.k3s.itcares.local/itgl/v1/docs
+                        url: http://api.k3s.itcares.local/itgl/v1/docs
                         icon: si:swagger
                       - title: LMC API
-                        url: https://api.k3s.itcares.local/lmc/v1/docs
+                        url: http://api.k3s.itcares.local/lmc/v1/docs
                         icon: si:swagger
                       - title: MLSTR API
-                        url: https://api.k3s.itcares.local/mlstr/v1/docs
+                        url: http://api.k3s.itcares.local/mlstr/v1/docs
                         icon: si:swagger
                       - title: MS365 API
-                        url: https://api.k3s.itcares.local/ms365/v1/docs
+                        url: http://api.k3s.itcares.local/ms365/v1/docs
                         icon: si:swagger
                       - title: SMS API
-                        url: https://api.k3s.itcares.local/sms/v1/docs
+                        url: http://api.k3s.itcares.local/sms/v1/docs
                         icon: si:swagger
 
                   - title: Kubernetes
