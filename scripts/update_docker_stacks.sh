@@ -6,11 +6,9 @@
 
 # List of stack directories to manage
 STACKS=(
-  # BEISPIEL LXC:
-  # "/opt/docker-stack/lxc-semaphore"
-
-  # BEISPIEL DOCKER SERVER:
-  # "/opt/docker-stack/docker-srv-01/homepage"
+  # Headscale / Headplane on cloud-srv-03
+  "/opt/docker-stack/cloud-srv-03/headscale"
+  "/opt/docker-stack/cloud-srv-03/headplane"
 )
 
 # ==============================================================================
