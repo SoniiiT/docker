@@ -1,2 +1,15 @@
 .vscode/
 .env
+# Runtime state and secrets for cloud-srv-03 Headscale/Headplane
+cloud-srv-03/headscale/config/config.yaml
+cloud-srv-03/headscale/config/config.yaml.*
+cloud-srv-03/headscale/lib/
+cloud-srv-03/headscale/oidc_client_secret
+cloud-srv-03/headplane/config.yaml
+cloud-srv-03/headplane/config.yaml.*
+cloud-srv-03/headplane/data/
+cloud-srv-03/headplane/cookie_secret
+cloud-srv-03/headplane/headscale_api_key
+cloud-srv-03/headplane/oidc_client_secret
+cloud-srv-03/headplane/docker-compose.yaml.*
+cloud-srv-03/headscale/docker-compose.yaml.*

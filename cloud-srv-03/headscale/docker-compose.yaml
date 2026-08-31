@@ -1,0 +1,44 @@
+services:
+  headscale:
+    image: docker.io/headscale/headscale:0.29.3
+    container_name: headscale
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/run/headscale
+    networks:
+      - proxy
+    ports:
+      - "127.0.0.1:9090:9090"
+      - "3478:3478/udp"
+    volumes:
+      - ./config:/etc/headscale:ro
+      - ./lib:/var/lib/headscale
+    command: serve
+    healthcheck:
+      test: ["CMD", "headscale", "health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik_proxy
+      - traefik.http.routers.headscale.rule=Host(`headscale.soniiit.net`)
+      - traefik.http.routers.headscale.entrypoints=websecure
+      - traefik.http.routers.headscale.tls=true
+      - traefik.http.routers.headscale.tls.certresolver=leprod
+      - traefik.http.routers.headscale.service=headscale
+      - traefik.http.routers.headscale.middlewares=headscale-control
+      - traefik.http.routers.headscale-derp.rule=Host(`headscale.soniiit.net`) && PathPrefix(`/derp`)
+      - traefik.http.routers.headscale-derp.entrypoints=websecure
+      - traefik.http.routers.headscale-derp.tls=true
+      - traefik.http.routers.headscale-derp.tls.certresolver=leprod
+      - traefik.http.routers.headscale-derp.service=headscale
+      - traefik.http.routers.headscale-derp.priority=200
+      - traefik.http.middlewares.headscale-control.headers.customrequestheaders.Upgrade=tailscale-control-protocol
+      - traefik.http.middlewares.headscale-control.headers.customrequestheaders.Connection=Upgrade
+      - traefik.http.services.headscale.loadbalancer.server.port=8080
+networks:
+  proxy:
+    external: true
+    name: traefik_proxy

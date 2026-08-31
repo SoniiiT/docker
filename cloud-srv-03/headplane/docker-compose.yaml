@@ -1,0 +1,28 @@
+services:
+  headplane:
+    image: ghcr.io/tale/headplane:0.7.1
+    container_name: headplane
+    restart: unless-stopped
+    networks:
+      - proxy
+    volumes:
+      - ./config.yaml:/etc/headplane/config.yaml:ro
+      - ./data:/var/lib/headplane
+      - ../headscale/config/config.yaml:/etc/headscale/config.yaml:ro
+      - ./headscale_api_key:/run/secrets/headscale_api_key:ro
+      - ./oidc_client_secret:/run/secrets/oidc_client_secret:ro
+      - ./cookie_secret:/var/lib/headplane/cookie_secret
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik_proxy
+      - traefik.http.routers.headplane.rule=Host(`headscale.soniiit.net`) && PathPrefix(`/admin`)
+      - traefik.http.routers.headplane.entrypoints=websecure
+      - traefik.http.routers.headplane.tls=true
+      - traefik.http.routers.headplane.tls.certresolver=leprod
+      - traefik.http.services.headplane.loadbalancer.server.port=3000
+      - traefik.http.routers.headplane.priority=100
+networks:
+  proxy:
+    external: true
+    name: traefik_proxy
