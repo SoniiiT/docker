@@ -17,7 +17,7 @@ networks:
 
 services:
   hbbs:
-    image: rustdesk/rustdesk-server:1.1.15
+    image: rustdesk/rustdesk-server:1.1.16
     container_name: rustdesk-hbbs
     command: hbbs
     restart: unless-stopped
@@ -35,7 +35,7 @@ services:
       - hbbr
 
   hbbr:
-    image: rustdesk/rustdesk-server:1.1.15
+    image: rustdesk/rustdesk-server:1.1.16
     container_name: rustdesk-hbbr
     command: hbbr
     restart: unless-stopped
