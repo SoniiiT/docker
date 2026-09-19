@@ -135,6 +135,9 @@ pages:
 
                   - title: AI
                     links:
+                      - title: Venice AI
+                        url: https://venice.ai/
+                        icon: https://venice.ai/favicon.ico
                       - title: GitHub Copilot
                         url: https://github.com/copilot
                         icon: si:githubcopilot
@@ -144,9 +147,6 @@ pages:
                       - title: Gemini
                         url: https://gemini.google.com/app
                         icon: si:googlegemini
-                      - title: NotebookLM
-                        url: https://notebooklm.google/
-                        icon: si:notebooklm
                       - title: ChatGPT
                         url: https://chatgpt.com/
                         icon: si:openai
@@ -1597,7 +1597,7 @@ pages:
                         url: https://api.itcares.net
                         icon: si:swagger
                       - title: Frontend Manager
-                        url: https://ui.itcares.local
+                        url: https://ui.itcares.net
                         icon: si:swagger
                       - title: ATSK API
                         url: http://api.k3s.itcares.local/atsk/v1/docs
