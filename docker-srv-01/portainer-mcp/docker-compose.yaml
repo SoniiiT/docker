@@ -5,7 +5,7 @@ networks:
 
 services:
   portainer-mcp:
-    image: portainer/portainer-mcp:2.43
+    image: portainer/portainer-mcp:2.45
     container_name: portainer-mcp
     restart: unless-stopped
     networks: [proxy]
