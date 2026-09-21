@@ -1376,6 +1376,9 @@ pages:
                   - title: Teleport
                     url: https://teleport.soniiit.net/
                     icon: si:teleport
+                  - title: Hermes Dashboard
+                    url: https://hermes.soniiit.net/
+                    icon: si:tools
 
               - title: Auth & Management
                 links:
@@ -1388,6 +1391,9 @@ pages:
                   - title: Pterodactyl
                     url: https://panel.soniiit.net/
                     icon: si:pterodactyl
+                  - title: Headplane
+                    url: https://headplane.soniiit.net/
+                    icon: si:tailscale
 
               - title: Tools & Automation
                 links:
@@ -1400,6 +1406,12 @@ pages:
                   - title: N8N
                     url: https://n8n.soniiit.net/
                     icon: si:n8n
+                  - title: OpenWolf
+                    url: https://openwolf.soniiit.net/
+                    icon: si:tools
+                  - title: Honcho
+                    url: https://honcho.soniiit.net/
+                    icon: si:tools
 
   - name: Cloud
     columns:
