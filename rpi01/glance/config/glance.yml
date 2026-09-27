@@ -833,8 +833,8 @@ pages:
                       - title: Network Toolbox
                         url: https://dns.home.soniiit.net/
                         icon: si:bind9
-                      - title: Scanopy
-                        url: https://network.home.soniiit.net/
+                      - title: Homelable
+                        url: https://homelable.home.soniiit.net/
                         icon: si:cisco
                       - title: Semaphore
                         url: https://semaphore.home.soniiit.net/
@@ -962,8 +962,8 @@ pages:
                       - title: Cosmos
                         url: https://192.168.178.57
                         icon: si:cosmos
-                      - title: Scanopy
-                        url: http://192.168.178.52:60072
+                      - title: Homelable
+                        url: http://192.168.178.52:3000
                         icon: si:cisco
                       - title: Semaphore
                         url: http://192.168.178.50:3001
@@ -1099,8 +1099,8 @@ pages:
                       - title: Cosmos
                         url: https://cosmos.teleport.soniiit.net/
                         icon: si:cosmos
-                      - title: Scanopy
-                        url: https://network.teleport.soniiit.net/
+                      - title: Homelable
+                        url: https://homelable.teleport.soniiit.net/
                         icon: si:cisco
                       - title: Semaphore
                         url: https://semaphore.teleport.soniiit.net/
