@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-21T16:32:35.720Z
-> Files: 110 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-22T23:31:54.001Z
+> Files: 111 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -12,6 +12,7 @@
 - `.gitignore` — Git ignore rules (~146 tok)
 - `AGENTS.md` — Agent context (~197 tok)
 - `CLAUDE.md` — OpenWolf (~194 tok)
+- `GEMINI.md` — OpenWolf (~75 tok)
 - `README.md` — Project documentation (~466 tok)
 - `renovate.json` (~33 tok)
 

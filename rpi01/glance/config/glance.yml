@@ -93,9 +93,9 @@ pages:
                       - title: Crunchyroll
                         url: https://www.crunchyroll.com/de/discover
                         icon: si:crunchyroll
-                      - title: DAZN
-                        url: https://www.dazn.com/de-DE
-                        icon: si:dazn
+                      - title: Apple TV+
+                        url: https://tv.apple.com/de
+                        icon: si:appletv
                       - title: Twitch
                         url: https://www.twitch.tv/
                         icon: si:twitch
