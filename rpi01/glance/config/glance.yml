@@ -1635,6 +1635,9 @@ pages:
                       - title: MS365 API
                         url: http://api.k3s.itcares.local/ms365/v1/docs
                         icon: si:swagger
+                      - title: RMM API
+                        url: http://api.k3s.itcares.local/rmm/v2/docs
+                        icon: si:swagger
                       - title: SMS API
                         url: http://api.k3s.itcares.local/sms/v1/docs
                         icon: si:swagger

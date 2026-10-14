@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-21T16:32:35.720Z
-> Files: 110 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-10-09T23:38:31.424Z
+> Files: 111 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -181,6 +181,7 @@
 ## docker-srv-01/traefik/dynamic/services/lxc/
 
 - `adguard.yaml` (~101 tok)
+- `homelable.yaml` (~106 tok)
 - `netbox.yaml` (~102 tok)
 - `network.yaml` (~104 tok)
 - `omada.yaml` (~134 tok)
@@ -271,7 +272,7 @@
 
 ## rpi01/glance/config/
 
-- `glance.yml` — Declares url (~21434 tok)
+- `glance.yml` — Declares url (~21437 tok)
 - `home.yml` (~629 tok)
 
 ## rpi01/upsnap/
@@ -280,4 +281,4 @@
 
 ## scripts/
 
-- `update_docker_stacks.sh` — CONFIGURATION (~516 tok)
+- `update_docker_stacks.sh` — update_docker_stacks.sh - Robust version (~1150 tok)

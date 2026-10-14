@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-21T16:32:35.720Z",
-    "fileCount": 110,
+    "lastScanned": "2026-10-09T23:38:31.424Z",
+    "fileCount": 111,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "9e6379d7b1a4b214e44a0ac121b20c343c4cbf193a2a9c2ea25310630be7a054",
-    "storeUpdatedAt": "2026-09-21T16:32:35.721Z",
-    "rootHash": "3128ab0f884c6f46"
+    "renderedHash": "4fcfcae6b0a4d168922d38bdfb654be511bb4c364a23dbb851505b08cdc2c163",
+    "storeUpdatedAt": "2026-10-09T23:38:31.425Z",
+    "rootHash": "362a5722782ec706"
   },
   "files": {
     ".ai-context/architecture.md": {
@@ -16,7 +16,7 @@
       "hash": "315fa752b7588699",
       "size": 3707,
       "mtimeMs": 1787554043911.5972,
-      "updatedAt": "2026-09-21T16:32:35.693Z",
+      "updatedAt": "2026-10-09T23:38:31.385Z",
       "source": "scan"
     },
     ".ai-context/conventions.md": {
@@ -25,7 +25,7 @@
       "hash": "40dfee207468c391",
       "size": 2381,
       "mtimeMs": 1787554043911.6758,
-      "updatedAt": "2026-09-21T16:32:35.694Z",
+      "updatedAt": "2026-10-09T23:38:31.385Z",
       "source": "scan"
     },
     ".ai-context/dependencies.md": {
@@ -34,7 +34,7 @@
       "hash": "c57a264bb03e21eb",
       "size": 1917,
       "mtimeMs": 1787554043911.7466,
-      "updatedAt": "2026-09-21T16:32:35.694Z",
+      "updatedAt": "2026-10-09T23:38:31.385Z",
       "source": "scan"
     },
     ".ai-context/indexes/files.json": {
@@ -43,7 +43,7 @@
       "hash": "0b74c37a39838872",
       "size": 4053,
       "mtimeMs": 1787554043911.8574,
-      "updatedAt": "2026-09-21T16:32:35.694Z",
+      "updatedAt": "2026-10-09T23:38:31.386Z",
       "source": "scan"
     },
     ".ai-context/indexes/symbols.json": {
@@ -52,7 +52,7 @@
       "hash": "aaaad03118738e8e",
       "size": 3034,
       "mtimeMs": 1787554043911.929,
-      "updatedAt": "2026-09-21T16:32:35.695Z",
+      "updatedAt": "2026-10-09T23:38:31.386Z",
       "source": "scan"
     },
     ".ai-context/knowledge/business-rules/index.md": {
@@ -61,7 +61,7 @@
       "hash": "77d24f53799c32c1",
       "size": 647,
       "mtimeMs": 1787554043912.1492,
-      "updatedAt": "2026-09-21T16:32:35.695Z",
+      "updatedAt": "2026-10-09T23:38:31.387Z",
       "source": "scan"
     },
     ".ai-context/knowledge/decisions/index.md": {
@@ -70,7 +70,7 @@
       "hash": "d29edba50de1db2e",
       "size": 438,
       "mtimeMs": 1787554043912.2576,
-      "updatedAt": "2026-09-21T16:32:35.695Z",
+      "updatedAt": "2026-10-09T23:38:31.387Z",
       "source": "scan"
     },
     ".ai-context/knowledge/feature-guides/dashboard-integrations.md": {
@@ -79,7 +79,7 @@
       "hash": "6a71b9093a36a7eb",
       "size": 791,
       "mtimeMs": 1787554043912.3887,
-      "updatedAt": "2026-09-21T16:32:35.695Z",
+      "updatedAt": "2026-10-09T23:38:31.388Z",
       "source": "scan"
     },
     ".ai-context/knowledge/feature-guides/deployment.md": {
@@ -88,7 +88,7 @@
       "hash": "56022613ddc2fb12",
       "size": 1325,
       "mtimeMs": 1787554043912.4622,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.388Z",
       "source": "scan"
     },
     ".ai-context/knowledge/feature-guides/index.md": {
@@ -97,7 +97,7 @@
       "hash": "2d3952a61dd404aa",
       "size": 277,
       "mtimeMs": 1787554043912.5286,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.388Z",
       "source": "scan"
     },
     ".ai-context/knowledge/feature-guides/routing-and-certificates.md": {
@@ -106,7 +106,7 @@
       "hash": "16af799b2bc9712a",
       "size": 1258,
       "mtimeMs": 1787554043912.601,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.388Z",
       "source": "scan"
     },
     ".ai-context/knowledge/README.md": {
@@ -115,7 +115,7 @@
       "hash": "764d979ebb8b671c",
       "size": 664,
       "mtimeMs": 1787554043912.0425,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.388Z",
       "source": "scan"
     },
     ".ai-context/knowledge/removal-guides/index.md": {
@@ -124,7 +124,7 @@
       "hash": "464fa8fb39f485f2",
       "size": 185,
       "mtimeMs": 1787554043912.71,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".ai-context/knowledge/removal-guides/route-removal.md": {
@@ -133,7 +133,7 @@
       "hash": "df6ce958f1e7f802",
       "size": 611,
       "mtimeMs": 1787554043912.7778,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".ai-context/knowledge/removal-guides/stack-removal.md": {
@@ -142,7 +142,7 @@
       "hash": "4771de199cb90f9a",
       "size": 1032,
       "mtimeMs": 1787554043912.846,
-      "updatedAt": "2026-09-21T16:32:35.696Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".ai-context/knowledge/risks/index.md": {
@@ -151,7 +151,7 @@
       "hash": "8308181a90ba6e84",
       "size": 1086,
       "mtimeMs": 1787554043912.948,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".ai-context/manifest.json": {
@@ -160,7 +160,7 @@
       "hash": "535519046eca78be",
       "size": 956,
       "mtimeMs": 1787554043913.0137,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".ai-context/project-map.md": {
@@ -169,7 +169,7 @@
       "hash": "866a926ff4094be6",
       "size": 2502,
       "mtimeMs": 1787554043913.0984,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.389Z",
       "source": "scan"
     },
     ".github/copilot-instructions.md": {
@@ -178,7 +178,7 @@
       "hash": "d398e916ac298914",
       "size": 375,
       "mtimeMs": 1787554043913.2112,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.390Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -187,7 +187,7 @@
       "hash": "c90a0f30e959a588",
       "size": 546,
       "mtimeMs": 1789984004487.029,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.390Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -196,7 +196,7 @@
       "hash": "1f727e4f399f036b",
       "size": 785,
       "mtimeMs": 1790008355677.947,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.390Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -205,7 +205,7 @@
       "hash": "a35bed5eda947c5b",
       "size": 775,
       "mtimeMs": 1790008355671.7788,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.390Z",
       "source": "scan"
     },
     "cloud-srv-02/authentik/docker-compose.yaml": {
@@ -214,7 +214,7 @@
       "hash": "d9bdaa5b4fca7855",
       "size": 2975,
       "mtimeMs": 1789984004487.138,
-      "updatedAt": "2026-09-21T16:32:35.697Z",
+      "updatedAt": "2026-10-09T23:38:31.391Z",
       "source": "scan"
     },
     "cloud-srv-02/traefik/docker-compose.yaml": {
@@ -223,7 +223,7 @@
       "hash": "e1a9a674cfb4e408",
       "size": 2250,
       "mtimeMs": 1789984004487.3333,
-      "updatedAt": "2026-09-21T16:32:35.698Z",
+      "updatedAt": "2026-10-09T23:38:31.391Z",
       "source": "scan"
     },
     "cloud-srv-02/uptimekuma/docker-compose.yaml": {
@@ -232,7 +232,7 @@
       "hash": "131e0f6f43aae1b0",
       "size": 698,
       "mtimeMs": 1789984004487.4246,
-      "updatedAt": "2026-09-21T16:32:35.698Z",
+      "updatedAt": "2026-10-09T23:38:31.391Z",
       "source": "scan"
     },
     "cloud-srv-03/headplane/docker-compose.yaml": {
@@ -241,7 +241,7 @@
       "hash": "2abac709b48c67e4",
       "size": 1093,
       "mtimeMs": 1789984004487.6213,
-      "updatedAt": "2026-09-21T16:32:35.698Z",
+      "updatedAt": "2026-10-09T23:38:31.391Z",
       "source": "scan"
     },
     "cloud-srv-03/headscale/config/acl.hujson": {
@@ -250,7 +250,7 @@
       "hash": "ca3d163bab055381",
       "size": 3,
       "mtimeMs": 1789984004488.029,
-      "updatedAt": "2026-09-21T16:32:35.698Z",
+      "updatedAt": "2026-10-09T23:38:31.392Z",
       "source": "scan"
     },
     "cloud-srv-03/headscale/docker-compose.yaml": {
@@ -259,7 +259,7 @@
       "hash": "d3bca19a099636f3",
       "size": 1707,
       "mtimeMs": 1789984004488.228,
-      "updatedAt": "2026-09-21T16:32:35.698Z",
+      "updatedAt": "2026-10-09T23:38:31.392Z",
       "source": "scan"
     },
     "cloud-srv-03/headscale/README.md": {
@@ -268,7 +268,7 @@
       "hash": "13db50ccf0738f54",
       "size": 798,
       "mtimeMs": 1789984004487.8137,
-      "updatedAt": "2026-09-21T16:32:35.699Z",
+      "updatedAt": "2026-10-09T23:38:31.392Z",
       "source": "scan"
     },
     "cloud-srv-03/rustdesk/docker-compose.yaml": {
@@ -277,7 +277,7 @@
       "hash": "574b57d651004d28",
       "size": 1543,
       "mtimeMs": 1789984004488.333,
-      "updatedAt": "2026-09-21T16:32:35.699Z",
+      "updatedAt": "2026-10-09T23:38:31.392Z",
       "source": "scan"
     },
     "cloud-srv-03/teleport/config/teleport.yaml": {
@@ -286,7 +286,7 @@
       "hash": "2a5177ddbcb9619d",
       "size": 1135,
       "mtimeMs": 1787554043914.296,
-      "updatedAt": "2026-09-21T16:32:35.699Z",
+      "updatedAt": "2026-10-09T23:38:31.393Z",
       "source": "scan"
     },
     "cloud-srv-03/teleport/docker-compose.yaml": {
@@ -295,7 +295,7 @@
       "hash": "e0a03dd8a6c437c9",
       "size": 1769,
       "mtimeMs": 1789984004488.452,
-      "updatedAt": "2026-09-21T16:32:35.699Z",
+      "updatedAt": "2026-10-09T23:38:31.393Z",
       "source": "scan"
     },
     "cloud-srv-03/traefik/docker-compose.yaml": {
@@ -304,7 +304,7 @@
       "hash": "defb1e41757c0684",
       "size": 1547,
       "mtimeMs": 1789984004488.673,
-      "updatedAt": "2026-09-21T16:32:35.699Z",
+      "updatedAt": "2026-10-09T23:38:31.394Z",
       "source": "scan"
     },
     "cloud-srv-03/traefik/dynamic/middleware.yaml": {
@@ -313,7 +313,7 @@
       "hash": "d7a91f89ff53f22b",
       "size": 199,
       "mtimeMs": 1787554043914.6177,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.394Z",
       "source": "scan"
     },
     "cloud-srv-03/traefik/dynamic/transport.yaml": {
@@ -322,7 +322,7 @@
       "hash": "a8775db2358e9ca9",
       "size": 81,
       "mtimeMs": 1787554043914.6838,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.394Z",
       "source": "scan"
     },
     "docker-srv-01/cloudflared/docker-compose.yaml": {
@@ -331,7 +331,7 @@
       "hash": "d54efbbe589d87aa",
       "size": 276,
       "mtimeMs": 1787554043914.8796,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.395Z",
       "source": "scan"
     },
     "docker-srv-01/portainer/docker-compose.yaml": {
@@ -340,7 +340,7 @@
       "hash": "b2cd1d8644b29a95",
       "size": 285,
       "mtimeMs": 1789984004488.9524,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.395Z",
       "source": "scan"
     },
     "docker-srv-01/portainer-mcp/docker-compose.yaml": {
@@ -349,7 +349,7 @@
       "hash": "791b813b52acbe7b",
       "size": 871,
       "mtimeMs": 1789984004488.8196,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.395Z",
       "source": "scan"
     },
     "docker-srv-01/speedtest-tracker/docker-compose.yaml": {
@@ -358,7 +358,7 @@
       "hash": "0768ac37155398b0",
       "size": 448,
       "mtimeMs": 1789984004489.0767,
-      "updatedAt": "2026-09-21T16:32:35.700Z",
+      "updatedAt": "2026-10-09T23:38:31.395Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/docker-compose.yaml": {
@@ -367,7 +367,7 @@
       "hash": "7780fd7c40e25008",
       "size": 2742,
       "mtimeMs": 1789984004489.2966,
-      "updatedAt": "2026-09-21T16:32:35.701Z",
+      "updatedAt": "2026-10-09T23:38:31.396Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/middleware.yaml": {
@@ -376,7 +376,7 @@
       "hash": "c02c29afab74a2b7",
       "size": 1206,
       "mtimeMs": 1787554043915.6162,
-      "updatedAt": "2026-09-21T16:32:35.701Z",
+      "updatedAt": "2026-10-09T23:38:31.396Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/ai-srv-01/agentsview.yaml": {
@@ -385,7 +385,7 @@
       "hash": "c4348f2fa9131409",
       "size": 373,
       "mtimeMs": 1787554043915.7715,
-      "updatedAt": "2026-09-21T16:32:35.701Z",
+      "updatedAt": "2026-10-09T23:38:31.397Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/ai-srv-01/odysseus.yaml": {
@@ -394,7 +394,7 @@
       "hash": "200b761b9e0b9d28",
       "size": 365,
       "mtimeMs": 1787554043915.8333,
-      "updatedAt": "2026-09-21T16:32:35.701Z",
+      "updatedAt": "2026-10-09T23:38:31.397Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/ai-srv-01/open-design.yaml": {
@@ -403,7 +403,7 @@
       "hash": "9db8cb31f4613349",
       "size": 377,
       "mtimeMs": 1787554043915.8906,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.397Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-01/homepage.yaml": {
@@ -412,7 +412,7 @@
       "hash": "89a32c30bc193495",
       "size": 364,
       "mtimeMs": 1787554043915.9927,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.397Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-01/portainer-mcp.yaml": {
@@ -421,7 +421,7 @@
       "hash": "172485976145a420",
       "size": 337,
       "mtimeMs": 1787554043916.0571,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-01/portainer.yaml": {
@@ -430,7 +430,7 @@
       "hash": "bc75b26c8c428a6d",
       "size": 490,
       "mtimeMs": 1787554043916.1235,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-01/speedtest-tracker.yaml": {
@@ -439,7 +439,7 @@
       "hash": "0e0a51e1fc76a859",
       "size": 368,
       "mtimeMs": 1787554043916.1826,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-01/uptimekuma.yaml": {
@@ -448,7 +448,7 @@
       "hash": "6c83512cb07d77ef",
       "size": 372,
       "mtimeMs": 1787554043916.244,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-02/dns.yaml": {
@@ -457,7 +457,7 @@
       "hash": "bc6059c12d5f180d",
       "size": 344,
       "mtimeMs": 1787554043916.3848,
-      "updatedAt": "2026-09-21T16:32:35.702Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-02/filestash.yaml": {
@@ -466,7 +466,7 @@
       "hash": "733604c3320bdfe8",
       "size": 368,
       "mtimeMs": 1787554043916.4868,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-02/it.yaml": {
@@ -475,7 +475,7 @@
       "hash": "a5836b524b3e5935",
       "size": 340,
       "mtimeMs": 1787554043916.5762,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.398Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-02/wallos.yaml": {
@@ -484,7 +484,7 @@
       "hash": "f465767576cf620d",
       "size": 356,
       "mtimeMs": 1787554043916.6355,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-02/whatsupdocker.yaml": {
@@ -493,7 +493,7 @@
       "hash": "b94ee1574eedf30e",
       "size": 344,
       "mtimeMs": 1787554043916.7085,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/docker-srv-03/dokploy.yaml": {
@@ -502,7 +502,7 @@
       "hash": "204cf1a6bdff8d0e",
       "size": 360,
       "mtimeMs": 1787554043916.8057,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/calibre-web.yaml": {
@@ -511,7 +511,7 @@
       "hash": "bcd2d887976eb651",
       "size": 377,
       "mtimeMs": 1787554043916.8962,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/casaos.yaml": {
@@ -520,7 +520,7 @@
       "hash": "6d45b4942a0b9dd0",
       "size": 351,
       "mtimeMs": 1787554043916.9636,
-      "updatedAt": "2026-09-21T16:32:35.703Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/jellyfin-vue.yaml": {
@@ -529,7 +529,7 @@
       "hash": "88a797e2d81fcff2",
       "size": 380,
       "mtimeMs": 1787554043917.024,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.399Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/jellyfin.yaml": {
@@ -538,7 +538,7 @@
       "hash": "98d4b2585b65c37b",
       "size": 364,
       "mtimeMs": 1787554043917.079,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/jellyseerr.yaml": {
@@ -547,7 +547,7 @@
       "hash": "eabf7945e53659ec",
       "size": 372,
       "mtimeMs": 1787554043917.1343,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/kapowarr.yaml": {
@@ -556,7 +556,7 @@
       "hash": "d1b0a57010b62f6e",
       "size": 365,
       "mtimeMs": 1787554043917.191,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/kavita.yaml": {
@@ -565,7 +565,7 @@
       "hash": "bfa1d61400171dfe",
       "size": 357,
       "mtimeMs": 1787554043917.2544,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/prowlarr.yaml": {
@@ -574,7 +574,7 @@
       "hash": "e72ffc64a26b6956",
       "size": 364,
       "mtimeMs": 1787554043917.3167,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/proxmox.yaml": {
@@ -583,7 +583,7 @@
       "hash": "ec702b6c77dcee6c",
       "size": 477,
       "mtimeMs": 1787554043917.3738,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/questarr.yaml": {
@@ -592,7 +592,7 @@
       "hash": "ebb265064bcbb075",
       "size": 365,
       "mtimeMs": 1787554043917.43,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.400Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/radarr.yaml": {
@@ -601,7 +601,7 @@
       "hash": "ffe5f45653f14987",
       "size": 356,
       "mtimeMs": 1787554043917.4973,
-      "updatedAt": "2026-09-21T16:32:35.704Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/readarr.yaml": {
@@ -610,7 +610,7 @@
       "hash": "b1af889eb37e2f8f",
       "size": 361,
       "mtimeMs": 1787554043917.5586,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/romm.yaml": {
@@ -619,7 +619,7 @@
       "hash": "c34d79ef5179c51c",
       "size": 349,
       "mtimeMs": 1787554043917.6145,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/sonarr.yaml": {
@@ -628,7 +628,7 @@
       "hash": "79a9d56cb7b55f17",
       "size": 356,
       "mtimeMs": 1787554043917.6714,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/home/umbrelos.yaml": {
@@ -637,7 +637,7 @@
       "hash": "dbaf08bf119e38d7",
       "size": 360,
       "mtimeMs": 1787554043917.73,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/adguard.yaml": {
@@ -646,7 +646,16 @@
       "hash": "89f91b6806278092",
       "size": 352,
       "mtimeMs": 1787554043917.8347,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.401Z",
+      "source": "scan"
+    },
+    "docker-srv-01/traefik/dynamic/services/lxc/homelable.yaml": {
+      "description": "",
+      "tokens": 106,
+      "hash": "f45694ce70fe278e",
+      "size": 369,
+      "mtimeMs": 1790673100306.1655,
+      "updatedAt": "2026-10-09T23:38:31.401Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/netbox.yaml": {
@@ -655,7 +664,7 @@
       "hash": "9290c38ef42b4a56",
       "size": 356,
       "mtimeMs": 1787554043917.8884,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/network.yaml": {
@@ -664,7 +673,7 @@
       "hash": "81920a583f354d7a",
       "size": 361,
       "mtimeMs": 1787554043917.9429,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/omada.yaml": {
@@ -673,7 +682,7 @@
       "hash": "7ee710802027642d",
       "size": 466,
       "mtimeMs": 1787554043918.0059,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/pve-helper-scripts.yaml": {
@@ -682,7 +691,7 @@
       "hash": "1d517eb174982069",
       "size": 372,
       "mtimeMs": 1787554043918.0615,
-      "updatedAt": "2026-09-21T16:32:35.705Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/semaphore.yaml": {
@@ -691,7 +700,7 @@
       "hash": "79198cdc4356afe7",
       "size": 368,
       "mtimeMs": 1787554043918.1255,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/dynamic/services/lxc/wgdashboard.yaml": {
@@ -700,7 +709,7 @@
       "hash": "b5c8393840eeca52",
       "size": 377,
       "mtimeMs": 1787554043918.1829,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.402Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/README.md": {
@@ -709,7 +718,7 @@
       "hash": "c58c30d654f675fd",
       "size": 3006,
       "mtimeMs": 1787554043915.461,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.403Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/relink-watch.sh": {
@@ -718,7 +727,7 @@
       "hash": "bfa34da7b504a41e",
       "size": 497,
       "mtimeMs": 1787554043918.2424,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.403Z",
       "source": "scan"
     },
     "docker-srv-01/traefik/relink.sh": {
@@ -727,7 +736,7 @@
       "hash": "cfaa4a1808a7a12b",
       "size": 1152,
       "mtimeMs": 1787554043918.308,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.403Z",
       "source": "scan"
     },
     "docker-srv-01/uptimekuma/docker-compose.yaml": {
@@ -736,7 +745,7 @@
       "hash": "439c8b927b70ad08",
       "size": 284,
       "mtimeMs": 1789984004489.4148,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.403Z",
       "source": "scan"
     },
     "docker-srv-02/cloudflared/docker-compose.yaml": {
@@ -745,7 +754,7 @@
       "hash": "17ea085454a959e1",
       "size": 276,
       "mtimeMs": 1787554043918.5964,
-      "updatedAt": "2026-09-21T16:32:35.706Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/it-tools/docker-compose.yaml": {
@@ -754,7 +763,7 @@
       "hash": "2332f8526ae07631",
       "size": 212,
       "mtimeMs": 1787554043918.687,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/n8n/docker-compose.yaml": {
@@ -763,7 +772,7 @@
       "hash": "ffab05205c803158",
       "size": 453,
       "mtimeMs": 1789984004489.5342,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/networking-toolbox/docker-compose.yaml": {
@@ -772,7 +781,7 @@
       "hash": "6480fe938aaf9098",
       "size": 384,
       "mtimeMs": 1787554043918.8762,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/obot/docker-compose.yaml": {
@@ -781,7 +790,7 @@
       "hash": "05ab1f7e25a07404",
       "size": 632,
       "mtimeMs": 1789984004489.6716,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/portainer-agent/docker-compose.yaml": {
@@ -790,7 +799,7 @@
       "hash": "d2bf708f288d488a",
       "size": 300,
       "mtimeMs": 1789984004489.7932,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.404Z",
       "source": "scan"
     },
     "docker-srv-02/wallos/docker-compose.yaml": {
@@ -799,7 +808,7 @@
       "hash": "644ace55155d285a",
       "size": 322,
       "mtimeMs": 1789984004489.9065,
-      "updatedAt": "2026-09-21T16:32:35.707Z",
+      "updatedAt": "2026-10-09T23:38:31.405Z",
       "source": "scan"
     },
     "docker-srv-03/portainer-agent/docker-compose.yaml": {
@@ -808,7 +817,7 @@
       "hash": "d2bf708f288d488a",
       "size": 300,
       "mtimeMs": 1789984004490.022,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.405Z",
       "source": "scan"
     },
     "docs/deployment-guide.md": {
@@ -817,7 +826,7 @@
       "hash": "ccce1f7aee487cb1",
       "size": 3923,
       "mtimeMs": 1787554043919.4973,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.405Z",
       "source": "scan"
     },
     "jellfin-home-01/docker-compose.yaml": {
@@ -826,7 +835,7 @@
       "hash": "df4acf6600d1280e",
       "size": 6984,
       "mtimeMs": 1787554043919.6128,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.406Z",
       "source": "scan"
     },
     "lxc-bind9/config/demo-soniiit-net.zone": {
@@ -835,7 +844,7 @@
       "hash": "36e5849d29a60dae",
       "size": 535,
       "mtimeMs": 1787554043919.8901,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.406Z",
       "source": "scan"
     },
     "lxc-bind9/config/dev-soniiit-net.zone": {
@@ -844,7 +853,7 @@
       "hash": "6860617a5b12f643",
       "size": 531,
       "mtimeMs": 1787554043919.9797,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.406Z",
       "source": "scan"
     },
     "lxc-bind9/config/home-soniiit-net.zone": {
@@ -853,7 +862,7 @@
       "hash": "7294aa7a45f9aace",
       "size": 535,
       "mtimeMs": 1787554043920.0476,
-      "updatedAt": "2026-09-21T16:32:35.708Z",
+      "updatedAt": "2026-10-09T23:38:31.406Z",
       "source": "scan"
     },
     "lxc-bind9/config/named.conf": {
@@ -862,7 +871,7 @@
       "hash": "e900441c85ba6b90",
       "size": 968,
       "mtimeMs": 1787554043920.108,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.407Z",
       "source": "scan"
     },
     "lxc-bind9/config/rev-192-168-178.zone": {
@@ -871,7 +880,7 @@
       "hash": "7a42337b7b5ee8af",
       "size": 496,
       "mtimeMs": 1787554043920.3557,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.407Z",
       "source": "scan"
     },
     "lxc-bind9/docker-compose.yaml": {
@@ -880,7 +889,7 @@
       "hash": "4930f6267ac887e6",
       "size": 327,
       "mtimeMs": 1787554043920.483,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.407Z",
       "source": "scan"
     },
     "lxc-bind9/README.md": {
@@ -889,7 +898,7 @@
       "hash": "27de66d421fa6ac9",
       "size": 1141,
       "mtimeMs": 1787554043919.7173,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.407Z",
       "source": "scan"
     },
     "lxc-pterodactyl/panel/docker-compose.yaml": {
@@ -898,7 +907,7 @@
       "hash": "8a449f413cbd5781",
       "size": 2444,
       "mtimeMs": 1787554043920.8374,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.407Z",
       "source": "scan"
     },
     "lxc-pterodactyl/wings/docker-compose.yaml": {
@@ -907,7 +916,7 @@
       "hash": "23a0ed68144f6462",
       "size": 1137,
       "mtimeMs": 1787554043921.0144,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.408Z",
       "source": "scan"
     },
     "lxc-remotely/docker-compose.yaml": {
@@ -916,7 +925,7 @@
       "hash": "8d830bf19b342170",
       "size": 1916,
       "mtimeMs": 1787554043921.242,
-      "updatedAt": "2026-09-21T16:32:35.709Z",
+      "updatedAt": "2026-10-09T23:38:31.408Z",
       "source": "scan"
     },
     "lxc-wgdashboard/docker-compose.yml": {
@@ -925,7 +934,7 @@
       "hash": "09c58e03a01ac278",
       "size": 881,
       "mtimeMs": 1789984004490.1436,
-      "updatedAt": "2026-09-21T16:32:35.710Z",
+      "updatedAt": "2026-10-09T23:38:31.408Z",
       "source": "scan"
     },
     "README.md": {
@@ -934,7 +943,7 @@
       "hash": "0fe2cec303c17c12",
       "size": 1879,
       "mtimeMs": 1787554043913.483,
-      "updatedAt": "2026-09-21T16:32:35.710Z",
+      "updatedAt": "2026-10-09T23:38:31.408Z",
       "source": "scan"
     },
     "renovate.json": {
@@ -943,7 +952,7 @@
       "hash": "e80b4e42a3043bc1",
       "size": 114,
       "mtimeMs": 1787554043921.487,
-      "updatedAt": "2026-09-21T16:32:35.710Z",
+      "updatedAt": "2026-10-09T23:38:31.408Z",
       "source": "scan"
     },
     "rpi01/glance/assets/user.css": {
@@ -952,16 +961,16 @@
       "hash": "e3b0c44298fc1c14",
       "size": 0,
       "mtimeMs": 1787554043921.747,
-      "updatedAt": "2026-09-21T16:32:35.710Z",
+      "updatedAt": "2026-10-09T23:38:31.409Z",
       "source": "scan"
     },
     "rpi01/glance/config/glance.yml": {
       "description": "Declares url",
-      "tokens": 21434,
-      "hash": "539195b57a47026e",
-      "size": 75049,
-      "mtimeMs": 1789988152317.596,
-      "updatedAt": "2026-09-21T16:32:35.711Z",
+      "tokens": 21437,
+      "hash": "d59d49234209a55e",
+      "size": 75058,
+      "mtimeMs": 1790673100306.4106,
+      "updatedAt": "2026-10-09T23:38:31.410Z",
       "source": "scan"
     },
     "rpi01/glance/config/home.yml": {
@@ -970,7 +979,7 @@
       "hash": "2458cad7d4f58688",
       "size": 2201,
       "mtimeMs": 1787554043922.0698,
-      "updatedAt": "2026-09-21T16:32:35.711Z",
+      "updatedAt": "2026-10-09T23:38:31.410Z",
       "source": "scan"
     },
     "rpi01/glance/docker-compose.yaml": {
@@ -979,7 +988,7 @@
       "hash": "a7715e45e901c203",
       "size": 262,
       "mtimeMs": 1787554043922.1357,
-      "updatedAt": "2026-09-21T16:32:35.711Z",
+      "updatedAt": "2026-10-09T23:38:31.410Z",
       "source": "scan"
     },
     "rpi01/upsnap/docker-compose.yaml": {
@@ -988,16 +997,16 @@
       "hash": "5f99534ecf6487eb",
       "size": 342,
       "mtimeMs": 1789984004490.5032,
-      "updatedAt": "2026-09-21T16:32:35.711Z",
+      "updatedAt": "2026-10-09T23:38:31.410Z",
       "source": "scan"
     },
     "scripts/update_docker_stacks.sh": {
-      "description": "CONFIGURATION",
-      "tokens": 516,
-      "hash": "1b1b12560fd1cfae",
-      "size": 1803,
-      "mtimeMs": 1789984004490.7173,
-      "updatedAt": "2026-09-21T16:32:35.712Z",
+      "description": "update_docker_stacks.sh - Robust version",
+      "tokens": 1150,
+      "hash": "8555591f8dc12d1a",
+      "size": 4025,
+      "mtimeMs": 1790673100306.5996,
+      "updatedAt": "2026-10-09T23:38:31.411Z",
       "source": "scan"
     }
   },
