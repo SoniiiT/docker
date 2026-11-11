@@ -1,6 +1,6 @@
 services:
   headscale:
-    image: docker.io/headscale/headscale:0.29.3
+    image: docker.io/headscale/headscale:v0.29.7
     container_name: headscale
     restart: unless-stopped
     read_only: true
