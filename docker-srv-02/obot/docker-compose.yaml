@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   obot:
-    image: ghcr.io/obot-platform/obot:v0.28.0
+    image: ghcr.io/obot-platform/obot:v0.28.1
     container_name: obot
     restart: unless-stopped
     ports:
