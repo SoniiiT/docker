@@ -1,0 +1,17 @@
+http:
+  routers:
+    gamarr:
+      rule: Host(`gamarr.home.soniiit.net`)
+      entryPoints: [websecure]
+      tls:
+        certResolver: leprod
+      service: gamarr-svc
+      middlewares:
+        - secureHeaders@file
+
+  services:
+    gamarr-svc:
+      loadBalancer:
+        servers:
+          - url: http://192.168.178.98:6767
+        passHostHeader: true
