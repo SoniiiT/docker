@@ -776,9 +776,12 @@ pages:
                       - title: RoMM
                         url: https://romm.home.soniiit.net/
                         icon: si:nintendo
-                      - title: Questarr
-                        url: https://questarr.home.soniiit.net/
-                        icon: si:radarr
+                      - title: Gamarr
+                        url: https://gamarr.home.soniiit.net/
+                        icon: si:steam
+                      - title: Audiobookshelf
+                        url: https://audiobookshelf.home.soniiit.net/
+                        icon: si:audiobookshelf
 
                   - title: Infrastructure
                     links:
@@ -896,9 +899,12 @@ pages:
                       - title: RoMM
                         url: http://192.168.178.98:8008
                         icon: si:nintendo
-                      - title: Questarr
-                        url: http://192.168.178.98:5000
-                        icon: si:radarr
+                      - title: Gamarr
+                        url: http://192.168.178.98:6767
+                        icon: si:steam
+                      - title: Audiobookshelf
+                        url: http://192.168.178.98:13378
+                        icon: si:audiobookshelf
                       - title: SABnzbd
                         url: http://192.168.178.98:8060/
                         icon: si:sabnzbd
@@ -1039,9 +1045,12 @@ pages:
                       - title: RoMM
                         url: https://romm.teleport.soniiit.net/
                         icon: si:nintendo
-                      - title: Questarr
-                        url: https://questarr.teleport.soniiit.net/
-                        icon: si:radarr
+                      - title: Gamarr
+                        url: https://gamarr.teleport.soniiit.net/
+                        icon: si:steam
+                      - title: Audiobookshelf
+                        url: https://audiobookshelf.teleport.soniiit.net/
+                        icon: si:audiobookshelf
                       - title: SABnzbd
                         url: https://sabnzbd.teleport.soniiit.net/
                         icon: si:sabnzbd
