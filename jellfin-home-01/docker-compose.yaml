@@ -218,6 +218,7 @@ services:
       - /mnt/jellyfin/kavita/config:/kavita/config
       - /mnt/jellyfin/books:/books
       - /mnt/jellyfin/manga:/manga
+      - /mnt/jellyfin/kapowarr/comics:/comics
     ports:
       - 5010:5000
     restart: unless-stopped
