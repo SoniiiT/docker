@@ -767,8 +767,8 @@ pages:
                       - title: Calibre-Web
                         url: https://calibre-web.home.soniiit.net/
                         icon: si:calibre
-                      - title: Readarr
-                        url: https://readarr.home.soniiit.net/
+                      - title: Chaptarr
+                        url: https://chaptarr.home.soniiit.net/
                         icon: si:bookstack
                       - title: Kavita
                         url: https://kavita.home.soniiit.net/
@@ -890,8 +890,8 @@ pages:
                       - title: Calibre Web
                         url: http://192.168.178.98:8083
                         icon: si:calibre
-                      - title: Readarr
-                        url: http://192.168.178.98:8787
+                      - title: Chaptarr
+                        url: http://192.168.178.98:8789
                         icon: si:bookstack
                       - title: Kavita
                         url: http://192.168.178.98:5010
@@ -1036,8 +1036,8 @@ pages:
                       - title: Calibre Web
                         url: https://calibre-web.teleport.soniiit.net/
                         icon: si:calibre
-                      - title: Readarr
-                        url: https://readarr.teleport.soniiit.net/
+                      - title: Chaptarr
+                        url: https://chaptarr.teleport.soniiit.net/
                         icon: si:bookstack
                       - title: Kavita
                         url: https://kavita.teleport.soniiit.net/
