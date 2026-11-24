@@ -7,7 +7,7 @@ networks:
 
 services:
   teleport:
-    image: public.ecr.aws/gravitational/teleport-distroless:18.11.10
+    image: public.ecr.aws/gravitational/teleport-distroless:19.0.1
     container_name: teleport
     restart: unless-stopped
     networks: [proxy]
